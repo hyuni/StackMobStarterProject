@@ -50,7 +50,7 @@
     MFSideMenuContainerViewController *container = [[MFSideMenuContainerViewController alloc] init];
 
     UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
-    UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"leftSideMenuViewController"];
+    UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"leftSideMenu2ViewController"];
 //    UIViewController *dashboardController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardController"];
     
     //--- We don't use a right menu view ---//
