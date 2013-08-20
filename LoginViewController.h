@@ -10,4 +10,8 @@
 
 @interface LoginViewController : UIViewController
 
+-(IBAction)action_login:(id)sender;
+
+@property (strong, nonatomic) UIWindow *window;
+
 @end
