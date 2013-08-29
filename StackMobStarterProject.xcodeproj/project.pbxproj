@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		800AD04217BC86EA006A54F5 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 800AD04117BC86EA006A54F5 /* TestObject.m */; };
+		8025FDAD17CEE147000A0CDB /* IntakeForm1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */; };
+		80347D0817CB036E00C2A782 /* PickerDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80347D0717CB036E00C2A782 /* PickerDateViewController.m */; };
 		804C5D7C17C32E3900B00065 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE017C32E3800B00065 /* backButton.png */; };
 		804C5D7D17C32E3900B00065 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE117C32E3800B00065 /* backButton@2x.png */; };
 		804C5D7E17C32E3900B00065 /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE217C32E3800B00065 /* background-568h@2x.png */; };
@@ -167,10 +169,29 @@
 		804C5E2017C341E000B00065 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E1F17C341E000B00065 /* DashboardViewController.m */; };
 		804C5E2717C3476800B00065 /* tv_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5E2617C3476700B00065 /* tv_back.png */; };
 		804C5E2A17C3EA9F00B00065 /* SideMenu2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */; };
+		80694B6B17C7C14500726FEF /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80694B6A17C7C14500726FEF /* Dashboard.m */; };
 		809FF15A17C2E2130071FC08 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */; };
 		809FF15B17C2E2130071FC08 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15717C2E2130071FC08 /* MFSideMenuShadow.m */; };
 		809FF15C17C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15917C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m */; };
 		80BA62A617BC8EEB0030BB52 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BA62A517BC8EEA0030BB52 /* LoginViewController.m */; };
+		80C6CF4E17C59F0E00A0F5A7 /* UserDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF4D17C59F0E00A0F5A7 /* UserDoctor.m */; };
+		80C6CF6C17C5C35000A0F5A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF6B17C5C35000A0F5A7 /* User.m */; };
+		80C6CF9217C6C62900A0F5A7 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7017C6C62800A0F5A7 /* Base64.m */; };
+		80C6CF9317C6C62900A0F5A7 /* Clipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7217C6C62800A0F5A7 /* Clipboard.m */; };
+		80C6CF9417C6C62900A0F5A7 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7417C6C62800A0F5A7 /* CommonUtils.m */; };
+		80C6CF9517C6C62900A0F5A7 /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7617C6C62800A0F5A7 /* Communication.m */; };
+		80C6CF9617C6C62900A0F5A7 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7817C6C62800A0F5A7 /* CustomBadge.m */; };
+		80C6CF9717C6C62900A0F5A7 /* DataClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7A17C6C62800A0F5A7 /* DataClipboard.m */; };
+		80C6CF9817C6C62900A0F5A7 /* FileAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7C17C6C62800A0F5A7 /* FileAccess.m */; };
+		80C6CF9917C6C62900A0F5A7 /* IPAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF7D17C6C62800A0F5A7 /* IPAddress.c */; };
+		80C6CF9A17C6C62900A0F5A7 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8317C6C62800A0F5A7 /* NSObject+SBJSON.m */; };
+		80C6CF9B17C6C62900A0F5A7 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8517C6C62800A0F5A7 /* NSString+SBJSON.m */; };
+		80C6CF9C17C6C62900A0F5A7 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8717C6C62800A0F5A7 /* SBJSON.m */; };
+		80C6CF9D17C6C62900A0F5A7 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8917C6C62800A0F5A7 /* SBJsonBase.m */; };
+		80C6CF9E17C6C62900A0F5A7 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8B17C6C62800A0F5A7 /* SBJsonParser.m */; };
+		80C6CF9F17C6C62900A0F5A7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF8D17C6C62800A0F5A7 /* SBJsonWriter.m */; };
+		80C6CFA017C6C62900A0F5A7 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CF9017C6C62800A0F5A7 /* UIImage+Crop.m */; };
+		80C6CFA317C715DD00A0F5A7 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C6CFA217C715DD00A0F5A7 /* Patient.m */; };
 		80E312E817C3152B00FA4618 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E312E417C3152B00FA4618 /* Icon-72.png */; };
 		80E312E917C3152B00FA4618 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E312E517C3152B00FA4618 /* Icon-72@2x.png */; };
 		80E312EA17C3152B00FA4618 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 80E312E617C3152B00FA4618 /* Icon.png */; };
@@ -201,8 +222,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		800AD04017BC86EA006A54F5 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = Data/TestObject.h; sourceTree = "<group>"; };
-		800AD04117BC86EA006A54F5 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = Data/TestObject.m; sourceTree = "<group>"; };
+		800AD04017BC86EA006A54F5 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = StackMobStarterProject/Data/TestObject.h; sourceTree = "<group>"; };
+		800AD04117BC86EA006A54F5 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = StackMobStarterProject/Data/TestObject.m; sourceTree = "<group>"; };
+		8025FDAB17CEE147000A0CDB /* IntakeForm1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm1ViewController.h; sourceTree = "<group>"; };
+		8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm1ViewController.m; sourceTree = "<group>"; };
+		80347D0617CB036E00C2A782 /* PickerDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDateViewController.h; sourceTree = "<group>"; };
+		80347D0717CB036E00C2A782 /* PickerDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDateViewController.m; sourceTree = "<group>"; };
 		804C5CE017C32E3800B00065 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		804C5CE117C32E3800B00065 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		804C5CE217C32E3800B00065 /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
@@ -364,6 +389,8 @@
 		804C5E2617C3476700B00065 /* tv_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv_back.png; sourceTree = "<group>"; };
 		804C5E2817C3EA9E00B00065 /* SideMenu2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenu2ViewController.h; sourceTree = "<group>"; };
 		804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenu2ViewController.m; sourceTree = "<group>"; };
+		80694B6917C7C14500726FEF /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = SOURCE_ROOT; };
+		80694B6A17C7C14500726FEF /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = SOURCE_ROOT; };
 		809FF15317C2E2130071FC08 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		809FF15417C2E2130071FC08 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -373,6 +400,46 @@
 		809FF15917C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
 		80BA62A417BC8EEA0030BB52 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		80BA62A517BC8EEA0030BB52 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		80C6CF4C17C59F0E00A0F5A7 /* UserDoctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDoctor.h; path = DataModel/UserDoctor.h; sourceTree = SOURCE_ROOT; };
+		80C6CF4D17C59F0E00A0F5A7 /* UserDoctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDoctor.m; path = DataModel/UserDoctor.m; sourceTree = SOURCE_ROOT; };
+		80C6CF6A17C5C35000A0F5A7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = DataModel/User.h; sourceTree = SOURCE_ROOT; };
+		80C6CF6B17C5C35000A0F5A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = DataModel/User.m; sourceTree = SOURCE_ROOT; };
+		80C6CF6F17C6C62800A0F5A7 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		80C6CF7017C6C62800A0F5A7 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		80C6CF7117C6C62800A0F5A7 /* Clipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clipboard.h; sourceTree = "<group>"; };
+		80C6CF7217C6C62800A0F5A7 /* Clipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clipboard.m; sourceTree = "<group>"; };
+		80C6CF7317C6C62800A0F5A7 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		80C6CF7417C6C62800A0F5A7 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		80C6CF7517C6C62800A0F5A7 /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
+		80C6CF7617C6C62800A0F5A7 /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
+		80C6CF7717C6C62800A0F5A7 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
+		80C6CF7817C6C62800A0F5A7 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
+		80C6CF7917C6C62800A0F5A7 /* DataClipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClipboard.h; sourceTree = "<group>"; };
+		80C6CF7A17C6C62800A0F5A7 /* DataClipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClipboard.m; sourceTree = "<group>"; };
+		80C6CF7B17C6C62800A0F5A7 /* FileAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileAccess.h; sourceTree = "<group>"; };
+		80C6CF7C17C6C62800A0F5A7 /* FileAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileAccess.m; sourceTree = "<group>"; };
+		80C6CF7D17C6C62800A0F5A7 /* IPAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IPAddress.c; sourceTree = "<group>"; };
+		80C6CF7E17C6C62800A0F5A7 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
+		80C6CF7F17C6C62800A0F5A7 /* Preference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
+		80C6CF8117C6C62800A0F5A7 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		80C6CF8217C6C62800A0F5A7 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		80C6CF8317C6C62800A0F5A7 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		80C6CF8417C6C62800A0F5A7 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		80C6CF8517C6C62800A0F5A7 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		80C6CF8617C6C62800A0F5A7 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		80C6CF8717C6C62800A0F5A7 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		80C6CF8817C6C62800A0F5A7 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		80C6CF8917C6C62800A0F5A7 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		80C6CF8A17C6C62800A0F5A7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		80C6CF8B17C6C62800A0F5A7 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		80C6CF8C17C6C62800A0F5A7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		80C6CF8D17C6C62800A0F5A7 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		80C6CF8E17C6C62800A0F5A7 /* STRING_DEFINE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRING_DEFINE.h; sourceTree = "<group>"; };
+		80C6CF8F17C6C62800A0F5A7 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		80C6CF9017C6C62800A0F5A7 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		80C6CF9117C6C62900A0F5A7 /* URL_DEFINE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URL_DEFINE.h; sourceTree = "<group>"; };
+		80C6CFA117C715DD00A0F5A7 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Patient.h; path = DataModel/Patient.h; sourceTree = SOURCE_ROOT; };
+		80C6CFA217C715DD00A0F5A7 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Patient.m; path = DataModel/Patient.m; sourceTree = SOURCE_ROOT; };
 		80E312E417C3152B00FA4618 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		80E312E517C3152B00FA4618 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		80E312E617C3152B00FA4618 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -457,8 +524,8 @@
 		DE9FD4B917A881DA00B290E4 /* Synchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synchronization.h; sourceTree = "<group>"; };
 		DE9FD4BA17A881DA00B290E4 /* SystemInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInformation.h; sourceTree = "<group>"; };
 		DE9FD4BB17A881DA00B290E4 /* libstackmob-v2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libstackmob-v2.1.0.a"; sourceTree = "<group>"; };
-		DEAA26DC177B9A8400A6F62F /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
-		DEAA26DD177B9A8400A6F62F /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		DEAA26DC177B9A8400A6F62F /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = StackMobStarterProject/Todo.h; sourceTree = "<group>"; };
+		DEAA26DD177B9A8400A6F62F /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = StackMobStarterProject/Todo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -659,6 +726,80 @@
 			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
+		80C6CF6D17C6C62800A0F5A7 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				80C6CF6E17C6C62800A0F5A7 /* Base64 */,
+				80C6CF7117C6C62800A0F5A7 /* Clipboard.h */,
+				80C6CF7217C6C62800A0F5A7 /* Clipboard.m */,
+				80C6CF7317C6C62800A0F5A7 /* CommonUtils.h */,
+				80C6CF7417C6C62800A0F5A7 /* CommonUtils.m */,
+				80C6CF7517C6C62800A0F5A7 /* Communication.h */,
+				80C6CF7617C6C62800A0F5A7 /* Communication.m */,
+				80C6CF7717C6C62800A0F5A7 /* CustomBadge.h */,
+				80C6CF7817C6C62800A0F5A7 /* CustomBadge.m */,
+				80C6CF7917C6C62800A0F5A7 /* DataClipboard.h */,
+				80C6CF7A17C6C62800A0F5A7 /* DataClipboard.m */,
+				80C6CF7B17C6C62800A0F5A7 /* FileAccess.h */,
+				80C6CF7C17C6C62800A0F5A7 /* FileAccess.m */,
+				80C6CF7D17C6C62800A0F5A7 /* IPAddress.c */,
+				80C6CF7E17C6C62800A0F5A7 /* IPAddress.h */,
+				80C6CF7F17C6C62800A0F5A7 /* Preference.h */,
+				80C6CF8017C6C62800A0F5A7 /* SBJSON */,
+				80C6CF8E17C6C62800A0F5A7 /* STRING_DEFINE.h */,
+				80C6CF8F17C6C62800A0F5A7 /* UIImage+Crop.h */,
+				80C6CF9017C6C62800A0F5A7 /* UIImage+Crop.m */,
+				80C6CF9117C6C62900A0F5A7 /* URL_DEFINE.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		80C6CF6E17C6C62800A0F5A7 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				80C6CF6F17C6C62800A0F5A7 /* Base64.h */,
+				80C6CF7017C6C62800A0F5A7 /* Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		80C6CF8017C6C62800A0F5A7 /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				80C6CF8117C6C62800A0F5A7 /* JSON.h */,
+				80C6CF8217C6C62800A0F5A7 /* NSObject+SBJSON.h */,
+				80C6CF8317C6C62800A0F5A7 /* NSObject+SBJSON.m */,
+				80C6CF8417C6C62800A0F5A7 /* NSString+SBJSON.h */,
+				80C6CF8517C6C62800A0F5A7 /* NSString+SBJSON.m */,
+				80C6CF8617C6C62800A0F5A7 /* SBJSON.h */,
+				80C6CF8717C6C62800A0F5A7 /* SBJSON.m */,
+				80C6CF8817C6C62800A0F5A7 /* SBJsonBase.h */,
+				80C6CF8917C6C62800A0F5A7 /* SBJsonBase.m */,
+				80C6CF8A17C6C62800A0F5A7 /* SBJsonParser.h */,
+				80C6CF8B17C6C62800A0F5A7 /* SBJsonParser.m */,
+				80C6CF8C17C6C62800A0F5A7 /* SBJsonWriter.h */,
+				80C6CF8D17C6C62800A0F5A7 /* SBJsonWriter.m */,
+			);
+			path = SBJSON;
+			sourceTree = "<group>";
+		};
+		80C6CFA617C7165E00A0F5A7 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				80C6CF6A17C5C35000A0F5A7 /* User.h */,
+				80C6CF6B17C5C35000A0F5A7 /* User.m */,
+				80C6CFA117C715DD00A0F5A7 /* Patient.h */,
+				80C6CFA217C715DD00A0F5A7 /* Patient.m */,
+				80C6CF4C17C59F0E00A0F5A7 /* UserDoctor.h */,
+				80C6CF4D17C59F0E00A0F5A7 /* UserDoctor.m */,
+				800AD04017BC86EA006A54F5 /* TestObject.h */,
+				800AD04117BC86EA006A54F5 /* TestObject.m */,
+				DEAA26DC177B9A8400A6F62F /* Todo.h */,
+				DEAA26DD177B9A8400A6F62F /* Todo.m */,
+			);
+			name = DataObject;
+			sourceTree = "<group>";
+		};
 		80E312E317C3152B00FA4618 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,11 +814,17 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
+				8025FDAB17CEE147000A0CDB /* IntakeForm1ViewController.h */,
+				8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */,
+				80C6CFA617C7165E00A0F5A7 /* DataObject */,
+				809FF15217C2E2130071FC08 /* MFSideMenu */,
+				80C6CF6D17C6C62800A0F5A7 /* Utility */,
 				804C5E1E17C341E000B00065 /* DashboardViewController.h */,
 				804C5E1F17C341E000B00065 /* DashboardViewController.m */,
 				804C5E2817C3EA9E00B00065 /* SideMenu2ViewController.h */,
 				804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */,
-				809FF15217C2E2130071FC08 /* MFSideMenu */,
+				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
+				80347D0717CB036E00C2A782 /* PickerDateViewController.m */,
 				80BA62A417BC8EEA0030BB52 /* LoginViewController.h */,
 				80BA62A517BC8EEA0030BB52 /* LoginViewController.m */,
 				DE9FD48317A881DA00B290E4 /* StackMob-v2.1.0 */,
@@ -721,10 +868,8 @@
 				DE01BBFE17722DA000D80549 /* TodoDetailViewController.m */,
 				DE01BBC11771318500D80549 /* MainStoryboard.storyboard */,
 				DE01BB7417712C7200D80549 /* StackMobStarterProject.xcdatamodeld */,
-				800AD04017BC86EA006A54F5 /* TestObject.h */,
-				800AD04117BC86EA006A54F5 /* TestObject.m */,
-				DEAA26DC177B9A8400A6F62F /* Todo.h */,
-				DEAA26DD177B9A8400A6F62F /* Todo.m */,
+				80694B6917C7C14500726FEF /* Dashboard.h */,
+				80694B6A17C7C14500726FEF /* Dashboard.m */,
 				DE01BB6317712C7200D80549 /* Supporting Files */,
 			);
 			path = StackMobStarterProject;
@@ -1076,6 +1221,27 @@
 				809FF15C17C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				804C5E2017C341E000B00065 /* DashboardViewController.m in Sources */,
 				804C5E2A17C3EA9F00B00065 /* SideMenu2ViewController.m in Sources */,
+				80C6CF4E17C59F0E00A0F5A7 /* UserDoctor.m in Sources */,
+				80C6CF6C17C5C35000A0F5A7 /* User.m in Sources */,
+				80C6CF9217C6C62900A0F5A7 /* Base64.m in Sources */,
+				80C6CF9317C6C62900A0F5A7 /* Clipboard.m in Sources */,
+				80C6CF9417C6C62900A0F5A7 /* CommonUtils.m in Sources */,
+				80C6CF9517C6C62900A0F5A7 /* Communication.m in Sources */,
+				80C6CF9617C6C62900A0F5A7 /* CustomBadge.m in Sources */,
+				80C6CF9717C6C62900A0F5A7 /* DataClipboard.m in Sources */,
+				80C6CF9817C6C62900A0F5A7 /* FileAccess.m in Sources */,
+				80C6CF9917C6C62900A0F5A7 /* IPAddress.c in Sources */,
+				80C6CF9A17C6C62900A0F5A7 /* NSObject+SBJSON.m in Sources */,
+				80C6CF9B17C6C62900A0F5A7 /* NSString+SBJSON.m in Sources */,
+				80C6CF9C17C6C62900A0F5A7 /* SBJSON.m in Sources */,
+				80C6CF9D17C6C62900A0F5A7 /* SBJsonBase.m in Sources */,
+				80C6CF9E17C6C62900A0F5A7 /* SBJsonParser.m in Sources */,
+				80C6CF9F17C6C62900A0F5A7 /* SBJsonWriter.m in Sources */,
+				80C6CFA017C6C62900A0F5A7 /* UIImage+Crop.m in Sources */,
+				80C6CFA317C715DD00A0F5A7 /* Patient.m in Sources */,
+				80694B6B17C7C14500726FEF /* Dashboard.m in Sources */,
+				80347D0817CB036E00C2A782 /* PickerDateViewController.m in Sources */,
+				8025FDAD17CEE147000A0CDB /* IntakeForm1ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

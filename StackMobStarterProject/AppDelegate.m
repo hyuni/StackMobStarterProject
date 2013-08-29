@@ -19,6 +19,9 @@
  Import the StackMob header.
  */
 #import "StackMob.h"
+#import "Clipboard.h"
+#import "FileAccess.h"
+#import "Dashboard.h"
 
 @interface AppDelegate ()
 
@@ -47,8 +50,198 @@
     SM_CACHE_ENABLED = YES;
     self.client = [[SMClient alloc] initWithAPIVersion:@"0" publicKey:@"52f0d07b-03c1-44de-bd6b-90be6f1b2272"];
     self.coreDataStore = [self.client coreDataStoreWithManagedObjectModel:self.managedObjectModel];
+   
+    //--- Local Core Data ManagedObjectContext setting ---//
+    Clipboard *clip = [Clipboard sharedClipboard];
+    NSManagedObjectContext *localContext = [self _localManagedObjectContext];
+    [clip clipValue:localContext clipKey:@"managaedObjectContext"];
+    
+//    [self syncStackMobData];
+//    [self saveStackMobData];
+//    [self fetchStackMobData];
+//    [self saveLocalCoreData];
+//    [self fetchLocalCoreData];
+
     
     return YES;
+}
+
+- (void)syncStackMobData {
+    // You'll need a block declared core data store instance
+    __block SMCoreDataStore *blockCoreDataStore = self.coreDataStore;
+    [self.client.session.networkMonitor setNetworkStatusChangeBlockWithCachePolicyReturn:^SMCachePolicy(SMNetworkStatus status) {
+
+        if (status == SMNetworkStatusReachable) {
+            // Initiate sync
+            [blockCoreDataStore syncWithServer];
+            return SMCachePolicyTryNetworkElseCache;
+        } else {
+            return SMCachePolicyTryCacheOnly;
+        }
+    }];
+}
+
+- (void)saveStackMobData {
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    
+    Dashboard *dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    // assignObjectId is provided by the StackMob iOS SDK, and generates a random string ID for the object. This needs to be done for every new object before it is saved.
+    
+    dashboard.dashboard_id = [dashboard assignObjectId];
+    dashboard.patient_index = @"";
+    dashboard.status = @"";
+    dashboard.visit_type = @"";
+    dashboard.admitted = @"";
+    dashboard.patient_status = @"";
+    dashboard.diagnosis_details = @"2";
+    dashboard.birthday = [NSDate date];
+    
+    dashboard.billingcode = @"";
+    dashboard.trauma = @"";
+    dashboard.neurologicallyintact = @"";
+    dashboard.injurytype = @"";
+    dashboard.injurylevel = @"";
+    dashboard.fracturetype = @"";
+    dashboard.degree_kyphosis = @"3";
+    dashboard.height_loss = @"";
+    dashboard.tlic_score = @"";
+    dashboard.fracture_morphology_type = @"";
+    dashboard.neurologic_status = @"";
+    dashboard.plc = @"";
+    dashboard.translation = @"";
+    dashboard.asia_score = @"";
+    dashboard.asia_motor_l = @"";
+    dashboard.asia_motor_r = @"";
+    dashboard.asia_lighttouch_l = @"4";
+    dashboard.asia_lighttouch_r = @"";
+    dashboard.asia_pinpric_l = @"";
+    dashboard.asia_pinpric_r = @"";
+    dashboard.voluntary_anal_contraction = @"";
+    dashboard.anal_sensation = @"";
+    dashboard.neurological_level = @"5";
+    dashboard.n_sensory_r = @"";
+    dashboard.n_sensory_l = @"";
+    dashboard.n_motor_r = @"";
+    dashboard.n_motor_l = @"";
+    dashboard.zone_partial_preservation = @"";
+    dashboard.z_sensory_r = @"6";
+    dashboard.z_sensory_l = @"";
+    dashboard.z_motor_r = @"";
+    dashboard.z_motor_l = @"";
+    
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    [context saveOnSuccess:^{
+        //        [self refreshTable];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+}
+
+- (void)fetchStackMobData {
+    //--- StackMob Data Select ---//
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Dashboard"];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+//    NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"etc1 == %@", @"etc1"];
+//    [fetchRequest setPredicate:equalPredicate];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    [context executeFetchRequest:fetchRequest onSuccess:^(NSArray *results) {
+        NSLog(@"Data %@", results);
+        Dashboard *dash = [results objectAtIndex:0];
+        NSString *asdf = dash.z_sensory_r;
+        int a = 0;
+        
+//        [self saveStackMobDataToLocalCoreData:dash];
+        
+    } onFailure:^(NSError *error) {
+        //        [self.refreshControl endRefreshing];
+        NSLog(@"An error %@, %@", error, [error userInfo]);
+    }];
+}
+
+- (void)saveStackMobDataToLocalCoreData:(id)object {
+    Clipboard *clip = [Clipboard sharedClipboard];
+    NSManagedObjectContext *localContext = [clip clipKey:@"managaedObjectContext"];
+    
+
+    NSError *error;
+    if(![localContext save:&error]){
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
+
+- (void)saveLocalCoreData {
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    NSManagedObjectContext *localContext = [clip clipKey:@"managaedObjectContext"];
+    
+    Dashboard *dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:localContext];
+    // assignObjectId is provided by the StackMob iOS SDK, and generates a random string ID for the object. This needs to be done for every new object before it is saved.
+    
+    dashboard.tlic_score = @"tlic";
+    dashboard.billingcode = @"bili";
+    dashboard.trauma = @"tra";
+    dashboard.neurologicallyintact = @"asdf";
+    dashboard.injurytype = @"fads";
+    dashboard.injurylevel = @"fdas";
+    dashboard.fracturetype = @"asdf";
+    dashboard.degree_kyphosis = @"34543";
+    dashboard.height_loss = @"45h4h";
+    dashboard.tlic_score = @"sdfht";
+    dashboard.fracture_morphology_type = @"45h";
+    dashboard.neurologic_status = @"hdf";
+    dashboard.plc = @"hserh";
+    dashboard.translation = @"ah43";
+    dashboard.asia_score = @"aeh5";
+    dashboard.asia_motor_l = @"su6j";
+    dashboard.asia_motor_r = @"sj54";
+    dashboard.asia_lighttouch_l = @"s45j4j";
+    dashboard.asia_lighttouch_r = @"srtjtj";
+    dashboard.asia_pinpric_l = @"srtjrtsj";
+    dashboard.asia_pinpric_r = @"4haeh";
+    dashboard.voluntary_anal_contraction = @"herh";
+    dashboard.anal_sensation = @"aeh5hrth";
+    dashboard.neurological_level = @"a3h3h53h4";
+    dashboard.n_sensory_r = @"34g34grh";
+    dashboard.n_sensory_l = @"sdgdsgfdghj";
+    dashboard.n_motor_r = @"awg43herh";
+    dashboard.n_motor_l = @"eah45h5h";
+    dashboard.zone_partial_preservation = @"j45hrthrt";
+    dashboard.z_sensory_r = @"h34erg";
+    dashboard.z_sensory_l = @"aergaerh35";
+    dashboard.z_motor_r = @"aerhaeheaherhaehaerh";
+    dashboard.z_motor_l = @"aerh3h5haerhaehearharehreh";
+    
+    NSError *error;
+    if(![localContext save:&error]){
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
+
+- (void)fetchLocalCoreData {
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    NSManagedObjectContext *localContext = [clip clipKey:@"managaedObjectContext"];
+    //--- Select LocalCoreData
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Dashboard"
+                                              inManagedObjectContext:localContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [localContext executeFetchRequest:fetchRequest error:&error];
+    for (Dashboard *info in fetchedObjects) {
+        NSLog(@"z_sensory_r: %@", info.z_sensory_r);
+        //        FailedBankDetails *details = info.asia_lighttouch_r;
+        //        NSLog(@"Zip: %@", details.zip);
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -96,7 +289,7 @@
     }
 }
 
-#pragma mark - Core Data stack
+#pragma mark - StackMob Core Data stack
 
 /*
  StackMob only needs the developer to initialize the managed object model. The persistent store coordinator and managed object context are initialized by the StackMob iOS SDK.
@@ -111,6 +304,118 @@
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"StackMobStarterProject" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
+}
+#pragma mark - Core Data stack
+
+// Returns the managed object context for the application.
+// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
+- (NSManagedObjectContext *)_localManagedObjectContext
+{
+    if (_localManagedObjectContext != nil) {
+        return _localManagedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self _localPersistentStoreCoordinator];
+    if (coordinator != nil) {
+        _localManagedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_localManagedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    return _localManagedObjectContext;
+}
+
+// Returns the persistent store coordinator for the application.
+// If the coordinator doesn't already exist, it is created and the application's store added to it.
+- (NSPersistentStoreCoordinator *)_localPersistentStoreCoordinator
+{
+    if (_localPersistentStoreCoordinator != nil) {
+        return _localPersistentStoreCoordinator;
+    }
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Followup.sqlite"];
+
+    //--- Weird error check ??? ---//
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
+//        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CoreDataTutorial2" ofType:@"sqlite"]];
+//        
+//        NSError* err = nil;
+//        
+//        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {
+//            NSLog(@"Oops, could copy preloaded data");
+//        }
+//    }
+    
+    NSError *error = nil;
+    _localPersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_localPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         
+         Typical reasons for an error here include:
+         * The persistent store is not accessible;
+         * The schema for the persistent store is incompatible with current managed object model.
+         Check the error message to determine what the actual problem was.
+         
+         
+         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+         
+         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+         * Simply deleting the existing store:
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         
+         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
+         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+         
+         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
+         
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _localPersistentStoreCoordinator;
+}
+
+#pragma mark - Application's Documents directory
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - Custom Method
+- (void)saveData {
+    Clipboard *clipboard = [Clipboard sharedClipboard];
+    NSMutableArray *arr_chat = [clipboard clipKey:@"Chat"];
+    NSMutableArray *arr_friend = [clipboard clipKey:@"Friend"];
+    NSMutableArray *arr_friendSendInfo = [clipboard clipKey:@"FriendSendInfo"];
+    NSMutableArray *arr_adBlInfo = [clipboard clipKey:@"AdBlInfo"];
+    NSMutableArray *arr_adBgInfo = [clipboard clipKey:@"AdBgInfo"];
+    
+    [FileAccess setFile:@"Chat" object:arr_chat];
+    [FileAccess setFile:@"Friend" object:arr_friend];
+    [FileAccess setFile:@"FriendSendInfo" object:arr_friendSendInfo];
+    [FileAccess setFile:@"AdBlInfo" object:arr_adBlInfo];
+    [FileAccess setFile:@"AdBgInfo" object:arr_adBgInfo];
+    
+}
+
+- (void)loadData {
+    //--- data load
+    NSMutableArray *arr_chat = [FileAccess getFile:@"Chat"];                //chat info
+    NSMutableArray *arr_friend = [FileAccess getFile:@"Friend"];            //friends info
+    NSMutableArray *arr_friendSendInfo = [FileAccess getFile:@"FriendSendInfo"];    //invite info
+    NSMutableArray *arr_adBlInfo = [FileAccess getFile:@"AdBlInfo"];
+    NSMutableArray *arr_adBgInfo = [FileAccess getFile:@"AdBgInfo"];
+    
+    Clipboard *clipboard = [Clipboard sharedClipboard];
+    [clipboard clipValue:arr_chat clipKey:@"Chat"];
+    [clipboard clipValue:arr_friend clipKey:@"Friend"];
+    [clipboard clipValue:arr_friendSendInfo clipKey:@"FriendSendInfo"];
+    [clipboard clipValue:arr_adBlInfo clipKey:@"AdBlInfo"];
+    [clipboard clipValue:arr_adBgInfo clipKey:@"AdBgInfo"];
 }
 
 @end

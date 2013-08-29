@@ -1,10 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Dashboard" representedClassName="Dashboard" syncable="YES">
+        <attribute name="admitted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="anal_sensation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dashboard_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="degree_kyphosis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diagnosis_details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height_loss" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="injurylevel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="injurytype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="n_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_sensory_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_sensory_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurologic_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurological_level" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurologicallyintact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_index" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tlic_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trauma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visit_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voluntary_anal_contraction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_sensory_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_sensory_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zone_partial_preservation" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES">
+        <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="etc1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="etc2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="etc3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="etc4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="patient_id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="TestObject" representedClassName="TestObject" syncable="YES">
         <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="testobjectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TmpDashboard" representedClassName="Dashboard" syncable="YES">
+        <attribute name="admitted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="anal_sensation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dashboard_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="degree_kyphosis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diagnosis_details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height_loss" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="injurylevel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="injurytype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="n_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_sensory_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="n_sensory_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurologic_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurological_level" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neurologicallyintact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_index" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tlic_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trauma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visit_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voluntary_anal_contraction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_sensory_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="z_sensory_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zone_partial_preservation" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES">
         <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -12,8 +109,33 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="todoId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="origin_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="usernameId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserDoctor" representedClassName="UserDoctor" syncable="YES">
+        <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userdoctorId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="675"/>
+        <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>
         <element name="Todo" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="User" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="UserDoctor" positionX="160" positionY="192" width="128" height="150"/>
     </elements>
 </model>

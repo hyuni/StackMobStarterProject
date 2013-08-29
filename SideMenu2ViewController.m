@@ -47,17 +47,81 @@
 }
 
 #pragma mark - UITableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @" ";
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    switch (section) {
+        case 0:
+            return 5;
+            break;
+        case 1:
+            return 3;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyIdentifier"];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
+    
+    NSString *str_menuName;
+    
+    if(indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                str_menuName = @"Intake Form";
+                break;
+            case 1:
+                str_menuName = @"Spine Surgery Form";
+                break;
+            case 2:
+                str_menuName = @"Discharge Form";
+                break;
+            case 3:
+                str_menuName = @"Notifications (TBD)";
+                break;
+            case 4:
+                str_menuName = @"My Patients (TBD)";
+                break;
+            default:
+                break;
+        }
+    }
+    else if(indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+                str_menuName = @"Settings (TBD)";
+                break;
+            case 1:
+                str_menuName = @"Report a Problem";
+                break;
+            case 2:
+                str_menuName = @"Logout";
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        str_menuName = @"";
+    }
+    
+    cell.textLabel.text = str_menuName;
+
 //    NSDictionary *item = (NSDictionary *)[self.content objectAtIndex:indexPath.row];
 //    cell.textLabel.text = [item objectForKey:@"mainTitleKey"];
 //    cell.detailTextLabel.text = [item objectForKey:@"secondaryTitleKey"];
@@ -72,11 +136,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
 }
 
 

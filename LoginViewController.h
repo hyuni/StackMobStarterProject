@@ -11,7 +11,8 @@
 @interface LoginViewController : UIViewController
 
 -(IBAction)action_login:(id)sender;
+-(IBAction)action_test:(id)sender;
 
-@property (strong, nonatomic) UIWindow *window;
+@property(nonatomic,strong)NSManagedObjectContext* managedObjectContext;
 
 @end
