@@ -1,21 +1,18 @@
 //
-//  IntakeForm1ViewController.m
+//  IntakeForm3ViewController.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/28/13.
+//  Created by kakadais on 8/29/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
-#import "IntakeForm1ViewController.h"
-#import "IntakeForm2ViewController.h"
-#import "StackMob.h"
-#import "Utility.h"
+#import "IntakeForm3ViewController.h"
 
-@interface IntakeForm1ViewController ()
+@interface IntakeForm3ViewController ()
 
 @end
 
-@implementation IntakeForm1ViewController
+@implementation IntakeForm3ViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,20 +32,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //--- down modal setting
-    datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
-    datePickerView = [datePickerViewController getDatePickerView:self];
-    [self.view addSubview:datePickerView];
-    
-    //--- Date of Birth Setting ---//
-    _lb_dataOfBirth.text = [Utility dateToString:[NSDate date]];
-    
-    //--- Data prepare ---//
-    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
-    _dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -71,7 +55,7 @@
 //    // Return the number of rows in the section.
 //    return 0;
 //}
-
+//
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    static NSString *CellIdentifier = @"Cell";
@@ -132,52 +116,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    if(indexPath.section == 0 && indexPath.row == 1) {
-        //--- Date of Birth ---//
-        [datePickerViewController moveUpPickerView];
-        [_tf_healthCardNumber resignFirstResponder];
-    }
-}
-
-#pragma mark - Custom Method
-
-//- (IBAction)btn_confirm:(id)sender {
-//    [self modalDown:nil];
-//    _lb_dataOfBirth.text = [Utility dateToString:_dp_dateOfBirth.date];
-//}
-
-#pragma mark - TextField delegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [datePickerViewController moveDownPickerView:nil];
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [_tf_healthCardNumber resignFirstResponder];
-    return YES;
-}
-
-#pragma mark - Segue delegate
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    NSString *str_cardNumber = _tf_healthCardNumber.text;
-//    if(str_cardNumber.length > 0) return YES;
-//    else return NO;
-//}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
-        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
-        nextViewController.dashboard = _dashboard;
-    }
-}
-
-#pragma mark - NewDatePickerViewController delegate
--(void)delegateConfirm:(NSDate *)date_selected {
-    _lb_dataOfBirth.text = [Utility dateToString:date_selected];
 }
 
 @end

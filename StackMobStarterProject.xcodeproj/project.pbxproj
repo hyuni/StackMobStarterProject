@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		800AD04217BC86EA006A54F5 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 800AD04117BC86EA006A54F5 /* TestObject.m */; };
 		800CA99017CF3815006EEF07 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA98F17CF3815006EEF07 /* Utility.m */; };
+		800CA99917CFB3F8006EEF07 /* IntakeForm3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA99817CFB3F8006EEF07 /* IntakeForm3ViewController.m */; };
+		800CA99C17CFB40C006EEF07 /* IntakeForm4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA99B17CFB40C006EEF07 /* IntakeForm4ViewController.m */; };
 		8025FDAD17CEE147000A0CDB /* IntakeForm1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */; };
 		8025FDB317CEEF42000A0CDB /* IntakeForm2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB217CEEF42000A0CDB /* IntakeForm2ViewController.m */; };
 		8025FDBA17CF281B000A0CDB /* NewDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB817CF281A000A0CDB /* NewDatePickerViewController.m */; };
@@ -230,6 +232,10 @@
 		800AD04117BC86EA006A54F5 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = StackMobStarterProject/Data/TestObject.m; sourceTree = "<group>"; };
 		800CA98E17CF3815006EEF07 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		800CA98F17CF3815006EEF07 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		800CA99717CFB3F8006EEF07 /* IntakeForm3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm3ViewController.h; sourceTree = "<group>"; };
+		800CA99817CFB3F8006EEF07 /* IntakeForm3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm3ViewController.m; sourceTree = "<group>"; };
+		800CA99A17CFB40C006EEF07 /* IntakeForm4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm4ViewController.h; sourceTree = "<group>"; };
+		800CA99B17CFB40C006EEF07 /* IntakeForm4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm4ViewController.m; sourceTree = "<group>"; };
 		8025FDAB17CEE147000A0CDB /* IntakeForm1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm1ViewController.h; sourceTree = "<group>"; };
 		8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm1ViewController.m; sourceTree = "<group>"; };
 		8025FDB117CEEF42000A0CDB /* IntakeForm2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm2ViewController.h; sourceTree = "<group>"; };
@@ -831,6 +837,10 @@
 				8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */,
 				8025FDB117CEEF42000A0CDB /* IntakeForm2ViewController.h */,
 				8025FDB217CEEF42000A0CDB /* IntakeForm2ViewController.m */,
+				800CA99717CFB3F8006EEF07 /* IntakeForm3ViewController.h */,
+				800CA99817CFB3F8006EEF07 /* IntakeForm3ViewController.m */,
+				800CA99A17CFB40C006EEF07 /* IntakeForm4ViewController.h */,
+				800CA99B17CFB40C006EEF07 /* IntakeForm4ViewController.m */,
 				8025FDB717CF281A000A0CDB /* NewDatePickerViewController.h */,
 				8025FDB817CF281A000A0CDB /* NewDatePickerViewController.m */,
 				8025FDB917CF281B000A0CDB /* NewDatePickerViewController.xib */,
@@ -1264,6 +1274,8 @@
 				8025FDB317CEEF42000A0CDB /* IntakeForm2ViewController.m in Sources */,
 				8025FDBA17CF281B000A0CDB /* NewDatePickerViewController.m in Sources */,
 				800CA99017CF3815006EEF07 /* Utility.m in Sources */,
+				800CA99917CFB3F8006EEF07 /* IntakeForm3ViewController.m in Sources */,
+				800CA99C17CFB40C006EEF07 /* IntakeForm4ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
