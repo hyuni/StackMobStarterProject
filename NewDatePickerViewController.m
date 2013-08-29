@@ -70,10 +70,12 @@
     tmpRect.origin.x = 0;
     tmpRect.origin.y = outerViewController.view.frame.size.height;
     self.view.frame = tmpRect;
-    
+
     [UIView commitAnimations];
     
     [_delegate performSelector:@selector(delegateConfirm:) withObject:_datePicker.date];
 }
+
+//--- added
 
 @end
