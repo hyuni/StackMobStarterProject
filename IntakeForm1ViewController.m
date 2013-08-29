@@ -47,7 +47,23 @@
     //--- Data prepare ---//
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     _dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                          action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
+
 }
+
+//- (void)dismissKeyboard {
+//    [_tf_healthCardNumber resignFirstResponder];
+//}
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    
+//    [[self view] endEditing:TRUE];
+//    
+//}
 
 
 - (void)didReceiveMemoryWarning

@@ -42,5 +42,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[PickerViewController setPickerView:]:PickerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "toolbar.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

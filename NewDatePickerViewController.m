@@ -76,6 +76,4 @@
     [_delegate performSelector:@selector(delegateConfirm:) withObject:_datePicker.date];
 }
 
-//--- added
-
 @end

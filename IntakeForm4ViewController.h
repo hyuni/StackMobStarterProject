@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IntakeForm4ViewController : UITableViewController
+@interface IntakeForm4ViewController : UITableViewController<UIPickerViewDelegate> {
+    UIPickerView *pickerView;
+    UITapGestureRecognizer *tap;
+    
+    NSMutableArray *arr_injuryType_A;
+    NSMutableArray *arr_injuryType_B;
+    
+    NSMutableArray *arr_component_0;
+    NSMutableArray *arr_component_1;
+    
+    int i_component_1_row;
+}
+
+@property (weak, nonatomic) IBOutlet UISwitch *sw_intact;
 
 @end

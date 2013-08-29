@@ -43,9 +43,16 @@
     //--- date setting ---//
     //--- Date of Birth Setting ---//
     lb_date.text = [Utility dateToString:[NSDate date]];
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                          action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
 }
 
+- (void)dismissKeyboard {
 
+}
 
 - (void)didReceiveMemoryWarning
 {
