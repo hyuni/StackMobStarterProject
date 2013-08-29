@@ -11,7 +11,8 @@
 #import "NewDatePickerViewController.h"
 
 @interface IntakeForm1ViewController : UITableViewController<UITextFieldDelegate, NewDatePcikerViewControllerDelegate> {
-    
+        NewDatePickerViewController *datePickerViewController;
+        UIView *datePickerView;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *modalView;
@@ -20,7 +21,5 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dp_dateOfBirth;
 @property (weak, nonatomic) Dashboard *dashboard;
 
-- (IBAction)modalDown:(id)sender;
-- (IBAction)btn_confirm:(id)sender;
 
 @end

@@ -9,6 +9,7 @@
 #import "IntakeForm1ViewController.h"
 #import "IntakeForm2ViewController.h"
 #import "StackMob.h"
+#import "Utility.h"
 
 @interface IntakeForm1ViewController ()
 
@@ -36,31 +37,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //--- down modal setting
-    CGRect tmpRect = _modalView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height;
-    _modalView.frame = tmpRect;
-    [self.view addSubview:_modalView];
+    datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
+    datePickerView = [datePickerViewController getDatePickerView:self];
+    [self.view addSubview:datePickerView];
     
     //--- Date of Birth Setting ---//
-    _lb_dataOfBirth.text = [self dateToString:[NSDate date]];
+    _lb_dataOfBirth.text = [Utility dateToString:[NSDate date]];
     
     //--- Data prepare ---//
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     _dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
 }
 
-- (NSString *)dateToString:(NSDate *)date {
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    
-    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-    [timeFormat setDateFormat:@"HH:mm:ss"];
-
-    NSString *theDate = [dateFormat stringFromDate:date];
-//    NSString *theTime = [timeFormat stringFromDate:now];
-    return theDate;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -146,48 +134,21 @@
      */
     if(indexPath.section == 0 && indexPath.row == 1) {
         //--- Date of Birth ---//
-        [self modalUp:nil];
+        [datePickerViewController moveUpPickerView];
+        [_tf_healthCardNumber resignFirstResponder];
     }
 }
 
 #pragma mark - Custom Method
-- (IBAction)modalUp:(id)sender {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
-    
-    CGRect tmpRect = _modalView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height - _modalView.frame.size.height;
-    _modalView.frame = tmpRect;
-    
-    [UIView commitAnimations];
-    
-    //--- keyboard down ---/
-    [_tf_healthCardNumber resignFirstResponder];
-}
 
-- (IBAction)modalDown:(id)sender {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
-    
-    CGRect tmpRect = _modalView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height;
-    _modalView.frame = tmpRect;
-    
-    [UIView commitAnimations];
-}
-
-- (IBAction)btn_confirm:(id)sender {
-    [self modalDown:nil];
-    _lb_dataOfBirth.text = [self dateToString:_dp_dateOfBirth.date];
-}
+//- (IBAction)btn_confirm:(id)sender {
+//    [self modalDown:nil];
+//    _lb_dataOfBirth.text = [Utility dateToString:_dp_dateOfBirth.date];
+//}
 
 #pragma mark - TextField delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self modalDown:nil];
+    [datePickerViewController moveDownPickerView:nil];
     return YES;
 }
 
@@ -214,8 +175,9 @@
     }
 }
 
-#pragma mark - NewDatePicker delegate
--(void)delegateConfirm:(id *)param1 requestDictionary:(NSMutableDictionary *)_dic {
-    
+#pragma mark - NewDatePickerViewController delegate
+-(void)delegateConfirm:(NSDate *)date_selected {
+    _lb_dataOfBirth.text = [Utility dateToString:date_selected];
 }
+
 @end

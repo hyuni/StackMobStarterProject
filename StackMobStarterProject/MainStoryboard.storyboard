@@ -478,78 +478,11 @@
                     <navigationItem key="navigationItem" title="Intake Form" id="YuD-jp-RK8"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="dp_dateOfBirth" destination="eqs-gI-ayC" id="o6w-sA-msj"/>
                         <outlet property="lb_dataOfBirth" destination="FCR-Kw-pfZ" id="dz1-OH-xPu"/>
-                        <outlet property="modalView" destination="vlk-pU-Obr" id="Y9n-fN-3G4"/>
                         <outlet property="tf_healthCardNumber" destination="NfO-rj-Igp" id="igd-dx-FMS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piV-8T-kao" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="vlk-pU-Obr">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqs-gI-ayC">
-                            <constraints>
-                                <constraint firstAttribute="height" constant="216" id="mTF-IX-TEk"/>
-                            </constraints>
-                            <date key="date" timeIntervalSinceReferenceDate="399190748.62091798">
-                                <!--2013-08-26 06:19:08 +0000-->
-                            </date>
-                            <timeZone key="timeZone" name="America/Los_Angeles">
-                                <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                            </timeZone>
-                        </datePicker>
-                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="6Jy-kt-rpz">
-                            <items>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="SCn-SN-vFU"/>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="5y7-fO-qww"/>
-                                <barButtonItem title="Confirm" id="Xuk-Eb-cwa">
-                                    <connections>
-                                        <action selector="btn_confirm:" destination="G37-ew-1gN" id="Kxx-BV-5xF"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date of Birth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEz-Rh-Qga">
-                            <constraints>
-                                <constraint firstAttribute="width" constant="112" id="k4b-24-3Si"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="eqs-gI-ayC" firstAttribute="leading" secondItem="vlk-pU-Obr" secondAttribute="leading" type="default" id="3x1-V8-k7B"/>
-                        <constraint firstItem="eqs-gI-ayC" firstAttribute="trailing" secondItem="vlk-pU-Obr" secondAttribute="trailing" type="default" id="5ZH-ly-COK"/>
-                        <constraint firstItem="eqs-gI-ayC" firstAttribute="bottom" secondItem="vlk-pU-Obr" secondAttribute="bottom" type="default" id="FFd-ug-sqD"/>
-                        <constraint firstItem="gEz-Rh-Qga" firstAttribute="top" secondItem="vlk-pU-Obr" secondAttribute="top" constant="51" id="Hf0-il-0PA"/>
-                        <constraint firstItem="6Jy-kt-rpz" firstAttribute="bottom" secondItem="eqs-gI-ayC" secondAttribute="top" type="default" id="IyO-u1-Nmy"/>
-                        <constraint firstItem="6Jy-kt-rpz" firstAttribute="trailing" secondItem="vlk-pU-Obr" secondAttribute="trailing" type="default" id="LOy-aJ-0yj"/>
-                        <constraint firstItem="6Jy-kt-rpz" firstAttribute="leading" secondItem="vlk-pU-Obr" secondAttribute="leading" type="default" id="QgS-Th-YQn"/>
-                        <constraint firstItem="gEz-Rh-Qga" firstAttribute="leading" secondItem="vlk-pU-Obr" secondAttribute="leading" constant="82" id="cge-ED-zPa"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="130" y="-1006"/>
         </scene>
@@ -1421,9 +1354,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="IntakeForm1ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm1ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="btn_confirm:"/>
-                <relationship kind="action" name="modalDown:"/>
-                <relationship kind="action" name="modalUp:"/>
                 <relationship kind="outlet" name="dp_dateOfBirth" candidateClass="UIDatePicker"/>
                 <relationship kind="outlet" name="lb_dataOfBirth" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="modalView" candidateClass="UIView"/>

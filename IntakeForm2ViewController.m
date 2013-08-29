@@ -39,6 +39,10 @@
     datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
     datePickerView = [datePickerViewController getDatePickerView:self];
     [self.view addSubview:datePickerView];
+    
+    //--- date setting ---//
+    //--- Date of Birth Setting ---//
+    lb_date.text = [Utility dateToString:[NSDate date]];
 }
 
 
