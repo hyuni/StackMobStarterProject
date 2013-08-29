@@ -158,14 +158,14 @@
 }
 
 #pragma mark - Segue delegate
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    NSString *str_cardNumber = _tf_healthCardNumber.text;
-//    if(str_cardNumber.length > 0) return YES;
-//    else return NO;
-//}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *str_cardNumber = _tf_healthCardNumber.text;
+    if(str_cardNumber.length > 0) return YES;
+    else return NO;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
