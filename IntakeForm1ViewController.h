@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dashboard.h"
+#import "NewDatePickerViewController.h"
 
-@interface IntakeForm1ViewController : UITableViewController<UITextFieldDelegate> {
+@interface IntakeForm1ViewController : UITableViewController<UITextFieldDelegate, NewDatePcikerViewControllerDelegate> {
     
 }
 
@@ -16,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_healthCardNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_dataOfBirth;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dp_dateOfBirth;
+@property (weak, nonatomic) Dashboard *dashboard;
 
 - (IBAction)modalDown:(id)sender;
 - (IBAction)btn_confirm:(id)sender;
