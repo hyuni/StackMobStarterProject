@@ -7,6 +7,13 @@
 //
 
 #import "IntakeForm4ViewController.h"
+#import "IntakeForm4InjuryTypeViewController.h"
+#import "IntakeForm4FractureTypeViewController.h"
+#import "Clipboard.h"
+#import "NumberPadViewController.h"
+#import "OnePickerViewController.h"
+#import "TLICScoreViewController.h"
+
 
 @interface IntakeForm4ViewController ()
 
@@ -33,48 +40,411 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    
-    
-    [self setPickerView];
-    
-    
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    
-}
+    arr_menu = [NSArray arrayWithObjects:@"Neurologically Intact", @"Select Injury Type", @"Select Fracture Type", nil];
 
-- (void)dismissKeyboard {
-    [self moveDownPickerView];
-    [self.view removeGestureRecognizer:tap];
+        
+    Clipboard *clip = [Clipboard sharedClipboard];
+    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
+        
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+    /* menu list
+     Neurologically Intact
+     Select Injury Type
+     Select Fracture Type
+     Degrees Of Kyphosis
+     Height Loss
+     TLIC Score
+     Hangman
+     Translation
+     
+     ----------------------
+     
+     ASIA Score
+     Motor
+     Light Touch / Pin Prick
+     Voluntary anal contraction
+     Anal sensation
+     Neurological level
+     Zone of partial preservation
+     Send ASIA report
+     */
+    
+    //--- Menu Display ---//
+    // 1 neurologically intact is always visible
+    if([dashboard.neurologicallyintact isEqualToString:@"NO"]) {
+        // intact == NO
+        arr_menu = [NSMutableArray arrayWithObjects:@"Neurologically Intact", @"Select Injury Type", nil];
+        
+        if([dashboard.injurytype isEqualToString:@"Thoracic"]) {
+            [arr_menu addObject: @"Select Fracture Type"];
+            if([dashboard.fracturetype isEqualToString:@"Burst"]) {
+                [arr_menu addObject:@"Degrees Of Kyphosis"];
+                [arr_menu addObject:@"Height Loss"];
+                [arr_menu addObject:@"TLIC Score"];
+            }
+        }
+        else if([dashboard.injurytype isEqualToString:@"Cervical"]) {
+            [arr_menu addObject: @"Select Fracture Type"];
+            if([dashboard.fracturetype isEqualToString:@"Hangman"]) {
+                [arr_menu addObject:@"Degrees Of Kyphosis"];
+                [arr_menu addObject:@"Translation"];
+            }
+        }
+        else if([dashboard.injurytype isEqualToString:@"Lumbar"]) {
+            
+        }
+        
+    }
+    else {
+        // intact == YES
+        arr_menu = [NSMutableArray arrayWithObjects:@"Neurologically Intact", @"Select Injury Type", nil];
+        if([dashboard.injurytype isEqualToString:@"Spinal cord"]) {
+            [arr_menu addObject:@"ASIA Score"];
+            [arr_menu addObject:@"Motor"];
+            [arr_menu addObject:@"Light Touch / Pin Prick"];
+            [arr_menu addObject:@"Voluntary anal contraction"];
+            [arr_menu addObject:@"Anal sensation"];
+            [arr_menu addObject:@"Neurological level"];
+            [arr_menu addObject:@"Zone of partial preservation"];
+            [arr_menu addObject:@"Send ASIA report"];
+        }
+    }
+    
+    [self.tableView reloadData];
+}
 
 
-#pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
+
+#pragma mark - Table view data source & delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if(section == 0)
+        return [arr_menu count];
+    else if(section == 1)
+        // next
+        return 1;
+    else
+        // error exception
+        return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 //    static NSString *CellIdentifier = @"Cell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    NSArray *topObject = nil;
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:tmp_index];
+    // Configure the cell...
+
+    /* menu list
+     Neurologically Intact
+     Select Injury Type
+     Select Fracture Type
+     Degrees Of Kyphosis
+     Height Loss
+     TLIC Score
+     Hangman
+     Translation
+     
+     ----------------------
+     
+     ASIA Score
+     Motor
+     Light Touch / Pin Prick
+     Voluntary anal contraction
+     Anal sensation
+     Neurological level
+     Zone of partial preservation
+     Send ASIA report
+     */
+    
+    if(indexPath.section == 0) {
+        //--- Menu cell ---//
+        NSString *str_menuName = [arr_menu objectAtIndex:indexPath.row];
+        if ([str_menuName isEqualToString:@"Neurologically Intact"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];            
+        }
+        //--- If Neurologically intact == YES, then use specific Cell
+        else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+        else if ([str_menuName isEqualToString:@"Motor"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+        else if ([str_menuName isEqualToString:@"Light Touch / Pin Prick"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+
+        else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+
+        else if ([str_menuName isEqualToString:@"Anal sensation"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+
+        else if ([str_menuName isEqualToString:@"Neurological level"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+
+        else if ([str_menuName isEqualToString:@"Zone of partial preservation"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+
+        else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+        //--- If Neurologically intact == NO, then use normal MenuCell
+        else {
+            
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        }
+        cell = [topObject objectAtIndex:0];
+        
+
+        
+        
+        //--- Label Display ---//
+        UILabel *lb_left = (UILabel *)[cell viewWithTag:1];
+        lb_left.text = [arr_menu objectAtIndex:indexPath.row];
+        
+        if ([str_menuName isEqualToString:@"Neurologically Intact"]) {
+            // intact only
+            UISwitch *sw_intact = (UISwitch *)[cell viewWithTag:2];
+            
+            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) {
+                [sw_intact setOn:YES];
+            }
+            else {
+                [sw_intact setOn:NO];
+            }
+            
+            [sw_intact addTarget:self action:@selector(action_sw_intact:) forControlEvents:UIControlEventValueChanged];
+        }
+        else {
+            // every not intact
+            UILabel *lb_right = (UILabel *)[cell viewWithTag:2];
+            
+            //--- intact == YES
+            if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                
+            }
+            //--- intact == NO
+            else if([str_menuName isEqualToString:@"Select Injury Type"]) {
+                if([dashboard.injurylevel length] > 0 && [dashboard.injurytype length] >0) {
+                    NSString *str_rightValue = [NSString stringWithFormat:@"%@ L-%@", dashboard.injurytype, dashboard.injurylevel];
+                    lb_right.text = str_rightValue;                    
+                }
+            }
+            else if([str_menuName isEqualToString:@"Select Fracture Type"]){
+                lb_right.text = dashboard.fracturetype;
+            }
+            else if ([str_menuName isEqualToString:@"Degrees Of Kyphosis"]){
+                lb_right.text = dashboard.degree_kyphosis;
+            }
+            else if ([str_menuName isEqualToString:@"Height Loss"]){
+                lb_right.text = dashboard.height_loss;
+            }
+            else if ([str_menuName isEqualToString:@"TLIC Score"]) {
+                if(dashboard.fracture_morphology_type != nil && dashboard.neurologic_status != nil && dashboard.plc) {
+                    int i_total = 0;
+                    if(dashboard.fracture_morphology_type != nil) i_total += [dashboard.fracture_morphology_type intValue];
+                    if(dashboard.neurologic_status != nil) i_total += [dashboard.neurologic_status intValue];
+                    if(dashboard.plc != nil) i_total += [dashboard.plc intValue];
+                    
+                    lb_right.text = [NSString stringWithFormat:@"%d", i_total];
+                }
+            }
+            else if ([str_menuName isEqualToString:@"Translation"]){
+                lb_right.text = dashboard.degree_kyphosis;
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    else {
+        //--- next & error ---//
+        topObject = [[NSBundle mainBundle] loadNibNamed:@"Next" owner:self options:nil];
+        cell = [topObject objectAtIndex:0];
+    }
+    
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+    
+    if(indexPath.section == 0) {
+        
+        NSString *str_menu = [arr_menu objectAtIndex:indexPath.row];
+        if([str_menu isEqualToString:@"Select Injury Type"]) {
+            IntakeForm4InjuryTypeViewController *injuryController = [[IntakeForm4InjuryTypeViewController alloc] initWithNibName:@"IntakeForm4InjuryTypeViewController" bundle:nil];
+            injuryController.title = [arr_menu objectAtIndex:indexPath.row];
+            [self.navigationController pushViewController:injuryController animated:YES];
+        }
+        else if([str_menu isEqualToString:@"Select Fracture Type"]) {
+
+            if([dashboard.injurytype length] > 0) {
+                //--- injury first ---//
+                IntakeForm4FractureTypeViewController *fractureController = [[IntakeForm4FractureTypeViewController alloc] initWithNibName:@"IntakeForm4FractureTypeViewController" bundle:nil];
+                fractureController.title = [arr_menu objectAtIndex:indexPath.row];
+                [self.navigationController pushViewController:fractureController animated:YES];
+            }
+            
+        }
+        else if([str_menu isEqualToString:@"Degrees Of Kyphosis"]) {
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+            NSString *str_tmp = nil;
+            for(int i = 0; i < 181; i++) {
+                str_tmp = [NSString stringWithFormat:@"%d", i];
+                [arr_tmp addObject:str_tmp];
+            }
+            
+            oneController.arr_component_0 = arr_tmp;
+            [self.navigationController pushViewController:oneController animated:YES];
+            
+        }
+        else if([str_menu isEqualToString:@"Height Loss"]) {
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+            NSString *str_tmp = nil;
+            for(int i = 0; i < 100; i++) {
+                str_tmp = [NSString stringWithFormat:@"%d", i];
+                [arr_tmp addObject:str_tmp];
+            }
+            
+            oneController.arr_component_0 = arr_tmp;
+            [self.navigationController pushViewController:oneController animated:YES];
+            
+        }
+        else if([str_menu isEqualToString:@"TLIC Score"]) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+            
+            TLICScoreViewController *tlicController = [storyboard instantiateViewControllerWithIdentifier:@"TLICScoreViewController"];
+            
+            [self.navigationController pushViewController:tlicController animated:YES];
+        }
+        else if([str_menu isEqualToString:@"Degrees Of Kyphosis"]) {
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+            NSString *str_tmp = nil;
+            for(int i = 0; i < 156; i++) {
+                str_tmp = [NSString stringWithFormat:@"%d", i];
+                [arr_tmp addObject:str_tmp];
+            }
+            
+            oneController.arr_component_0 = arr_tmp;
+            [self.navigationController pushViewController:oneController animated:YES];
+        }
+        else if([str_menu isEqualToString:@"Translation"]) {
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+            NSString *str_tmp = nil;
+            for(int i = 0; i < 358; i++) {
+                str_tmp = [NSString stringWithFormat:@"%d", i];
+                [arr_tmp addObject:str_tmp];
+            }
+            
+            oneController.arr_component_0 = arr_tmp;
+            [self.navigationController pushViewController:oneController animated:YES];
+        }
+    }
+    else {
+        // next or error
+    }
+    
+    
+    //    if(indexPath.section == 0 && indexPath.row == 0) {
+    //
+    //
+    //    }
+    //    else if(indexPath.section == 0 && indexPath.row == 1) {
+    //        //--- Injury Type ---//
+    //        IntakeForm4InjuryTypeViewController *injuryController = [[IntakeForm4InjuryTypeViewController alloc] initWithNibName:@"IntakeForm4InjuryTypeViewController" bundle:nil];
+    //        [self.navigationController pushViewController:injuryController animated:YES];
+    //    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (void)action_sw_intact:(id)sender {
+    BOOL b_state = [sender isOn];
+    if(b_state == YES) {
+        dashboard.neurologicallyintact = @"YES";
+    }
+    else {
+        dashboard.neurologicallyintact = @"NO";
+    }
+    
+    //--- init value ---//
+    dashboard.injurylevel = @"";
+    dashboard.injurytype = @"";
+    dashboard.fracturetype = @"";
+    
+    [self viewDidAppear:NO];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -114,151 +484,7 @@
     return YES;
 }
 */
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    if(indexPath.section == 0 && indexPath.row == 0) {
-        [self moveDownPickerView];
-        
-    }
-    else if(indexPath.section == 0 && indexPath.row == 1) {
-        //--- injury type ---//
-        if(_sw_intact.isOn == NO) {
-            
-        }
-        else if(_sw_intact.isOn == YES) {
-            
-        }
-        
-        
-        [self moveUpPickerView];
-    }
-}
-
-#pragma UIPickerView delegate & data source
-// returns the number of 'columns' to display.
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
-}
-
-// returns the # of rows in each component..
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if(component == 0) return [arr_component_0 count];
-    else if(component == 1) {
-        return i_component_1_row;
-    }
-    else return 0;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if(component == 0) return [arr_component_0 objectAtIndex:row];
-    else if(component == 1) return [arr_component_1 objectAtIndex:row];
-    else return @"error";
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-    if(component == 0) {
-        if(row == 0) i_component_1_row = 12;
-        else if(row == 1) i_component_1_row = 5;
-        else if(row == 2) i_component_1_row = 7;
-        else i_component_1_row = 0;
-        
-        [pickerView reloadAllComponents];
-    }
-}
-
-#pragma mark - pickerview control
-- (void)setPickerView {
-    //--- set default data ---//
-    arr_component_0 = [[NSMutableArray alloc] init];
-    arr_component_1 = [[NSMutableArray alloc] init];
-    
-    [arr_component_0 addObject:@"Thoracic"];
-    [arr_component_0 addObject:@"Lumbar"];
-    [arr_component_0 addObject:@"Cervical"];
-    
-    [arr_component_1 addObject:@"1"];
-    [arr_component_1 addObject:@"2"];
-    [arr_component_1 addObject:@"3"];
-    [arr_component_1 addObject:@"4"];
-    [arr_component_1 addObject:@"5"];
-    [arr_component_1 addObject:@"6"];
-    [arr_component_1 addObject:@"7"];
-    [arr_component_1 addObject:@"8"];
-    [arr_component_1 addObject:@"9"];
-    [arr_component_1 addObject:@"10"];
-    [arr_component_1 addObject:@"11"];
-    [arr_component_1 addObject:@"12"];
-    
-    i_component_1_row = [arr_component_1 count];
-    
-    //--- set PickerView ---//
-    pickerView = [[UIPickerView alloc] init];
-    pickerView.delegate = self;
-    
-    CGRect tmpRect = pickerView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height;
-    pickerView.frame = tmpRect;
-    
-//    [pickerView selectRow:1 inComponent:0 animated:YES];
-//    [pickerView selectRow:1 inComponent:1 animated:YES];
-    
-    [self.view addSubview:pickerView];
-}
-
-
-- (void)initData {
-    
-    
-}
-
-
-- (void)moveUpPickerView {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
-    
-    CGRect tmpRect = pickerView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height - pickerView.frame.size.height;
-    pickerView.frame = tmpRect;
-    
-    [UIView commitAnimations];
-    
-    [self.view addGestureRecognizer:tap];
-}
-
-- (void)moveDownPickerView {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
-    
-    CGRect tmpRect = pickerView.frame;
-    tmpRect.origin.x = 0;
-    tmpRect.origin.y = self.view.frame.size.height;
-    pickerView.frame = tmpRect;
-    
-    [UIView commitAnimations];
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+\
 
 
 @end

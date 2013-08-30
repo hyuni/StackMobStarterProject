@@ -88,13 +88,13 @@
     // assignObjectId is provided by the StackMob iOS SDK, and generates a random string ID for the object. This needs to be done for every new object before it is saved.
     
     dashboard.dashboard_id = [dashboard assignObjectId];
-    dashboard.patient_index = @"";
+    dashboard.healthcard_number = @"";
     dashboard.status = @"";
     dashboard.visit_type = @"";
     dashboard.admitted = @"";
     dashboard.patient_status = @"";
     dashboard.diagnosis_details = @"2";
-    dashboard.birthday = [NSDate date];
+    dashboard.date_of_birth = @"today";
     
     dashboard.billingcode = @"";
     dashboard.trauma = @"";

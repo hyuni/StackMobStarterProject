@@ -16,7 +16,7 @@
     __weak IBOutlet UILabel *lb_date;
 }
 
-@property (weak, nonatomic) Dashboard *dashboard;
+@property (strong, nonatomic) Dashboard *dashboard;
 
 
 @end

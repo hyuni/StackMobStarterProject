@@ -36,6 +36,7 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -259,13 +260,13 @@
     // assignObjectId is provided by the StackMob iOS SDK, and generates a random string ID for the object. This needs to be done for every new object before it is saved.
     
     dashboard.dashboard_id = [dashboard assignObjectId];
-    dashboard.patient_index = @"";
+    dashboard.healthcard_number = @"";
     dashboard.status = @"";
     dashboard.visit_type = @"";
     dashboard.admitted = @"";
     dashboard.patient_status = @"";
     dashboard.diagnosis_details = @"2";
-    dashboard.birthday = [NSDate date];
+    dashboard.date_of_birth = @"today";
 
     dashboard.billingcode = @"";
     dashboard.trauma = @"";
@@ -371,7 +372,7 @@
     [context executeFetchRequest:fetchRequest onSuccess:^(NSArray *results) {
         NSLog(@"Data %@", results);
         Dashboard *ppp = [results objectAtIndex:0];
-        NSString *asdf = ppp.birthday;
+//        NSString *asdf = ppp.birthday;
         
 //        UserDoctor *userDoctor = [results lastObject];
 //        

@@ -11,13 +11,15 @@
         <attribute name="asia_pinpric_r" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_score" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="billingcode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dashboard_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_of_birth" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="degree_kyphosis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diagnosis_details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hangman" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="healthcard_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height_loss" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="injurylevel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="injurytype" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +31,6 @@
         <attribute name="neurologic_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="neurological_level" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="neurologicallyintact" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="patient_index" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="plc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
@@ -130,7 +131,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="675"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="690"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

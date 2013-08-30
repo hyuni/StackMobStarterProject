@@ -10,6 +10,7 @@
 #import "IntakeForm2ViewController.h"
 #import "StackMob.h"
 #import "Utility.h"
+#import "Clipboard.h"
 
 @interface IntakeForm1ViewController ()
 
@@ -46,7 +47,17 @@
     
     //--- Data prepare ---//
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
-    _dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    //--- initiallize dashboard data---//
+    dashboard.injurytype = @"";
+    dashboard.injurylevel = @"";
+    dashboard.neurologicallyintact = @"NO";
+    dashboard.fracturetype = @"";
+    dashboard.degree_kyphosis = @"";
+    dashboard.height_loss = @"";
+    dashboard.tlic_score = @"";
+    dashboard.hangman = @"";
+    dashboard.height_loss = @"";
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];
@@ -184,11 +195,18 @@
 //}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    dashboard.healthcard_number = _tf_healthCardNumber.text;
+    dashboard.date_of_birth = _lb_dataOfBirth.text;
     
-	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
-        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
-        nextViewController.dashboard = _dashboard;
-    }
+    Clipboard *clip = [Clipboard sharedClipboard];
+    [clip clipValue:dashboard clipKey:@"create_intake"];
+    
+    
+    
+//	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
+//        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
+//        nextViewController.dashboard = _dashboard;
+//    }
 }
 
 #pragma mark - NewDatePickerViewController delegate

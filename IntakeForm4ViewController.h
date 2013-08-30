@@ -7,20 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dashboard.h"
 
-@interface IntakeForm4ViewController : UITableViewController<UIPickerViewDelegate> {
-    UIPickerView *pickerView;
-    UITapGestureRecognizer *tap;
-    
-    NSMutableArray *arr_injuryType_A;
-    NSMutableArray *arr_injuryType_B;
-    
-    NSMutableArray *arr_component_0;
-    NSMutableArray *arr_component_1;
-    
-    int i_component_1_row;
+@interface IntakeForm4ViewController : UITableViewController {
+    Dashboard *dashboard;
+    NSMutableArray *arr_menu;
 }
-
-@property (weak, nonatomic) IBOutlet UISwitch *sw_intact;
 
 @end

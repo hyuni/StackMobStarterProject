@@ -1,20 +1,19 @@
 //
-//  IntakeForm2ViewController.m
+//  TLICScoreViewController.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/28/13.
+//  Created by kakadais on 8/30/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
-#import "IntakeForm2ViewController.h"
-#import "Utility.h"
+#import "TLICScoreViewController.h"
+#import "Clipboard.h"   
 
-
-@interface IntakeForm2ViewController ()
+@interface TLICScoreViewController ()
 
 @end
 
-@implementation IntakeForm2ViewController
+@implementation TLICScoreViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,23 +34,17 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    //--- down modal setting
-    datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
-    datePickerView = [datePickerViewController getDatePickerView:self];
-    [self.view addSubview:datePickerView];
-    
-    //--- date setting ---//
-    //--- Date of Birth Setting ---//
-    lb_date.text = [Utility dateToString:[NSDate date]];
-    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                                          action:@selector(dismissKeyboard)];
-//    
-//    [self.view addGestureRecognizer:tap];
-}
+    Clipboard *clip = [Clipboard sharedClipboard];
+    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
 
-- (void)dismissKeyboard {
 
+    arr_sections = [NSMutableArray arrayWithObjects:_arr_section_0, _arr_section_1, _arr_section_2, nil];
+    
+    cell_section_1 = nil;
+    cell_section_2 = nil;
+    cell_section_3 = nil;
+    
+    self.title = @"TLIC Score : [0]";
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,51 +129,57 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    if(indexPath.section == 0 && indexPath.row == 0) {
-        //--- Date ---//
-        [datePickerViewController moveUpPickerView];
-    }
-}
-
-//- (IBAction)modalUp:(id)sender {
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [UIView setAnimationDuration:0.3f];
-//    
-//    CGRect tmpRect = _modalView.frame;
-//    tmpRect.origin.x = 0;
-//    tmpRect.origin.y = self.view.frame.size.height - _modalView.frame.size.height;
-//    _modalView.frame = tmpRect;
-//    
-//    [UIView commitAnimations];
-//    
-//    //--- keyboard down ---/
-//    [_tf_healthCardNumber resignFirstResponder];
-//}
-
-#pragma mark - NewDatePickerViewController delegate
--(void)delegateConfirm:(NSDate *)date_selected {
-    lb_date.text = [Utility dateToString:date_selected];
-}
-
-#pragma mark - Segue delegate
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//
-//    NSString *str_cardNumber = _tf_healthCardNumber.text;
-//    if(str_cardNumber.length > 0) return YES;
-//    else return NO;
-//}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
-        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
-        nextViewController.dashboard = _dashboard;
+    if(indexPath.section >= 0 && indexPath.section <= 2) {
+        NSArray *arr_tmpSection = [arr_sections objectAtIndex:indexPath.section];
+        
+        
+        for (UITableViewCell *currCell in arr_tmpSection)
+        {
+            currCell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                
+        //--- Save selected cell ---//
+        switch (indexPath.section) {
+            case 0:
+                cell_section_1 = selectedCell;
+                break;
+            case 1:
+                cell_section_2 = selectedCell;
+                break;
+            case 2:
+                cell_section_3 = selectedCell;
+                break;
+            default:
+                break;
+        }
+        
+        //--- Display total ---//
+        int i_total = 0;
+        if(cell_section_1 != nil) i_total += [cell_section_1.detailTextLabel.text intValue];
+        if(cell_section_2 != nil) i_total += [cell_section_2.detailTextLabel.text intValue];
+        if(cell_section_3 != nil) i_total += [cell_section_3.detailTextLabel.text intValue];
+        
+        self.title = [NSString stringWithFormat:@"TLIC Score : [%d]", i_total];
+
+    }
+    else if(indexPath.section == 3){
+        if(indexPath.row == 0) {
+            // Confirm
+            if(cell_section_1 != nil && cell_section_2 != nil && cell_section_3) {
+                //--- save data
+                dashboard.fracture_morphology_type = cell_section_1.textLabel.text;
+                dashboard.neurologic_status = cell_section_2.textLabel.text;
+                dashboard.plc = cell_section_3.textLabel.text;
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
     }
 }
-
-
 
 @end
