@@ -2,7 +2,7 @@
 //  Dashboard.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/30/13.
+//  Created by kakadais on 8/31/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
@@ -14,19 +14,31 @@
 @dynamic admitted;
 @dynamic anal_sensation;
 @dynamic asia_lighttouch_l;
+@dynamic asia_lighttouch_l_subtotal;
 @dynamic asia_lighttouch_r;
+@dynamic asia_lighttouch_r_subtotal;
+@dynamic asia_lighttouch_total;
 @dynamic asia_motor_l;
+@dynamic asia_motor_l_subtotal;
 @dynamic asia_motor_r;
+@dynamic asia_motor_r_subtotal;
+@dynamic asia_motor_total;
 @dynamic asia_pinpric_l;
+@dynamic asia_pinpric_l_subtotal;
 @dynamic asia_pinpric_r;
+@dynamic asia_pinpric_r_subtotal;
+@dynamic asia_pinpric_total;
 @dynamic asia_score;
 @dynamic billingcode;
 @dynamic createddate;
 @dynamic dashboard_id;
+@dynamic date_of_birth;
 @dynamic degree_kyphosis;
 @dynamic diagnosis_details;
 @dynamic fracture_morphology_type;
 @dynamic fracturetype;
+@dynamic hangman;
+@dynamic healthcard_number;
 @dynamic height_loss;
 @dynamic injurylevel;
 @dynamic injurytype;
@@ -51,8 +63,6 @@
 @dynamic z_sensory_l;
 @dynamic z_sensory_r;
 @dynamic zone_partial_preservation;
-@dynamic healthcard_number;
-@dynamic date_of_birth;
-@dynamic hangman;
+@dynamic complete_or_incomplete;
 
 @end

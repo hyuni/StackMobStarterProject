@@ -15,5 +15,6 @@
 -(IBAction)action_test:(id)sender;
 
 @property(nonatomic,strong)NSManagedObjectContext* managedObjectContext;
+@property (weak, nonatomic) IBOutlet UITextView *tv_test;
 
 @end

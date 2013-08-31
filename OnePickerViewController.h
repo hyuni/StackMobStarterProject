@@ -21,5 +21,5 @@
 @property (strong, nonatomic) NSMutableArray *arr_component_0;
 @property (weak, nonatomic) IBOutlet UIPickerView *v_picker;
 - (IBAction)confirm:(id)sender;
-- (void)setMode:(NSString *)in_str_mode object1:(NSMutableArray *)object1 object2:(NSMutableArray *)object2 indexpath:(NSIndexPath *)in_indexpath;
+- (void)setMode:(NSString *)in_str_mode object1:(id)object1 object2:(id)object2 indexpath:(NSIndexPath *)in_indexpath;
 @end

@@ -9,6 +9,7 @@
 #import "IntakeMotorViewController.h"
 #import "Clipboard.h"
 #import "OnePickerViewController.h"
+#import "LightInfoViewController.h"
 
 @interface IntakeMotorViewController ()
 
@@ -43,6 +44,23 @@
     arr_asia_motor_r = [self setMotorData:dashboard.asia_motor_r];
     arr_asia_motor_l = [self setMotorData:dashboard.asia_motor_l];
     
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[infoButton addTarget:self action:@selector(infoButtonAction) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *modalButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+	[self.navigationItem setRightBarButtonItem:modalButton animated:YES];
+    
+}
+
+- (void)infoButtonAction {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    LightInfoViewController *info = [storyboard instantiateViewControllerWithIdentifier:@"LightInfoViewController"];
+    
+    info.title = @"Info";
+    
+    [info setInfoText:@"Muscle strength grading \n \n0 - Total paralysis \n1 - Palpable or visible contraction \n2 - Active movement, gravity eliminated \n3 - Active movement, against gravity \n4 - Active movement, against some resistance \n5 - Active movement, against full resistance \nN - Not testable"];
+    
+    [self.navigationController pushViewController:info animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {    
@@ -182,6 +200,11 @@
             [mStr_l appendString:str_cur];
         }
         dashboard.asia_motor_l = mStr_l;
+
+        dashboard.asia_motor_r_subtotal = [[(UIButton *)[_cell_10 viewWithTag:1] titleLabel] text]; //right subtotal
+        dashboard.asia_motor_l_subtotal = [[(UIButton *)[_cell_10 viewWithTag:2] titleLabel] text]; //left subtotal
+        dashboard.asia_motor_total = [[(UIButton *)[_cell_11 viewWithTag:3] titleLabel] text];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
     

@@ -143,8 +143,8 @@
                             <constraint firstItem="65I-qM-zhx" firstAttribute="centerX" secondItem="7Sj-5k-FR6" secondAttribute="centerX" type="default" id="jGK-9j-35w"/>
                             <constraint firstAttribute="bottom" secondItem="Md7-b7-qCF" secondAttribute="bottom" constant="124" id="lpH-aY-jPr"/>
                             <constraint firstItem="5AH-y9-EeL" firstAttribute="top" secondItem="bou-J1-LW2" secondAttribute="top" constant="103" id="nji-Of-2sA"/>
-                            <constraint firstItem="5Aq-vs-aem" firstAttribute="top" secondItem="bou-J1-LW2" secondAttribute="top" constant="159" id="pJZ-g9-yer"/>
                             <constraint firstItem="65I-qM-zhx" firstAttribute="centerX" secondItem="bou-J1-LW2" secondAttribute="centerX" type="default" id="sEg-jz-GJI"/>
+                            <constraint firstItem="5Aq-vs-aem" firstAttribute="top" secondItem="bou-J1-LW2" secondAttribute="top" constant="159" id="sVf-ci-pf5"/>
                             <constraint firstItem="7Sj-5k-FR6" firstAttribute="trailing" secondItem="5Aq-vs-aem" secondAttribute="trailing" type="default" id="vOC-Gl-3iQ"/>
                             <constraint firstItem="7Sj-5k-FR6" firstAttribute="top" secondItem="bou-J1-LW2" secondAttribute="top" constant="208" id="wkV-HU-eRD"/>
                             <constraint firstItem="ao6-8X-zoC" firstAttribute="bottom" secondItem="Md7-b7-qCF" secondAttribute="bottom" type="default" id="yLR-Au-asj"/>
@@ -1760,6 +1760,57 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1761" y="-1703"/>
         </scene>
+        <!--Light Info View Controller-->
+        <scene sceneID="kHL-4l-aUJ">
+            <objects>
+                <tableViewController storyboardIdentifier="LightInfoViewController" id="pNi-aj-WqJ" customClass="LightInfoViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Bas-mx-Xa6">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="nNQ-tO-Vpb">
+                                <cells>
+                                    <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="208" id="MHX-jf-NbL">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="210"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="207"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-VI-ftL">
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="277" id="IXd-fN-ieW"/>
+                                                        <constraint firstAttribute="height" constant="179" id="PDI-Rp-goO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Iri-VI-ftL" firstAttribute="centerX" secondItem="MHX-jf-NbL" secondAttribute="centerX" type="default" id="wR3-Uu-i8I"/>
+                                            <constraint firstItem="Iri-VI-ftL" firstAttribute="top" secondItem="MHX-jf-NbL" secondAttribute="top" constant="15" id="wpG-c8-NSZ"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="pNi-aj-WqJ" id="i4h-Wa-vSm"/>
+                            <outlet property="delegate" destination="pNi-aj-WqJ" id="ABd-4D-7vC"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tv_info" destination="Iri-VI-ftL" id="Yjc-T6-zab"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHZ-rA-skO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2110" y="-1703"/>
+        </scene>
         <!--Intake Form2 View Controller - Intake Form-->
         <scene sceneID="KcT-YF-JSf">
             <objects>
@@ -2274,12 +2325,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="cell_confirm" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
+        <class className="LightInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LightInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tv_info" candidateClass="UITextView"/>
+            </relationships>
+        </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="action_login:"/>
                 <relationship kind="action" name="action_test:"/>
                 <relationship kind="outlet" name="btn_test" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tv_test" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">

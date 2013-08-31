@@ -4,13 +4,23 @@
         <attribute name="admitted" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="anal_sensation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_lighttouch_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_l_subtotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_lighttouch_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_r_subtotal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_lighttouch_total" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_motor_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_l_subtotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_motor_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_r_subtotal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_motor_total" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_pinpric_l" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_l_subtotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_pinpric_r" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_r_subtotal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asia_pinpric_total" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_score" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="billingcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="complete_or_incomplete" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dashboard_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date_of_birth" optional="YES" attributeType="String" syncable="YES"/>
@@ -131,7 +141,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="690"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="840"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

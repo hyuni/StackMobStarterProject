@@ -14,7 +14,6 @@
 		800CA9A417CFB714006EEF07 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9A217CFB714006EEF07 /* PickerViewController.xib */; };
 		800CA9AB17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA9A917D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.m */; };
 		800CA9AC17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9AA17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.xib */; };
-		800CA9BF17D06DFC006EEF07 /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA9BE17D06DFC006EEF07 /* Dashboard.m */; };
 		800CA9C817D08D7C006EEF07 /* Next.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9C717D08D7C006EEF07 /* Next.xib */; };
 		800CA9DE17D0943E006EEF07 /* IntakeForm4FractureTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA9DC17D0943D006EEF07 /* IntakeForm4FractureTypeViewController.m */; };
 		800CA9DF17D0943E006EEF07 /* IntakeForm4FractureTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9DD17D0943E006EEF07 /* IntakeForm4FractureTypeViewController.xib */; };
@@ -190,6 +189,16 @@
 		804C5E2017C341E000B00065 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E1F17C341E000B00065 /* DashboardViewController.m */; };
 		804C5E2717C3476800B00065 /* tv_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5E2617C3476700B00065 /* tv_back.png */; };
 		804C5E2A17C3EA9F00B00065 /* SideMenu2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */; };
+		80670E6F17D19D82000E4B3A /* LightTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E6E17D19D82000E4B3A /* LightTouchViewController.m */; };
+		80670E7117D1A78A000E4B3A /* LightTouchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7017D1A78A000E4B3A /* LightTouchCell.xib */; };
+		80670E7317D1A84F000E4B3A /* LightTouchCellSubtotal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7217D1A84F000E4B3A /* LightTouchCellSubtotal.xib */; };
+		80670E7517D1A857000E4B3A /* LightTouchCellTotal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7417D1A857000E4B3A /* LightTouchCellTotal.xib */; };
+		80670E7717D1BAEC000E4B3A /* LightTouchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7617D1BAEC000E4B3A /* LightTouchViewController.xib */; };
+		80670E7917D1BDD0000E4B3A /* ConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7817D1BDD0000E4B3A /* ConfirmCell.xib */; };
+		80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E8517D1D117000E4B3A /* LightInfoViewController.m */; };
+		80670E8817D1D982000E4B3A /* LightTouchMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */; };
+		80670E8B17D1DCE1000E4B3A /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E8A17D1DCE0000E4B3A /* Dashboard.m */; };
+		80670E8D17D1E5AA000E4B3A /* Neurological_level.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */; };
 		809FF15A17C2E2130071FC08 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */; };
 		809FF15B17C2E2130071FC08 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15717C2E2130071FC08 /* MFSideMenuShadow.m */; };
 		809FF15C17C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15917C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -253,8 +262,6 @@
 		800CA9A817D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm4InjuryTypeViewController.h; sourceTree = "<group>"; };
 		800CA9A917D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm4InjuryTypeViewController.m; sourceTree = "<group>"; };
 		800CA9AA17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntakeForm4InjuryTypeViewController.xib; sourceTree = "<group>"; };
-		800CA9BD17D06DFB006EEF07 /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = "<group>"; };
-		800CA9BE17D06DFC006EEF07 /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = "<group>"; };
 		800CA9C017D06E66006EEF07 /* TestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = DataModel/TestObject.h; sourceTree = "<group>"; };
 		800CA9C117D06E66006EEF07 /* TestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = DataModel/TestObject.m; sourceTree = "<group>"; };
 		800CA9C217D06E66006EEF07 /* Todo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = DataModel/Todo.h; sourceTree = "<group>"; };
@@ -445,6 +452,19 @@
 		804C5E2617C3476700B00065 /* tv_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv_back.png; sourceTree = "<group>"; };
 		804C5E2817C3EA9E00B00065 /* SideMenu2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenu2ViewController.h; sourceTree = "<group>"; };
 		804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenu2ViewController.m; sourceTree = "<group>"; };
+		80670E6D17D19D82000E4B3A /* LightTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightTouchViewController.h; sourceTree = "<group>"; };
+		80670E6E17D19D82000E4B3A /* LightTouchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightTouchViewController.m; sourceTree = "<group>"; };
+		80670E7017D1A78A000E4B3A /* LightTouchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchCell.xib; sourceTree = "<group>"; };
+		80670E7217D1A84F000E4B3A /* LightTouchCellSubtotal.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchCellSubtotal.xib; sourceTree = "<group>"; };
+		80670E7417D1A857000E4B3A /* LightTouchCellTotal.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchCellTotal.xib; sourceTree = "<group>"; };
+		80670E7617D1BAEC000E4B3A /* LightTouchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchViewController.xib; sourceTree = "<group>"; };
+		80670E7817D1BDD0000E4B3A /* ConfirmCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmCell.xib; sourceTree = "<group>"; };
+		80670E8417D1D117000E4B3A /* LightInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightInfoViewController.h; sourceTree = "<group>"; };
+		80670E8517D1D117000E4B3A /* LightInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightInfoViewController.m; sourceTree = "<group>"; };
+		80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchMenuCell.xib; sourceTree = "<group>"; };
+		80670E8917D1DCE0000E4B3A /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = "<group>"; };
+		80670E8A17D1DCE0000E4B3A /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = "<group>"; };
+		80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Neurological_level.xib; sourceTree = "<group>"; };
 		809FF15317C2E2130071FC08 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		809FF15417C2E2130071FC08 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -628,6 +648,11 @@
 				803696A417D12D4400D002DA /* TLICScoreViewController.m */,
 				803696AD17D1620E00D002DA /* IntakeMotorViewController.h */,
 				803696AE17D1620E00D002DA /* IntakeMotorViewController.m */,
+				80670E6D17D19D82000E4B3A /* LightTouchViewController.h */,
+				80670E6E17D19D82000E4B3A /* LightTouchViewController.m */,
+				80670E7617D1BAEC000E4B3A /* LightTouchViewController.xib */,
+				80670E8417D1D117000E4B3A /* LightInfoViewController.h */,
+				80670E8517D1D117000E4B3A /* LightInfoViewController.m */,
 			);
 			name = IntakeForm;
 			sourceTree = "<group>";
@@ -638,6 +663,12 @@
 				800CA9C717D08D7C006EEF07 /* Next.xib */,
 				800CA9E017D0A061006EEF07 /* MenuCell.xib */,
 				800CA9E217D0A25A006EEF07 /* Neurologically_Intact.xib */,
+				80670E7017D1A78A000E4B3A /* LightTouchCell.xib */,
+				80670E7217D1A84F000E4B3A /* LightTouchCellSubtotal.xib */,
+				80670E7417D1A857000E4B3A /* LightTouchCellTotal.xib */,
+				80670E7817D1BDD0000E4B3A /* ConfirmCell.xib */,
+				80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */,
+				80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -882,8 +913,8 @@
 		80C6CFA617C7165E00A0F5A7 /* DataObject */ = {
 			isa = PBXGroup;
 			children = (
-				800CA9BD17D06DFB006EEF07 /* Dashboard.h */,
-				800CA9BE17D06DFC006EEF07 /* Dashboard.m */,
+				80670E8917D1DCE0000E4B3A /* Dashboard.h */,
+				80670E8A17D1DCE0000E4B3A /* Dashboard.m */,
 				80C6CF6A17C5C35000A0F5A7 /* User.h */,
 				80C6CF6B17C5C35000A0F5A7 /* User.m */,
 				80C6CFA117C715DD00A0F5A7 /* Patient.h */,
@@ -1308,6 +1339,13 @@
 				800CA9E317D0A25A006EEF07 /* Neurologically_Intact.xib in Resources */,
 				800CA9EA17D0B436006EEF07 /* NumberPadViewController.xib in Resources */,
 				800CA9EF17D0C343006EEF07 /* OnePickerViewController.xib in Resources */,
+				80670E7117D1A78A000E4B3A /* LightTouchCell.xib in Resources */,
+				80670E7317D1A84F000E4B3A /* LightTouchCellSubtotal.xib in Resources */,
+				80670E7517D1A857000E4B3A /* LightTouchCellTotal.xib in Resources */,
+				80670E7717D1BAEC000E4B3A /* LightTouchViewController.xib in Resources */,
+				80670E7917D1BDD0000E4B3A /* ConfirmCell.xib in Resources */,
+				80670E8817D1D982000E4B3A /* LightTouchMenuCell.xib in Resources */,
+				80670E8D17D1E5AA000E4B3A /* Neurological_level.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,12 +1394,14 @@
 				800CA99C17CFB40C006EEF07 /* IntakeForm4ViewController.m in Sources */,
 				800CA9A317CFB714006EEF07 /* PickerViewController.m in Sources */,
 				800CA9AB17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.m in Sources */,
-				800CA9BF17D06DFC006EEF07 /* Dashboard.m in Sources */,
 				800CA9DE17D0943E006EEF07 /* IntakeForm4FractureTypeViewController.m in Sources */,
 				800CA9E917D0B436006EEF07 /* NumberPadViewController.m in Sources */,
 				800CA9EE17D0C343006EEF07 /* OnePickerViewController.m in Sources */,
 				803696A517D12D4400D002DA /* TLICScoreViewController.m in Sources */,
 				803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */,
+				80670E6F17D19D82000E4B3A /* LightTouchViewController.m in Sources */,
+				80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */,
+				80670E8B17D1DCE1000E4B3A /* Dashboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

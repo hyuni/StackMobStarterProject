@@ -14,6 +14,7 @@
 #import "OnePickerViewController.h"
 #import "TLICScoreViewController.h"
 #import "IntakeMotorViewController.h"
+#import "LightTouchViewController.h"
 
 
 @interface IntakeForm4ViewController ()
@@ -70,6 +71,7 @@
      Light Touch / Pin Prick
      Voluntary anal contraction
      Anal sensation
+     Complete or Incomplete
      Neurological level
      Zone of partial preservation
      Send ASIA report
@@ -110,6 +112,7 @@
             [arr_menu addObject:@"Light Touch / Pin Prick"];
             [arr_menu addObject:@"Voluntary anal contraction"];
             [arr_menu addObject:@"Anal sensation"];
+            [arr_menu addObject:@"Complete or Incomplete"];
             [arr_menu addObject:@"Neurological level"];
             [arr_menu addObject:@"Zone of partial preservation"];
             [arr_menu addObject:@"Send ASIA report"];
@@ -141,6 +144,19 @@
     else
         // error exception
         return 0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 45 115
+    if (indexPath.section == 0) {
+        NSString *str_menu = [arr_menu objectAtIndex:indexPath.row];
+        if([str_menu isEqualToString:@"Neurological level"] || [str_menu isEqualToString:@"Zone of partial preservation"]) {
+            return 115.0f;
+        }
+        else return 45.0f;
+        
+    }
+    else return 45.0f;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -188,23 +204,27 @@
             topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
         }
         else if ([str_menuName isEqualToString:@"Light Touch / Pin Prick"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"LightTouchMenuCell" owner:self options:nil];
         }
 
         else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
         }
 
         else if ([str_menuName isEqualToString:@"Anal sensation"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
         }
-
+        else if ([str_menuName isEqualToString:@"Complete or Incomplete"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
+        }
+        
         else if ([str_menuName isEqualToString:@"Neurological level"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurological_level" owner:self options:nil];
+            
         }
 
         else if ([str_menuName isEqualToString:@"Zone of partial preservation"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurological_level" owner:self options:nil];
         }
 
         else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
@@ -225,12 +245,8 @@
             // intact only
             UISwitch *sw_intact = (UISwitch *)[cell viewWithTag:2];
             
-            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) {
-                [sw_intact setOn:YES];
-            }
-            else {
-                [sw_intact setOn:NO];
-            }
+            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) [sw_intact setOn:YES];
+            else [sw_intact setOn:NO];
             
             [sw_intact addTarget:self action:@selector(action_sw_intact:) forControlEvents:UIControlEventValueChanged];
         }
@@ -276,18 +292,64 @@
                 lb_right.text = dashboard.asia_score;
             }
             else if ([str_menuName isEqualToString:@"Motor"]) {
-                
+                lb_right.text = [NSString stringWithFormat:@"L:%@ R:%@ T:%@",
+                                 dashboard.asia_motor_l_subtotal,
+                                 dashboard.asia_motor_r_subtotal,
+                                 dashboard.asia_motor_total];
             }
             else if ([str_menuName isEqualToString:@"Light Touch / Pin Prick"]) {
+                UILabel *lb_light_right = (UILabel *)[cell viewWithTag:1];
+                UILabel *lb_pin_right = (UILabel *)[cell viewWithTag:2];
+                
+                lb_light_right.text = [NSString stringWithFormat:@"L:%@ R:%@ T:%@",
+                                       dashboard.asia_lighttouch_l_subtotal,
+                                       dashboard.asia_lighttouch_r_subtotal,
+                                       dashboard.asia_lighttouch_total];
+                lb_pin_right.text = [NSString stringWithFormat:@"L:%@ R:%@ T:%@",
+                                       dashboard.asia_pinpric_l_subtotal,
+                                       dashboard.asia_pinpric_r_subtotal,
+                                       dashboard.asia_pinpric_total];
                 
             }
             else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
+                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
                 
+                if([dashboard.voluntary_anal_contraction isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+                else [sw_tmp setOn:NO];
+                
+                [sw_tmp addTarget:self action:@selector(action_sw_Voluntary:) forControlEvents:UIControlEventValueChanged];
             }
             else if ([str_menuName isEqualToString:@"Anal sensation"]) {
+                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
                 
+                if([dashboard.anal_sensation isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+                else [sw_tmp setOn:NO];
+                
+                [sw_tmp addTarget:self action:@selector(action_sw_Anal:) forControlEvents:UIControlEventValueChanged];
+            }
+            else if ([str_menuName isEqualToString:@"Complete or Incomplete"]) {
+                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+                
+                if([dashboard.complete_or_incomplete isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+                else [sw_tmp setOn:NO];
+                
+                [sw_tmp addTarget:self action:@selector(action_sw_Complete:) forControlEvents:UIControlEventValueChanged];
             }
             else if ([str_menuName isEqualToString:@"Neurological level"]) {
+                UIButton *btn_s_r = (UIButton *)[cell viewWithTag:2];
+                UIButton *btn_s_l = (UIButton *)[cell viewWithTag:3];
+                UIButton *btn_m_r = (UIButton *)[cell viewWithTag:4];
+                UIButton *btn_m_l = (UIButton *)[cell viewWithTag:5];
+                
+                [btn_s_r setTitle:dashboard.n_sensory_r forState:UIControlStateNormal];
+                [btn_s_l setTitle:dashboard.n_sensory_l forState:UIControlStateNormal];
+                [btn_m_r setTitle:dashboard.n_motor_r forState:UIControlStateNormal];
+                [btn_m_l setTitle:dashboard.n_motor_l forState:UIControlStateNormal];
+                
+                [btn_s_r addTarget:self action:@selector(action_btn_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                [btn_s_l addTarget:self action:@selector(action_btn_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                [btn_m_r addTarget:self action:@selector(action_btn_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                [btn_m_l addTarget:self action:@selector(action_btn_pressed:) forControlEvents:UIControlEventTouchUpInside];
                 
             }
             else if ([str_menuName isEqualToString:@"Zone of partial preservation"]) {
@@ -295,7 +357,23 @@
                     // If asia score is E, this field will be disabled.
                     cell.userInteractionEnabled = NO;
                 }
-                
+                else {
+                    UIButton *btn_s_r = (UIButton *)[cell viewWithTag:2];
+                    UIButton *btn_s_l = (UIButton *)[cell viewWithTag:3];
+                    UIButton *btn_m_r = (UIButton *)[cell viewWithTag:4];
+                    UIButton *btn_m_l = (UIButton *)[cell viewWithTag:5];
+                    
+                    [btn_s_r setTitle:dashboard.z_sensory_r forState:UIControlStateNormal];
+                    [btn_s_l setTitle:dashboard.z_sensory_l forState:UIControlStateNormal];
+                    [btn_m_r setTitle:dashboard.z_motor_r forState:UIControlStateNormal];
+                    [btn_m_l setTitle:dashboard.z_motor_l forState:UIControlStateNormal];
+                    
+                    [btn_s_r addTarget:self action:@selector(action_btn_zone_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [btn_s_l addTarget:self action:@selector(action_btn_zone_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [btn_m_r addTarget:self action:@selector(action_btn_zone_pressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [btn_m_l addTarget:self action:@selector(action_btn_zone_pressed:) forControlEvents:UIControlEventTouchUpInside];
+
+                }
             }
             else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
                 
@@ -315,6 +393,83 @@
     return cell;
 }
 
+- (IBAction)action_btn_zone_pressed:(id)sender {
+    
+    OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+    NSMutableArray *component = [[NSMutableArray alloc] initWithObjects:
+                                 @"C2", @"C3", @"C4", @"C5", @"C6",
+                                 @"C7", @"C8", @"T1", @"T2", @"T3",
+                                 @"T4", @"T5", @"T6", @"T7", @"T8",
+                                 @"T9", @"T10", @"T11", @"T12", @"L1",
+                                 @"L2", @"L3", @"L4", @"L5", @"S1",
+                                 @"S2", @"S3", @"S4-5", nil];
+    oneController.title = @"Neurological level";
+    oneController.arr_component_0 = component;
+    
+    
+    //--- set data array
+    int i_tag = ((UIButton *)sender).tag;
+    
+    switch (i_tag) {
+        case 2:
+            [oneController setMode:@"z_sensory_r" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 3:
+            [oneController setMode:@"z_sensory_l" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 4:
+            [oneController setMode:@"z_motor_r" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 5:
+            [oneController setMode:@"z_motor_l" object1:dashboard object2:nil indexpath:nil];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    [self.navigationController pushViewController:oneController animated:YES];
+}
+
+- (IBAction)action_btn_pressed:(id)sender {
+
+    OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+    NSMutableArray *component = [[NSMutableArray alloc] initWithObjects:
+                                 @"C2", @"C3", @"C4", @"C5", @"C6",
+                                 @"C7", @"C8", @"T1", @"T2", @"T3",
+                                 @"T4", @"T5", @"T6", @"T7", @"T8",
+                                 @"T9", @"T10", @"T11", @"T12", @"L1",
+                                 @"L2", @"L3", @"L4", @"L5", @"S1",
+                                 @"S2", @"S3", @"S4-5", nil];
+    oneController.title = @"Neurological level";
+    oneController.arr_component_0 = component;
+    
+    
+    //--- set data array
+    int i_tag = ((UIButton *)sender).tag;
+    
+    switch (i_tag) {
+        case 2:
+            [oneController setMode:@"n_sensory_r" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 3:
+            [oneController setMode:@"n_sensory_l" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 4:
+            [oneController setMode:@"n_motor_r" object1:dashboard object2:nil indexpath:nil];
+            break;
+        case 5:
+            [oneController setMode:@"n_motor_l" object1:dashboard object2:nil indexpath:nil];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    [self.navigationController pushViewController:oneController animated:YES];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -434,7 +589,6 @@
             [self.navigationController pushViewController:oneController animated:YES];
         }
         else if([str_menu isEqualToString:@"Motor"]) {
-            
             IntakeMotorViewController *motorController = [storyboard instantiateViewControllerWithIdentifier:@"IntakeMotorViewController"];
             motorController.title = [arr_menu objectAtIndex:indexPath.row];
             
@@ -442,7 +596,10 @@
             
         }
         else if([str_menu isEqualToString:@"Light Touch / Pin Prick"]) {
+            LightTouchViewController *lightController = [[LightTouchViewController alloc] initWithNibName:@"LightTouchViewController" bundle:nil];
+            lightController.title = [arr_menu objectAtIndex:indexPath.row];
             
+            [self.navigationController pushViewController:lightController animated:YES];
         }
         else if([str_menu isEqualToString:@"Voluntary anal contraction"]) {
             
@@ -481,6 +638,38 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Custom Method
+
+- (void)action_sw_Voluntary:(id)sender {
+    BOOL b_state = [sender isOn];
+    if(b_state == YES) {
+        dashboard.voluntary_anal_contraction = @"YES";
+    }
+    else {
+        dashboard.voluntary_anal_contraction = @"NO";
+    }
+}
+
+- (void)action_sw_Anal:(id)sender {
+    BOOL b_state = [sender isOn];
+    if(b_state == YES) {
+        dashboard.anal_sensation = @"YES";
+    }
+    else {
+        dashboard.anal_sensation = @"NO";
+    }
+}
+
+- (void)action_sw_Complete:(id)sender {
+    BOOL b_state = [sender isOn];
+    if(b_state == YES) {
+        dashboard.complete_or_incomplete = @"YES";
+    }
+    else {
+        dashboard.complete_or_incomplete = @"NO";
+    }
 }
 
 

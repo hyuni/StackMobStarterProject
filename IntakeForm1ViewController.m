@@ -60,6 +60,34 @@
     dashboard.height_loss = @"";
     dashboard.asia_motor_r = @"5555555555";
     dashboard.asia_motor_l = @"5555555555";
+    dashboard.asia_motor_l_subtotal = @"50";
+    dashboard.asia_motor_r_subtotal = @"50";
+    dashboard.asia_motor_total = @"100";
+    dashboard.asia_lighttouch_l = @"2222222222222222222222222222";
+    dashboard.asia_lighttouch_r = @"2222222222222222222222222222";
+    dashboard.asia_lighttouch_l_subtotal = @"112";
+    dashboard.asia_lighttouch_r_subtotal = @"112";
+    dashboard.asia_lighttouch_total = @"224";
+    dashboard.asia_pinpric_l = @"2222222222222222222222222222";
+    dashboard.asia_pinpric_r = @"2222222222222222222222222222";
+    dashboard.asia_pinpric_l_subtotal = @"112";
+    dashboard.asia_pinpric_r_subtotal = @"112";
+    dashboard.asia_pinpric_total = @"224";
+    dashboard.voluntary_anal_contraction = @"NO";
+    dashboard.anal_sensation = @"NO";
+    dashboard.complete_or_incomplete = @"NO";
+    dashboard.neurological_level = @"";
+    dashboard.n_sensory_l = @"";
+    dashboard.n_sensory_r = @"";
+    dashboard.n_motor_l = @"";
+    dashboard.n_motor_r = @"";
+    dashboard.zone_partial_preservation = @"";
+    dashboard.z_sensory_l = @"";
+    dashboard.z_sensory_r = @"";
+    dashboard.z_motor_l = @"";
+    dashboard.z_motor_r = @"";
+    
+    
     
     
     

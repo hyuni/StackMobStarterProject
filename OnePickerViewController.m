@@ -36,6 +36,9 @@
         [_v_picker selectRow:5 inComponent:0 animated:NO];
         [_v_picker selectRow:5 inComponent:1 animated:NO];
     }
+    else if([str_mode isEqualToString:@"Light Touch / Pin Prick"]) {
+        [_v_picker selectRow:2 inComponent:0 animated:NO];
+    }
 
     
 }
@@ -94,15 +97,47 @@
         //--- Only intact == YES
         dashboard.injurytype = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
     }
+    //--- duplicated mode == Motor
     else if([self.title isEqualToString:@"Motor"]) {
         [(NSMutableArray *)id_object1 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]]];
         [(NSMutableArray *)id_object2 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:1]]];
+    }
+    //--- compare mode, not title!
+    else if([str_mode isEqualToString:@"Light Touch / Pin Prick"]) {
+        [(NSMutableArray *)id_object1 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]]];
+    }
+    else if([str_mode isEqualToString:@"n_sensory_r"]) {
+        ((Dashboard *)id_object1).n_sensory_r = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"n_sensory_l"]) {
+        ((Dashboard *)id_object1).n_sensory_l = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"n_motor_r"]) {
+        ((Dashboard *)id_object1).n_motor_r = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"n_motor_l"]) {
+        ((Dashboard *)id_object1).n_motor_l = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"z_sensory_r"]) {
+        ((Dashboard *)id_object1).z_sensory_r = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"z_sensory_l"]) {
+        ((Dashboard *)id_object1).z_sensory_l = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"z_motor_r"]) {
+        ((Dashboard *)id_object1).z_motor_r = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"z_motor_l"]) {
+        ((Dashboard *)id_object1).z_motor_l = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([str_mode isEqualToString:@"OnlyOneMode"]) {
+
     }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)setMode:(NSString *)in_str_mode object1:(NSMutableArray *)object1 object2:(NSMutableArray *)object2 indexpath:(NSIndexPath *)in_indexpath {
+- (void)setMode:(NSString *)in_str_mode object1:(id)object1 object2:(id)object2 indexpath:(NSIndexPath *)in_indexpath {
     str_mode = in_str_mode;
     id_object1 = object1;
     id_object2 = object2;
