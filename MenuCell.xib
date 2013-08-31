@@ -93,6 +93,7 @@
 								<reference key="IBUITextColor" ref="952840453"/>
 								<reference key="IBUIHighlightedColor" ref="46038715"/>
 								<int key="IBUIBaselineAdjustment">0</int>
+								<float key="IBUIMinimumFontSize">5</float>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
 									<double key="pointSize">14</double>
@@ -102,7 +103,6 @@
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>

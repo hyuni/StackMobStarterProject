@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *btn_test;
 
 -(IBAction)action_login:(id)sender;
 -(IBAction)action_test:(id)sender;

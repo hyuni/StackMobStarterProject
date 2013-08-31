@@ -10,13 +10,16 @@
 #import "Dashboard.h"
 
 @interface OnePickerViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate> {
-    
-    
     Dashboard *dashboard;
+    NSString *str_mode;
+    
+    id id_object1;
+    id id_object2;
+    NSIndexPath *selected_indexpath;
 }
 
 @property (strong, nonatomic) NSMutableArray *arr_component_0;
 @property (weak, nonatomic) IBOutlet UIPickerView *v_picker;
 - (IBAction)confirm:(id)sender;
-
+- (void)setMode:(NSString *)in_str_mode object1:(NSMutableArray *)object1 object2:(NSMutableArray *)object2 indexpath:(NSIndexPath *)in_indexpath;
 @end

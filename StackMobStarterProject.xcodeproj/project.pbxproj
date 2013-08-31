@@ -29,9 +29,8 @@
 		8025FDBA17CF281B000A0CDB /* NewDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB817CF281A000A0CDB /* NewDatePickerViewController.m */; };
 		8025FDBB17CF281B000A0CDB /* NewDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8025FDB917CF281B000A0CDB /* NewDatePickerViewController.xib */; };
 		80347D0817CB036E00C2A782 /* PickerDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80347D0717CB036E00C2A782 /* PickerDateViewController.m */; };
-		803696A117D128FE00D002DA /* TLICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8036969F17D128FE00D002DA /* TLICViewController.m */; };
-		803696A217D128FE00D002DA /* TLICViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803696A017D128FE00D002DA /* TLICViewController.xib */; };
 		803696A517D12D4400D002DA /* TLICScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696A417D12D4400D002DA /* TLICScoreViewController.m */; };
+		803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696AE17D1620E00D002DA /* IntakeMotorViewController.m */; };
 		804C5D7C17C32E3900B00065 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE017C32E3800B00065 /* backButton.png */; };
 		804C5D7D17C32E3900B00065 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE117C32E3800B00065 /* backButton@2x.png */; };
 		804C5D7E17C32E3900B00065 /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE217C32E3800B00065 /* background-568h@2x.png */; };
@@ -281,11 +280,10 @@
 		8025FDB917CF281B000A0CDB /* NewDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDatePickerViewController.xib; sourceTree = "<group>"; };
 		80347D0617CB036E00C2A782 /* PickerDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDateViewController.h; sourceTree = "<group>"; };
 		80347D0717CB036E00C2A782 /* PickerDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDateViewController.m; sourceTree = "<group>"; };
-		8036969E17D128FE00D002DA /* TLICViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLICViewController.h; sourceTree = "<group>"; };
-		8036969F17D128FE00D002DA /* TLICViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLICViewController.m; sourceTree = "<group>"; };
-		803696A017D128FE00D002DA /* TLICViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLICViewController.xib; sourceTree = "<group>"; };
 		803696A317D12D4400D002DA /* TLICScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLICScoreViewController.h; sourceTree = "<group>"; };
 		803696A417D12D4400D002DA /* TLICScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLICScoreViewController.m; sourceTree = "<group>"; };
+		803696AD17D1620E00D002DA /* IntakeMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeMotorViewController.h; sourceTree = "<group>"; };
+		803696AE17D1620E00D002DA /* IntakeMotorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeMotorViewController.m; sourceTree = "<group>"; };
 		804C5CE017C32E3800B00065 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		804C5CE117C32E3800B00065 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		804C5CE217C32E3800B00065 /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
@@ -626,9 +624,10 @@
 				800CA9EB17D0C341006EEF07 /* OnePickerViewController.h */,
 				800CA9EC17D0C342006EEF07 /* OnePickerViewController.m */,
 				800CA9ED17D0C342006EEF07 /* OnePickerViewController.xib */,
-				8036969E17D128FE00D002DA /* TLICViewController.h */,
-				8036969F17D128FE00D002DA /* TLICViewController.m */,
-				803696A017D128FE00D002DA /* TLICViewController.xib */,
+				803696A317D12D4400D002DA /* TLICScoreViewController.h */,
+				803696A417D12D4400D002DA /* TLICScoreViewController.m */,
+				803696AD17D1620E00D002DA /* IntakeMotorViewController.h */,
+				803696AE17D1620E00D002DA /* IntakeMotorViewController.m */,
 			);
 			name = IntakeForm;
 			sourceTree = "<group>";
@@ -913,8 +912,6 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
-				803696A317D12D4400D002DA /* TLICScoreViewController.h */,
-				803696A417D12D4400D002DA /* TLICScoreViewController.m */,
 				800CA9AD17D00136006EEF07 /* IntakeForm */,
 				800CA9A017CFB714006EEF07 /* PickerViewController.h */,
 				800CA9A117CFB714006EEF07 /* PickerViewController.m */,
@@ -1311,7 +1308,6 @@
 				800CA9E317D0A25A006EEF07 /* Neurologically_Intact.xib in Resources */,
 				800CA9EA17D0B436006EEF07 /* NumberPadViewController.xib in Resources */,
 				800CA9EF17D0C343006EEF07 /* OnePickerViewController.xib in Resources */,
-				803696A217D128FE00D002DA /* TLICViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,8 +1360,8 @@
 				800CA9DE17D0943E006EEF07 /* IntakeForm4FractureTypeViewController.m in Sources */,
 				800CA9E917D0B436006EEF07 /* NumberPadViewController.m in Sources */,
 				800CA9EE17D0C343006EEF07 /* OnePickerViewController.m in Sources */,
-				803696A117D128FE00D002DA /* TLICViewController.m in Sources */,
 				803696A517D12D4400D002DA /* TLICScoreViewController.m in Sources */,
+				803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

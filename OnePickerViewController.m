@@ -32,6 +32,12 @@
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
     
+    if([str_mode isEqualToString:@"duplicated"]) {
+        [_v_picker selectRow:5 inComponent:0 animated:NO];
+        [_v_picker selectRow:5 inComponent:1 animated:NO];
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +49,12 @@
 #pragma UIPickerView delegate & data source
 // returns the number of 'columns' to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+    if([str_mode isEqualToString:@"duplicated"]) {
+        return 2;
+    }
+    else {
+        return 1;
+    }
 }
 
 // returns the # of rows in each component..
@@ -74,10 +85,28 @@
         dashboard.height_loss = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
     }
     else if([self.title isEqualToString:@"Translation"]) {
-        dashboard.Translation = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+        dashboard.translation = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([self.title isEqualToString:@"ASIA Score"]) {
+        dashboard.asia_score = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([self.title isEqualToString:@"Select Injury Type"] && [dashboard.neurologicallyintact isEqualToString:@"YES"]) {
+        //--- Only intact == YES
+        dashboard.injurytype = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([self.title isEqualToString:@"Motor"]) {
+        [(NSMutableArray *)id_object1 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]]];
+        [(NSMutableArray *)id_object2 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:1]]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)setMode:(NSString *)in_str_mode object1:(NSMutableArray *)object1 object2:(NSMutableArray *)object2 indexpath:(NSIndexPath *)in_indexpath {
+    str_mode = in_str_mode;
+    id_object1 = object1;
+    id_object2 = object2;
+    selected_indexpath = in_indexpath;
 }
 
 @end

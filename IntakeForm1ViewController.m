@@ -58,6 +58,10 @@
     dashboard.tlic_score = @"";
     dashboard.hangman = @"";
     dashboard.height_loss = @"";
+    dashboard.asia_motor_r = @"5555555555";
+    dashboard.asia_motor_l = @"5555555555";
+    
+    
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];

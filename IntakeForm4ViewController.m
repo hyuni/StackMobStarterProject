@@ -13,6 +13,7 @@
 #import "NumberPadViewController.h"
 #import "OnePickerViewController.h"
 #import "TLICScoreViewController.h"
+#import "IntakeMotorViewController.h"
 
 
 @interface IntakeForm4ViewController ()
@@ -45,7 +46,9 @@
         
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
-        
+    
+    storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    
 }
 
 
@@ -172,7 +175,7 @@
      */
     
     if(indexPath.section == 0) {
-        //--- Menu cell ---//
+        //--- menu ---//
         NSString *str_menuName = [arr_menu objectAtIndex:indexPath.row];
         if ([str_menuName isEqualToString:@"Neurologically Intact"]) {
             topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];            
@@ -214,9 +217,6 @@
         }
         cell = [topObject objectAtIndex:0];
         
-
-        
-        
         //--- Label Display ---//
         UILabel *lb_left = (UILabel *)[cell viewWithTag:1];
         lb_left.text = [arr_menu objectAtIndex:indexPath.row];
@@ -237,37 +237,16 @@
         else {
             // every not intact
             UILabel *lb_right = (UILabel *)[cell viewWithTag:2];
-            
-            //--- intact == YES
-            if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            else if ([str_menuName isEqualToString:@"ASIA Score"]) {
-                
-            }
-            //--- intact == NO
-            else if([str_menuName isEqualToString:@"Select Injury Type"]) {
-                if([dashboard.injurylevel length] > 0 && [dashboard.injurytype length] >0) {
-                    NSString *str_rightValue = [NSString stringWithFormat:@"%@ L-%@", dashboard.injurytype, dashboard.injurylevel];
-                    lb_right.text = str_rightValue;                    
+            if([str_menuName isEqualToString:@"Select Injury Type"]) {
+                if([dashboard.neurologicallyintact isEqualToString:@"YES"]) {
+                    lb_right.text = dashboard.injurytype;
+                }
+                else {
+                    // --- intact NO
+                    if([dashboard.injurylevel length] > 0 && [dashboard.injurytype length] >0) {
+                        NSString *str_rightValue = [NSString stringWithFormat:@"%@ L-%@", dashboard.injurytype, dashboard.injurylevel];
+                        lb_right.text = str_rightValue;
+                    }
                 }
             }
             else if([str_menuName isEqualToString:@"Select Fracture Type"]){
@@ -290,7 +269,36 @@
                 }
             }
             else if ([str_menuName isEqualToString:@"Translation"]){
-                lb_right.text = dashboard.degree_kyphosis;
+                lb_right.text = dashboard.translation;
+            }
+            //--- intact == YES
+            if ([str_menuName isEqualToString:@"ASIA Score"]) {
+                lb_right.text = dashboard.asia_score;
+            }
+            else if ([str_menuName isEqualToString:@"Motor"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"Light Touch / Pin Prick"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"Anal sensation"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"Neurological level"]) {
+                
+            }
+            else if ([str_menuName isEqualToString:@"Zone of partial preservation"]) {
+                if([dashboard.asia_score isEqualToString:@"E"]) {
+                    // If asia score is E, this field will be disabled.
+                    cell.userInteractionEnabled = NO;
+                }
+                
+            }
+            else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
+                
             }
             else {
                 
@@ -322,9 +330,21 @@
         
         NSString *str_menu = [arr_menu objectAtIndex:indexPath.row];
         if([str_menu isEqualToString:@"Select Injury Type"]) {
-            IntakeForm4InjuryTypeViewController *injuryController = [[IntakeForm4InjuryTypeViewController alloc] initWithNibName:@"IntakeForm4InjuryTypeViewController" bundle:nil];
-            injuryController.title = [arr_menu objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:injuryController animated:YES];
+            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) {
+                OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+                
+                oneController.title = [arr_menu objectAtIndex:indexPath.row];
+                
+                NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"Spinal cord", @"Conus/Cauda equina (TBD)", @"Radiculopathy (TBD)", @"Brain (TBD)", nil];
+                
+                oneController.arr_component_0 = arr_tmp;
+                [self.navigationController pushViewController:oneController animated:YES];
+            }
+            else {
+                IntakeForm4InjuryTypeViewController *injuryController = [[IntakeForm4InjuryTypeViewController alloc] initWithNibName:@"IntakeForm4InjuryTypeViewController" bundle:nil];
+                injuryController.title = [arr_menu objectAtIndex:indexPath.row];
+                [self.navigationController pushViewController:injuryController animated:YES];
+            }
         }
         else if([str_menu isEqualToString:@"Select Fracture Type"]) {
 
@@ -369,8 +389,6 @@
             
         }
         else if([str_menu isEqualToString:@"TLIC Score"]) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-            
             TLICScoreViewController *tlicController = [storyboard instantiateViewControllerWithIdentifier:@"TLICScoreViewController"];
             
             [self.navigationController pushViewController:tlicController animated:YES];
@@ -405,6 +423,43 @@
             oneController.arr_component_0 = arr_tmp;
             [self.navigationController pushViewController:oneController animated:YES];
         }
+        else if([str_menu isEqualToString:@"ASIA Score"]) {
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", nil];
+            
+            oneController.arr_component_0 = arr_tmp;
+            [self.navigationController pushViewController:oneController animated:YES];
+        }
+        else if([str_menu isEqualToString:@"Motor"]) {
+            
+            IntakeMotorViewController *motorController = [storyboard instantiateViewControllerWithIdentifier:@"IntakeMotorViewController"];
+            motorController.title = [arr_menu objectAtIndex:indexPath.row];
+            
+            [self.navigationController pushViewController:motorController animated:YES];
+            
+        }
+        else if([str_menu isEqualToString:@"Light Touch / Pin Prick"]) {
+            
+        }
+        else if([str_menu isEqualToString:@"Voluntary anal contraction"]) {
+            
+        }
+        else if([str_menu isEqualToString:@"Anal sensation"]) {
+            
+        }
+        else if([str_menu isEqualToString:@"Neurological level"]) {
+            
+        }
+        else if([str_menu isEqualToString:@"Zone of partial preservation"]) {
+            
+        }
+        else if([str_menu isEqualToString:@"Send ASIA report"]) {
+            
+        }
+
     }
     else {
         // next or error
@@ -484,7 +539,6 @@
     return YES;
 }
 */
-\
 
 
 @end

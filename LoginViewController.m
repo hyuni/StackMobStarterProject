@@ -37,6 +37,7 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBackground.png"] forBarMetrics:UIBarMetricsDefault];
     
+    _btn_test.titleLabel.text = @"111";
 }
 
 - (void)didReceiveMemoryWarning
