@@ -50,6 +50,7 @@
     dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
     //--- initiallize dashboard data---//
     dashboard.dashboard_id = [dashboard assignObjectId];
+    dashboard.patient_status = @"Intake";
     dashboard.injurytype = @"";
     dashboard.injurylevel = @"";
     dashboard.neurologicallyintact = @"NO";
@@ -214,6 +215,11 @@
 //    _lb_dataOfBirth.text = [Utility dateToString:_dp_dateOfBirth.date];
 //}
 
+- (void)saveCurrentScreenData {
+    dashboard.healthcard_number = _tf_healthCardNumber.text;
+    dashboard.date_of_birth = _lb_dataOfBirth.text;
+}
+
 #pragma mark - TextField delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     [datePickerViewController moveDownPickerView:nil];
@@ -236,9 +242,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    dashboard.healthcard_number = _tf_healthCardNumber.text;
-    dashboard.date_of_birth = _lb_dataOfBirth.text;
-    
+    [self saveCurrentScreenData];
+
     Clipboard *clip = [Clipboard sharedClipboard];
     [clip clipValue:dashboard clipKey:@"create_intake"];
     
@@ -253,6 +258,33 @@
 #pragma mark - NewDatePickerViewController delegate
 -(void)delegateConfirm:(NSDate *)date_selected {
     _lb_dataOfBirth.text = [Utility dateToString:date_selected];
+}
+
+
+
+- (IBAction)save_local:(id)sender {
+    [self saveCurrentScreenData];
+    
+    dashboard.status = @"Local";
+//    Clipboard *clip = [Clipboard sharedClipboard];
+//    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    [context saveOnSuccess:^{
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel_local:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

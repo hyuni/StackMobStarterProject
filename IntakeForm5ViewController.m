@@ -295,9 +295,7 @@
     }
     else {
         // submit
-        dashboard.date_of_surgery = _lb_dateOfSurgery.text;
-        dashboard.status = @"Sent";
-        
+        [self saveCurrentScreenData];
         // --- save everything
         NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
         // An asynchronous Core Data save method provided by the StackMob iOS SDK.
@@ -354,4 +352,37 @@
 -(void)delegateConfirm:(NSDate *)date_selected {
     _lb_dateOfSurgery.text = [Utility dateToString:date_selected];
 }
+
+#pragma mark - custom method
+
+- (void)saveCurrentScreenData {
+    dashboard.date_of_surgery = _lb_dateOfSurgery.text;
+    dashboard.status = @"Sent";
+}
+
+- (IBAction)save_local:(id)sender {
+    [self saveCurrentScreenData];
+    
+    dashboard.status = @"Local";
+    //    Clipboard *clip = [Clipboard sharedClipboard];
+    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    [context saveOnSuccess:^{
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+    
+    
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel_local:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

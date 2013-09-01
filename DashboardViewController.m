@@ -8,6 +8,9 @@
 
 #import "DashboardViewController.h"
 #import "MFSideMenu.h"
+#import "Clipboard.h"
+#import "StackMob.h"
+#import "Utility.h"
 
 @interface DashboardViewController ()
 
@@ -31,37 +34,56 @@
 	// Do any additional setup after loading the view.
     [_tab_bar setSelectedItem:_tab_all];
 
-    arr_menu = [[NSMutableArray alloc] init];
+    arr_menu = [[NSArray alloc] init];
+    arr_sorted_menu = [[NSMutableArray alloc] init];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Dashboard"];
-//    
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
-//    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
-//    
-//    //    NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"userid == %@", @"kakadais"];
-//    //    [fetchRequest setPredicate:equalPredicate];
-//    
-//    [fetchRequest setSortDescriptors:sortDescriptors];
-//    
-//    [context executeFetchRequest:fetchRequest onSuccess:^(NSArray *results) {
-//        NSLog(@"Data %@", results);
-//        Dashboard *dashboard = [results lastObject];
-//        
-//        NSLog(@"dashboard_id : %@", dashboard.dashboard_id);
-//        NSLog(@"date_of_birth : %@", dashboard.date_of_birth);
-//        NSLog(@"diagnosis_details : %@", dashboard.diagnosis_details);
-//        NSLog(@"surgery_required : %@", dashboard.surgery_required);
-//        
-//    } onFailure:^(NSError *error) {
-//        //        [self.refreshControl endRefreshing];
-//        NSLog(@"An error %@, %@", error, [error userInfo]);
-//    }];
 
+    
+    //--- make data model ---//
+    if([_tab_bar selectedItem] == _tab_all) {
+        [self fetchData:@"All" ];
+    }
+    else if([_tab_bar selectedItem] == _tab_draft) {
+        [self fetchData:@"Draft" ];
+    }
+    else if([_tab_bar selectedItem] == _tab_sent) {
+        [self fetchData:@"Sent" ];
+    }
+    else if([_tab_bar selectedItem] == _tab_local) {
+        [self fetchData:@"Local" ];
+    }
+
+//    [_dashTableView reloadData];
+}
+
+- (void)fetchData:(NSString *)status {
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Dashboard"];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+    if(![status isEqualToString:@"All"]) {
+        NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"status == %@", status];
+        [fetchRequest setPredicate:equalPredicate];        
+    }
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    [context executeFetchRequest:fetchRequest onSuccess:^(NSArray *results) {
+        arr_menu = results;
+        [self dateCalc];
+        [_dashTableView reloadData];
+        NSLog(@"result count : %d", [arr_menu count]);
+    } onFailure:^(NSError *error) {
+        //        [self.refreshControl endRefreshing];
+        NSLog(@"An error %@, %@", error, [error userInfo]);
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,6 +110,37 @@
 
 #pragma mark - Table view data source
 
+- (void)dateCalc {
+    if([arr_menu count] <= 0)
+        return;
+    
+    Dashboard *board = (Dashboard *)[arr_menu objectAtIndex:0];
+    NSString *str_before = [Utility dateToString:board.createddate];
+    NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+    
+    arr_sorted_menu = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < [arr_menu count]; i++) {
+        Dashboard *tmp_board = [arr_menu objectAtIndex:i];
+
+        NSString *str_current = [Utility dateToString:tmp_board.createddate];
+        
+        if([str_before isEqualToString:str_current]) {
+            [arr_tmp addObject:tmp_board];
+            if([arr_tmp lastObject] == [arr_tmp objectAtIndex:i]) {
+                [arr_sorted_menu addObject:arr_tmp];
+            }
+        }
+        else {
+            str_before = [Utility dateToString:tmp_board.createddate];
+            [arr_sorted_menu addObject:arr_tmp];
+            arr_tmp = [[NSMutableArray alloc] init];
+        }
+    }
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -97,7 +150,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return [arr_menu count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,7 +159,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     // Configure the cell...
+//    cell.textLabel.text = ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).status;
+    UILabel *lb_healthNumber = (UILabel *)[cell viewWithTag:1];
+    UILabel *lb_explain = (UILabel *)[cell viewWithTag:2];
+    UIButton *btn_status = (UIButton *)[cell viewWithTag:3];
     
+    lb_healthNumber.text = ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).healthcard_number;
+    lb_explain.text = [NSString stringWithFormat:@"%@", ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).patient_status];
+    NSString *str_tmp = ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).status;
+    [btn_status setTitle:str_tmp forState:UIControlStateNormal];
 
     return cell;
 }
@@ -166,10 +227,10 @@
 #pragma mark - tab bar delegate
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    
     NSLog(@"Tab bar : %d", item.tag);
-    if(item.tag == 3) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"syncStackMobData" object:nil];
-        NSLog(@"SYNC PERFORMED");
-    }
+    
+    [self viewWillAppear:nil];
+
 }
 @end

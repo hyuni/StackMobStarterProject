@@ -62,10 +62,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[DashboardViewController tableView:cellForRowAtIndexPath:]:DashboardViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).status">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[PickerViewController setPickerView:]:PickerViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "toolbar.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__copy_helper_block_:DashboardViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "arr_menu">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

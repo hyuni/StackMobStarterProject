@@ -11,7 +11,10 @@
 #import "StackMob.h"
 
 @interface DashboardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, UITabBarDelegate> {
-    NSMutableArray *arr_menu;
+    NSArray *arr_menu;
+    NSMutableArray *arr_sorted_menu;
+    
+    Dashboard *dashboard;
 }
 
 - (IBAction)bbtn_left:(id)sender;
@@ -19,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UITabBarItem *tab_all;
 @property (weak, nonatomic) IBOutlet UITabBarItem *tab_draft;
 @property (weak, nonatomic) IBOutlet UITabBarItem *tab_sent;
+@property (weak, nonatomic) IBOutlet UITabBarItem *tab_local;
 @property (strong, nonatomic) SMClient *client;
+@property (weak, nonatomic) IBOutlet UITableView *dashTableView;
 
 
 

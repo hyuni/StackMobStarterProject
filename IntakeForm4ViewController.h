@@ -16,4 +16,8 @@
     
 }
 
+- (IBAction)save_local:(id)sender;
+- (IBAction)cancel_local:(id)sender;
+
+
 @end

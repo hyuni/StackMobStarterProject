@@ -22,5 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dp_dateOfBirth;
 
 
+- (IBAction)save_local:(id)sender;
+- (IBAction)cancel_local:(id)sender;
+
+
 
 @end

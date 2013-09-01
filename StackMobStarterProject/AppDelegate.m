@@ -56,14 +56,97 @@
     NSManagedObjectContext *localContext = [self _localManagedObjectContext];
     [clip clipValue:localContext clipKey:@"managaedObjectContext"];
     
-    [self syncStackMobData:nil];
+//    [self syncStackMobData:nil];
 //    [self saveStackMobData];
 //    [self fetchStackMobData];
 //    [self saveLocalCoreData];
 //    [self fetchLocalCoreData];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
     return YES;
+}
+
+- (void)saveLocalData:(id)sender {
+    
+
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    Dashboard *i_dashboard = [clip clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *localContext = [clip clipKey:@"managaedObjectContext"];
+
+    Dashboard *dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:localContext];
+    
+    dashboard.admit_to_hospital = i_dashboard.admit_to_hospital;
+    dashboard.admitted = i_dashboard.admitted;
+    dashboard.anal_sensation = i_dashboard.anal_sensation;
+    dashboard.asia_lighttouch_l = i_dashboard.asia_lighttouch_l;
+    dashboard.asia_lighttouch_l_subtotal = i_dashboard.asia_lighttouch_l_subtotal;
+    dashboard.asia_lighttouch_r = i_dashboard.asia_lighttouch_r;
+    dashboard.asia_lighttouch_r_subtotal = i_dashboard.asia_lighttouch_r_subtotal;
+    dashboard.asia_lighttouch_total = i_dashboard.asia_lighttouch_total;
+    dashboard.asia_motor_l = i_dashboard.asia_motor_l;
+    dashboard.asia_motor_l_subtotal = i_dashboard.asia_motor_l_subtotal;
+    dashboard.asia_motor_r = i_dashboard.asia_motor_r;
+    dashboard.asia_motor_r_subtotal = i_dashboard.asia_motor_r_subtotal;
+    dashboard.asia_motor_total = i_dashboard.asia_motor_total;
+    dashboard.asia_pinpric_l = i_dashboard.asia_pinpric_l;
+    dashboard.asia_pinpric_l_subtotal = i_dashboard.asia_pinpric_l_subtotal;
+    dashboard.asia_pinpric_r = i_dashboard.asia_pinpric_r;
+    dashboard.asia_pinpric_r_subtotal = i_dashboard.asia_pinpric_r_subtotal;
+    dashboard.asia_pinpric_total = i_dashboard.asia_pinpric_total;
+    dashboard.asia_score = i_dashboard.asia_score;
+    dashboard.billingcode = i_dashboard.billingcode;
+    dashboard.brace_required = i_dashboard.brace_required;
+    dashboard.complete_or_incomplete = i_dashboard.complete_or_incomplete;
+    dashboard.createddate = i_dashboard.createddate;
+    dashboard.dashboard_id = i_dashboard.dashboard_id;
+    dashboard.date_of_birth = i_dashboard.date_of_birth;
+    dashboard.date_of_surgery = i_dashboard.date_of_surgery;
+    dashboard.degree_kyphosis = i_dashboard.degree_kyphosis;
+    dashboard.diagnosis_details = i_dashboard.diagnosis_details;
+    dashboard.follow_up_required = i_dashboard.follow_up_required;
+    dashboard.fracture_morphology_type = i_dashboard.fracture_morphology_type;
+    dashboard.fracturetype = i_dashboard.fracturetype;
+    dashboard.hangman = i_dashboard.hangman;
+    dashboard.healthcard_number = i_dashboard.healthcard_number;
+    dashboard.height_loss = i_dashboard.height_loss;
+    dashboard.injurylevel = i_dashboard.injurylevel;
+    dashboard.injurytype = i_dashboard.injurytype;
+    dashboard.lastmoddate = i_dashboard.lastmoddate;
+    dashboard.n_motor_l = i_dashboard.n_motor_l;
+    dashboard.n_motor_r = i_dashboard.n_motor_r;
+    dashboard.n_sensory_l = i_dashboard.n_sensory_l;
+    dashboard.n_sensory_r = i_dashboard.n_sensory_r;
+    dashboard.neurologic_status = i_dashboard.neurologic_status;
+    dashboard.neurological_level = i_dashboard.neurological_level;
+    dashboard.neurologicallyintact = i_dashboard.neurologicallyintact;
+    dashboard.occur_date = i_dashboard.occur_date;
+    dashboard.option2 = i_dashboard.option2;
+    dashboard.patient_status = i_dashboard.patient_status;
+    dashboard.plc = i_dashboard.plc;
+    dashboard.status = i_dashboard.status;
+    dashboard.surgery_required = i_dashboard.surgery_required;
+    dashboard.surgical_billing_code = i_dashboard.surgical_billing_code;
+    dashboard.tlic_score = i_dashboard.tlic_score;
+    dashboard.translation = i_dashboard.translation;
+    dashboard.trauma = i_dashboard.trauma;
+    dashboard.visit_type = i_dashboard.visit_type;
+    dashboard.voluntary_anal_contraction = i_dashboard.voluntary_anal_contraction;
+    dashboard.z_motor_l = i_dashboard.z_motor_l;
+    dashboard.z_motor_r = i_dashboard.z_motor_r;
+    dashboard.z_sensory_l = i_dashboard.z_sensory_l;
+    dashboard.z_sensory_r = i_dashboard.z_sensory_r;
+    dashboard.zone_partial_preservation = i_dashboard.zone_partial_preservation;
+    dashboard.tlic_score_total = i_dashboard.tlic_score_total;
+
+
+    NSError *error;
+    if(![localContext save:&error]){
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
 }
 
 - (void)syncStackMobData:(id)sender {
@@ -177,7 +260,7 @@
     }
 }
 
-- (void)saveLocalCoreData {
+- (void)saveLocalCoreData:(id)sender {
     
     Clipboard *clip = [Clipboard sharedClipboard];
     NSManagedObjectContext *localContext = [clip clipKey:@"managaedObjectContext"];

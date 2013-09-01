@@ -9,6 +9,7 @@
 #import "IntakeForm2ViewController.h"
 #import "Utility.h"
 #import "Clipboard.h"   
+#import "StackMob.h"
 
 
 @interface IntakeForm2ViewController ()
@@ -143,7 +144,7 @@
      */
     if(indexPath.section == 0 && indexPath.row == 0) {
         //--- Date ---//
-        [datePickerViewController moveUpPickerView];
+//        [datePickerViewController moveUpPickerView];
     }
 }
 
@@ -180,14 +181,46 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self saveCurrentScreenData];
     
-    dashboard.occur_date = _lb_date.text;
 //	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
 //        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
 //
 //    }
 }
 
+#pragma mark - custom method
 
+- (void)saveCurrentScreenData {
+    dashboard.occur_date = _lb_date.text;
+    dashboard.visit_type = _tf_visitType.text;
+    dashboard.billingcode = _tf_billingCode.text;
+}
+- (IBAction)save_local:(id)sender {
+    [self saveCurrentScreenData];
+    
+    dashboard.status = @"Local";
+    //    Clipboard *clip = [Clipboard sharedClipboard];
+    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    [context saveOnSuccess:^{
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+    
+    
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel_local:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 @end
+
+

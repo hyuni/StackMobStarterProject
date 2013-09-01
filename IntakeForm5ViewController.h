@@ -24,6 +24,11 @@
 
 
 - (IBAction)billing_code_done:(id)sender;
+
+- (IBAction)save_local:(id)sender;
+- (IBAction)cancel_local:(id)sender;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *lb_dateOfSurgery;
 
 

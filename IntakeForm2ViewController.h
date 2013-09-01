@@ -21,5 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_visitType;
 @property (weak, nonatomic) IBOutlet UITextField *tf_billingCode;
 
+- (IBAction)save_local:(id)sender;
+- (IBAction)cancel_local:(id)sender;
+
 
 @end

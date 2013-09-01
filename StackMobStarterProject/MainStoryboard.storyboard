@@ -162,13 +162,17 @@
         <!--Navigation Controller-->
         <scene sceneID="Lsv-Or-kvW">
             <objects>
-                <navigationController storyboardIdentifier="realNavigationController" definesPresentationContext="YES" id="3n6-mF-RdF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="realNavigationController" definesPresentationContext="YES" toolbarHidden="NO" id="3n6-mF-RdF" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Ws6-If-cv4">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cgc-6f-x8F">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="akY-qA-Pph" kind="relationship" relationship="rootViewController" id="0oH-et-fCQ"/>
                     </connections>
@@ -182,27 +186,61 @@
             <objects>
                 <viewController id="akY-qA-Pph" customClass="DashboardViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="77E-v5-Zys">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" tag="100" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-q3-0TQ">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="LE7-8a-y1A" style="IBUITableViewCellStyleDefault" id="3Qc-Lm-6tN">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="3Qc-Lm-6tN">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LE7-8a-y1A">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Patient_ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MD-tu-5O5">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="184" id="qCB-fe-LDn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Explain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zj0-Du-RdS">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="zrX-qu-bbI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-W8-hsh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="5qI-px-E7G"/>
+                                                        <constraint firstAttribute="width" constant="58" id="aVR-t9-5pD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="status">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="8MD-tu-5O5" firstAttribute="top" secondItem="3Qc-Lm-6tN" secondAttribute="top" constant="3" id="5FW-J6-slj"/>
+                                            <constraint firstItem="Zj0-Du-RdS" firstAttribute="leading" secondItem="8MD-tu-5O5" secondAttribute="leading" type="default" id="8Z4-Nm-juL"/>
+                                            <constraint firstItem="Zj0-Du-RdS" firstAttribute="trailing" secondItem="8MD-tu-5O5" secondAttribute="trailing" type="default" id="Dl8-gu-Tfd"/>
+                                            <constraint firstItem="Zj0-Du-RdS" firstAttribute="top" secondItem="3Qc-Lm-6tN" secondAttribute="top" constant="21" id="Oox-cl-nZI"/>
+                                            <constraint firstItem="aP5-W8-hsh" firstAttribute="centerY" secondItem="3Qc-Lm-6tN" secondAttribute="centerY" type="default" id="cYT-37-CWE"/>
+                                            <constraint firstItem="8MD-tu-5O5" firstAttribute="leading" secondItem="3Qc-Lm-6tN" secondAttribute="leading" constant="19" id="u9C-IF-brQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="aP5-W8-hsh" secondAttribute="trailing" constant="21" id="wum-Yc-0Ax"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -217,6 +255,7 @@
                                     <tabBarItem tag="1" title="All" image="tabbar-home-selected.png" id="dNc-YX-UAn"/>
                                     <tabBarItem tag="2" title="Draft" image="tabbar-star.png" id="KMG-js-OgV" userLabel="Tab Bar Item - More"/>
                                     <tabBarItem tag="3" title="Sent" image="tabbar-movie.png" id="u1H-6H-AVp"/>
+                                    <tabBarItem tag="4" title="Local" image="tabbar-vcard.png" id="fmx-s2-IRo"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="akY-qA-Pph" id="VOz-7p-8cA"/>
@@ -271,9 +310,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dashTableView" destination="tnz-q3-0TQ" id="7Xt-Py-I64"/>
                         <outlet property="tab_all" destination="dNc-YX-UAn" id="kVU-4F-SDD"/>
                         <outlet property="tab_bar" destination="7ln-Bl-2uI" id="8Tl-w4-Nc6"/>
                         <outlet property="tab_draft" destination="KMG-js-OgV" id="MiB-VW-hAA"/>
+                        <outlet property="tab_local" destination="fmx-s2-IRo" id="gbv-cN-37Y"/>
                         <outlet property="tab_sent" destination="u1H-6H-AVp" id="q99-MN-CYz"/>
                     </connections>
                 </viewController>
@@ -286,7 +327,7 @@
             <objects>
                 <tableViewController id="bwo-Ly-Cza" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="v43-i8-1CX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yze-Y1-UZm">
@@ -506,9 +547,17 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="Rxd-hu-6B5"/>
+                        <barButtonItem title="Delete" id="Rxd-hu-6B5">
+                            <connections>
+                                <action selector="cancel_local:" destination="G37-ew-1gN" id="NJr-fD-xXo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="AuT-CR-dat"/>
-                        <barButtonItem title="Save draft" id="V8V-og-QIB"/>
+                        <barButtonItem title="Save draft" id="V8V-og-QIB">
+                            <connections>
+                                <action selector="save_local:" destination="G37-ew-1gN" id="hlH-sd-TWK"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Intake Form" id="YuD-jp-RK8"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2059,9 +2108,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="a1Y-og-QMS"/>
+                        <barButtonItem title="Delete" id="a1Y-og-QMS">
+                            <connections>
+                                <action selector="cancel_local:" destination="VbB-3h-YTG" id="lWf-Bn-aS5"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="98n-2b-gYT"/>
-                        <barButtonItem title="Save draft" id="F05-X9-ia2"/>
+                        <barButtonItem title="Save draft" id="F05-X9-ia2">
+                            <connections>
+                                <action selector="save_local:" destination="VbB-3h-YTG" id="5wq-og-hbP"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Intake Form" id="ZIx-h9-Yae"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2244,9 +2301,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="IDL-v0-K7W"/>
+                        <barButtonItem title="Delete" id="IDL-v0-K7W">
+                            <connections>
+                                <action selector="cancel_local:" destination="u7X-Ba-KFp" id="TlD-nS-qps"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="GEx-un-Cma"/>
-                        <barButtonItem title="Save draft" id="NEQ-rJ-GGF"/>
+                        <barButtonItem title="Save draft" id="NEQ-rJ-GGF">
+                            <connections>
+                                <action selector="save_local:" destination="u7X-Ba-KFp" id="uYF-hE-9e1"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Intake Form" id="9gD-hd-Seh"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2302,9 +2367,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="Lpj-f4-Wro"/>
+                        <barButtonItem title="Delete" id="Lpj-f4-Wro">
+                            <connections>
+                                <action selector="cancel_local:" destination="ISI-mW-h5I" id="Ecn-mB-72q"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Dee-YT-eo3"/>
-                        <barButtonItem title="Save draft" id="15h-XQ-K1j"/>
+                        <barButtonItem title="Save draft" id="15h-XQ-K1j">
+                            <connections>
+                                <action selector="save_local:" destination="ISI-mW-h5I" id="x3S-Ya-lx8"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Intake Form" id="DzO-Fm-01T"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -2318,7 +2391,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <tableViewController storyboardIdentifier="IntakeForm5ViewController" id="2ln-3p-Q3J" customClass="IntakeForm5ViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="i0a-iC-JPy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="ODR-8N-xRi">
@@ -2480,7 +2553,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="2ln-3p-Q3J" id="qz9-Td-TiZ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Delete" id="U7g-XH-cOF">
+                            <connections>
+                                <action selector="cancel_local:" destination="2ln-3p-Q3J" id="CAV-BB-W3L"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4Vx-Bg-ahm"/>
+                        <barButtonItem title="Save draft" id="Tya-yc-4J8">
+                            <connections>
+                                <action selector="save_local:" destination="2ln-3p-Q3J" id="R2O-ub-yiq"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUa-cy-qi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2494,6 +2581,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="tabbar-home-selected.png" width="31" height="29"/>
         <image name="tabbar-movie.png" width="36" height="30"/>
         <image name="tabbar-star.png" width="31" height="32"/>
+        <image name="tabbar-vcard.png" width="37" height="25"/>
         <image name="tv_back.png" width="320" height="480"/>
     </resources>
     <classes>
@@ -2501,15 +2589,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
             <relationships>
                 <relationship kind="action" name="bbtn_left:"/>
+                <relationship kind="outlet" name="dashTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="tab_all" candidateClass="UITabBarItem"/>
                 <relationship kind="outlet" name="tab_bar" candidateClass="UITabBar"/>
                 <relationship kind="outlet" name="tab_draft" candidateClass="UITabBarItem"/>
+                <relationship kind="outlet" name="tab_local" candidateClass="UITabBarItem"/>
                 <relationship kind="outlet" name="tab_sent" candidateClass="UITabBarItem"/>
             </relationships>
         </class>
         <class className="IntakeForm1ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm1ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancel_local:"/>
+                <relationship kind="action" name="save_local:"/>
                 <relationship kind="outlet" name="dp_dateOfBirth" candidateClass="UIDatePicker"/>
                 <relationship kind="outlet" name="lb_dataOfBirth" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="modalView" candidateClass="UIView"/>
@@ -2519,6 +2611,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="IntakeForm2ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm2ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancel_local:"/>
+                <relationship kind="action" name="save_local:"/>
                 <relationship kind="outlet" name="lb_date" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tf_billingCode" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="tf_visitType" candidateClass="UITextField"/>
@@ -2526,14 +2620,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="IntakeForm3ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm3ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel_local:"/>
+                <relationship kind="action" name="save_local:"/>
+            </relationships>
         </class>
         <class className="IntakeForm4ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm4ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel_local:"/>
+                <relationship kind="action" name="save_local:"/>
+            </relationships>
         </class>
         <class className="IntakeForm5ViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IntakeForm5ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="billing_code_done:"/>
+                <relationship kind="action" name="cancel_local:"/>
+                <relationship kind="action" name="save_local:"/>
                 <relationship kind="outlet" name="lb_dateOfSurgery" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -2551,7 +2655,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="cell_6" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="cell_7" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="cell_8" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cell_9" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="cell_9" candidateClass="UITableViewCelhl"/>
                 <relationship kind="outlet" name="cell_confirm" candidateClass="UITableViewCell"/>
             </relationships>
         </class>

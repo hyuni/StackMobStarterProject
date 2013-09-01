@@ -7,6 +7,8 @@
 //
 
 #import "IntakeForm3ViewController.h"
+#import "Clipboard.h"
+#import "StackMob.h"
 
 @interface IntakeForm3ViewController ()
 
@@ -32,6 +34,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    Clipboard *clip = [Clipboard sharedClipboard];
+    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,5 +122,39 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+#pragma mark - custom method
+
+- (void)saveCurrentScreenData {
+//    dashboard.occur_date = _lb_date.text;
+//    dashboard.visit_type = _tf_visitType.text;
+//    dashboard.billingcode = _tf_billingCode.text;
+}
+- (IBAction)save_local:(id)sender {
+    [self saveCurrentScreenData];
+    
+    dashboard.status = @"Local";
+    //    Clipboard *clip = [Clipboard sharedClipboard];
+    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    [context saveOnSuccess:^{
+        
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+    
+    
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel_local:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
 
 @end
