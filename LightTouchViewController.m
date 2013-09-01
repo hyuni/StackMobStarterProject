@@ -255,7 +255,25 @@
      */
     
     if(indexPath.section == 0) {
-        // data section
+        // data section - show image
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        LightInfoViewController *info = [storyboard instantiateViewControllerWithIdentifier:@"LightInfoViewController"];
+
+        if(indexPath.row >= 0 && indexPath.row <= 2) {
+            [info setImageName:@"Light_1"];
+        }
+        else if(indexPath.row >= 3 && indexPath.row <= 18) {
+            [info setImageName:@"Light_2"];
+        }
+        else if(indexPath.row >= 19 && indexPath.row <= 24) {
+            [info setImageName:@"Light_3"];
+        }
+        else if(indexPath.row >= 25 && indexPath.row <= 27) {
+            [info setImageName:@"Light_4"];
+        }
+        
+        [self.navigationController pushViewController:info animated:YES];
     }
     else {
         // confirm or error

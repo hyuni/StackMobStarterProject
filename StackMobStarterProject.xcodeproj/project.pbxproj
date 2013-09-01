@@ -30,6 +30,14 @@
 		80347D0817CB036E00C2A782 /* PickerDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80347D0717CB036E00C2A782 /* PickerDateViewController.m */; };
 		803696A517D12D4400D002DA /* TLICScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696A417D12D4400D002DA /* TLICScoreViewController.m */; };
 		803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696AE17D1620E00D002DA /* IntakeMotorViewController.m */; };
+		803A1DCC17D275F50038F84C /* Light_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DC817D275F50038F84C /* Light_1.png */; };
+		803A1DCD17D275F50038F84C /* Light_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DC917D275F50038F84C /* Light_2.png */; };
+		803A1DCE17D275F50038F84C /* Light_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DCA17D275F50038F84C /* Light_3.png */; };
+		803A1DCF17D275F50038F84C /* Light_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DCB17D275F50038F84C /* Light_4.png */; };
+		803A1DD317D279310038F84C /* SendAsiaScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DD117D279310038F84C /* SendAsiaScoreViewController.m */; };
+		803A1DD417D279310038F84C /* SendAsiaScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DD217D279310038F84C /* SendAsiaScoreViewController.xib */; };
+		803A1DD817D27D960038F84C /* IntakeForm5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DD617D27D960038F84C /* IntakeForm5ViewController.m */; };
+		803A1DE517D329970038F84C /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DE417D329970038F84C /* Dashboard.m */; };
 		804C5D7C17C32E3900B00065 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE017C32E3800B00065 /* backButton.png */; };
 		804C5D7D17C32E3900B00065 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE117C32E3800B00065 /* backButton@2x.png */; };
 		804C5D7E17C32E3900B00065 /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE217C32E3800B00065 /* background-568h@2x.png */; };
@@ -197,7 +205,6 @@
 		80670E7917D1BDD0000E4B3A /* ConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7817D1BDD0000E4B3A /* ConfirmCell.xib */; };
 		80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E8517D1D117000E4B3A /* LightInfoViewController.m */; };
 		80670E8817D1D982000E4B3A /* LightTouchMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */; };
-		80670E8B17D1DCE1000E4B3A /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E8A17D1DCE0000E4B3A /* Dashboard.m */; };
 		80670E8D17D1E5AA000E4B3A /* Neurological_level.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */; };
 		809FF15A17C2E2130071FC08 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */; };
 		809FF15B17C2E2130071FC08 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15717C2E2130071FC08 /* MFSideMenuShadow.m */; };
@@ -291,6 +298,17 @@
 		803696A417D12D4400D002DA /* TLICScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLICScoreViewController.m; sourceTree = "<group>"; };
 		803696AD17D1620E00D002DA /* IntakeMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeMotorViewController.h; sourceTree = "<group>"; };
 		803696AE17D1620E00D002DA /* IntakeMotorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeMotorViewController.m; sourceTree = "<group>"; };
+		803A1DC817D275F50038F84C /* Light_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Light_1.png; sourceTree = "<group>"; };
+		803A1DC917D275F50038F84C /* Light_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Light_2.png; sourceTree = "<group>"; };
+		803A1DCA17D275F50038F84C /* Light_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Light_3.png; sourceTree = "<group>"; };
+		803A1DCB17D275F50038F84C /* Light_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Light_4.png; sourceTree = "<group>"; };
+		803A1DD017D279310038F84C /* SendAsiaScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendAsiaScoreViewController.h; sourceTree = "<group>"; };
+		803A1DD117D279310038F84C /* SendAsiaScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendAsiaScoreViewController.m; sourceTree = "<group>"; };
+		803A1DD217D279310038F84C /* SendAsiaScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendAsiaScoreViewController.xib; sourceTree = "<group>"; };
+		803A1DD517D27D960038F84C /* IntakeForm5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm5ViewController.h; sourceTree = "<group>"; };
+		803A1DD617D27D960038F84C /* IntakeForm5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm5ViewController.m; sourceTree = "<group>"; };
+		803A1DE317D329970038F84C /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = "<group>"; };
+		803A1DE417D329970038F84C /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = "<group>"; };
 		804C5CE017C32E3800B00065 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		804C5CE117C32E3800B00065 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		804C5CE217C32E3800B00065 /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
@@ -462,8 +480,6 @@
 		80670E8417D1D117000E4B3A /* LightInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightInfoViewController.h; sourceTree = "<group>"; };
 		80670E8517D1D117000E4B3A /* LightInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightInfoViewController.m; sourceTree = "<group>"; };
 		80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchMenuCell.xib; sourceTree = "<group>"; };
-		80670E8917D1DCE0000E4B3A /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = "<group>"; };
-		80670E8A17D1DCE0000E4B3A /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = "<group>"; };
 		80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Neurological_level.xib; sourceTree = "<group>"; };
 		809FF15317C2E2130071FC08 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		809FF15417C2E2130071FC08 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
@@ -632,6 +648,8 @@
 				800CA99817CFB3F8006EEF07 /* IntakeForm3ViewController.m */,
 				800CA99A17CFB40C006EEF07 /* IntakeForm4ViewController.h */,
 				800CA99B17CFB40C006EEF07 /* IntakeForm4ViewController.m */,
+				803A1DD517D27D960038F84C /* IntakeForm5ViewController.h */,
+				803A1DD617D27D960038F84C /* IntakeForm5ViewController.m */,
 				800CA9A817D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.h */,
 				800CA9A917D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.m */,
 				800CA9AA17D0012C006EEF07 /* IntakeForm4InjuryTypeViewController.xib */,
@@ -653,6 +671,9 @@
 				80670E7617D1BAEC000E4B3A /* LightTouchViewController.xib */,
 				80670E8417D1D117000E4B3A /* LightInfoViewController.h */,
 				80670E8517D1D117000E4B3A /* LightInfoViewController.m */,
+				803A1DD017D279310038F84C /* SendAsiaScoreViewController.h */,
+				803A1DD117D279310038F84C /* SendAsiaScoreViewController.m */,
+				803A1DD217D279310038F84C /* SendAsiaScoreViewController.xib */,
 			);
 			name = IntakeForm;
 			sourceTree = "<group>";
@@ -676,6 +697,10 @@
 		804C5CDF17C32E3800B00065 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				803A1DC817D275F50038F84C /* Light_1.png */,
+				803A1DC917D275F50038F84C /* Light_2.png */,
+				803A1DCA17D275F50038F84C /* Light_3.png */,
+				803A1DCB17D275F50038F84C /* Light_4.png */,
 				804C5CE017C32E3800B00065 /* backButton.png */,
 				804C5E2617C3476700B00065 /* tv_back.png */,
 				804C5CE117C32E3800B00065 /* backButton@2x.png */,
@@ -913,8 +938,8 @@
 		80C6CFA617C7165E00A0F5A7 /* DataObject */ = {
 			isa = PBXGroup;
 			children = (
-				80670E8917D1DCE0000E4B3A /* Dashboard.h */,
-				80670E8A17D1DCE0000E4B3A /* Dashboard.m */,
+				803A1DE317D329970038F84C /* Dashboard.h */,
+				803A1DE417D329970038F84C /* Dashboard.m */,
 				80C6CF6A17C5C35000A0F5A7 /* User.h */,
 				80C6CF6B17C5C35000A0F5A7 /* User.m */,
 				80C6CFA117C715DD00A0F5A7 /* Patient.h */,
@@ -943,7 +968,8 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
-				800CA9AD17D00136006EEF07 /* IntakeForm */,
+				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
+				80347D0717CB036E00C2A782 /* PickerDateViewController.m */,
 				800CA9A017CFB714006EEF07 /* PickerViewController.h */,
 				800CA9A117CFB714006EEF07 /* PickerViewController.m */,
 				800CA9A217CFB714006EEF07 /* PickerViewController.xib */,
@@ -953,12 +979,11 @@
 				80C6CFA617C7165E00A0F5A7 /* DataObject */,
 				809FF15217C2E2130071FC08 /* MFSideMenu */,
 				80C6CF6D17C6C62800A0F5A7 /* Utility */,
+				800CA9AD17D00136006EEF07 /* IntakeForm */,
 				804C5E1E17C341E000B00065 /* DashboardViewController.h */,
 				804C5E1F17C341E000B00065 /* DashboardViewController.m */,
 				804C5E2817C3EA9E00B00065 /* SideMenu2ViewController.h */,
 				804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */,
-				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
-				80347D0717CB036E00C2A782 /* PickerDateViewController.m */,
 				80BA62A417BC8EEA0030BB52 /* LoginViewController.h */,
 				80BA62A517BC8EEA0030BB52 /* LoginViewController.m */,
 				DE9FD48317A881DA00B290E4 /* StackMob-v2.1.0 */,
@@ -1346,6 +1371,11 @@
 				80670E7917D1BDD0000E4B3A /* ConfirmCell.xib in Resources */,
 				80670E8817D1D982000E4B3A /* LightTouchMenuCell.xib in Resources */,
 				80670E8D17D1E5AA000E4B3A /* Neurological_level.xib in Resources */,
+				803A1DCC17D275F50038F84C /* Light_1.png in Resources */,
+				803A1DCD17D275F50038F84C /* Light_2.png in Resources */,
+				803A1DCE17D275F50038F84C /* Light_3.png in Resources */,
+				803A1DCF17D275F50038F84C /* Light_4.png in Resources */,
+				803A1DD417D279310038F84C /* SendAsiaScoreViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,7 +1431,9 @@
 				803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */,
 				80670E6F17D19D82000E4B3A /* LightTouchViewController.m in Sources */,
 				80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */,
-				80670E8B17D1DCE1000E4B3A /* Dashboard.m in Sources */,
+				803A1DD317D279310038F84C /* SendAsiaScoreViewController.m in Sources */,
+				803A1DD817D27D960038F84C /* IntakeForm5ViewController.m in Sources */,
+				803A1DE517D329970038F84C /* Dashboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1463,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1446,6 +1479,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1462,6 +1497,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1470,6 +1506,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1478,8 +1516,8 @@
 		DE01BB7A17712C7200D80549 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StackMobStarterProject/StackMobStarterProject-Prefix.pch";
 				INFOPLIST_FILE = "StackMobStarterProject/StackMobStarterProject-Info.plist";
@@ -1489,6 +1527,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1496,8 +1536,8 @@
 		DE01BB7B17712C7200D80549 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StackMobStarterProject/StackMobStarterProject-Prefix.pch";
 				INFOPLIST_FILE = "StackMobStarterProject/StackMobStarterProject-Info.plist";
@@ -1507,6 +1547,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -9,12 +9,14 @@
 #import "IntakeForm4ViewController.h"
 #import "IntakeForm4InjuryTypeViewController.h"
 #import "IntakeForm4FractureTypeViewController.h"
+#import "IntakeForm5ViewController.h"
 #import "Clipboard.h"
 #import "NumberPadViewController.h"
 #import "OnePickerViewController.h"
 #import "TLICScoreViewController.h"
 #import "IntakeMotorViewController.h"
 #import "LightTouchViewController.h"
+#import "SendAsiaScoreViewController.h"
 
 
 @interface IntakeForm4ViewController ()
@@ -42,9 +44,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    arr_menu = [NSArray arrayWithObjects:@"Neurologically Intact", @"Select Injury Type", @"Select Fracture Type", nil];
-
-        
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
     
@@ -53,7 +52,7 @@
 }
 
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     /* menu list
      Neurologically Intact
      Select Injury Type
@@ -276,12 +275,13 @@
             }
             else if ([str_menuName isEqualToString:@"TLIC Score"]) {
                 if(dashboard.fracture_morphology_type != nil && dashboard.neurologic_status != nil && dashboard.plc) {
-                    int i_total = 0;
-                    if(dashboard.fracture_morphology_type != nil) i_total += [dashboard.fracture_morphology_type intValue];
-                    if(dashboard.neurologic_status != nil) i_total += [dashboard.neurologic_status intValue];
-                    if(dashboard.plc != nil) i_total += [dashboard.plc intValue];
-                    
-                    lb_right.text = [NSString stringWithFormat:@"%d", i_total];
+//                    int i_total = 0;
+//                    if(dashboard.fracture_morphology_type != nil) i_total += [dashboard.fracture_morphology_type intValue];
+//                    if(dashboard.neurologic_status != nil) i_total += [dashboard.neurologic_status intValue];
+//                    if(dashboard.plc != nil) i_total += [dashboard.plc intValue];
+//                    
+//                    lb_right.text = [NSString stringWithFormat:@"%d", i_total];
+                    lb_right.text = dashboard.tlic_score_total;
                 }
             }
             else if ([str_menuName isEqualToString:@"Translation"]){
@@ -614,12 +614,15 @@
             
         }
         else if([str_menu isEqualToString:@"Send ASIA report"]) {
-            
+            SendAsiaScoreViewController *sendController = [[SendAsiaScoreViewController alloc] initWithNibName:@"SendAsiaScoreViewController" bundle:nil];
+            [self.navigationController pushViewController:sendController animated:YES];
         }
 
     }
     else {
         // next or error
+        IntakeForm5ViewController *form5Controller = [storyboard instantiateViewControllerWithIdentifier:@"IntakeForm5ViewController"];
+        [self.navigationController pushViewController:form5Controller animated:YES];
     }
     
     
@@ -687,7 +690,7 @@
     dashboard.injurytype = @"";
     dashboard.fracturetype = @"";
     
-    [self viewDidAppear:NO];
+    [self viewWillAppear:NO];
 }
 
 /*

@@ -8,6 +8,7 @@
 
 #import "IntakeForm2ViewController.h"
 #import "Utility.h"
+#import "Clipboard.h"   
 
 
 @interface IntakeForm2ViewController ()
@@ -42,12 +43,16 @@
     
     //--- date setting ---//
     //--- Date of Birth Setting ---//
-    lb_date.text = [Utility dateToString:[NSDate date]];
+    _lb_date.text = [Utility dateToString:[NSDate date]];
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];
 //    
 //    [self.view addGestureRecognizer:tap];
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
+
 }
 
 - (void)dismissKeyboard {
@@ -160,25 +165,27 @@
 
 #pragma mark - NewDatePickerViewController delegate
 -(void)delegateConfirm:(NSDate *)date_selected {
-    lb_date.text = [Utility dateToString:date_selected];
+    _lb_date.text = [Utility dateToString:date_selected];
 }
 
 #pragma mark - Segue delegate
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//
-//    NSString *str_cardNumber = _tf_healthCardNumber.text;
-//    if(str_cardNumber.length > 0) return YES;
-//    else return NO;
-//}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if([_lb_date.text length] > 0)
+        return YES;
+    else
+        return NO;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
-        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
-        nextViewController.dashboard = _dashboard;
-    }
+    dashboard.occur_date = _lb_date.text;
+//	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
+//        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
+//
+//    }
 }
 
 

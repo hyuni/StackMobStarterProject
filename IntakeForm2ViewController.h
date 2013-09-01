@@ -13,10 +13,13 @@
 @interface IntakeForm2ViewController : UITableViewController<NewDatePcikerViewControllerDelegate> {
     UIView *datePickerView;
     NewDatePickerViewController *datePickerViewController;
-    __weak IBOutlet UILabel *lb_date;
+
+    Dashboard *dashboard;
 }
 
-@property (strong, nonatomic) Dashboard *dashboard;
+@property (weak, nonatomic) IBOutlet UILabel *lb_date;
+@property (weak, nonatomic) IBOutlet UITextField *tf_visitType;
+@property (weak, nonatomic) IBOutlet UITextField *tf_billingCode;
 
 
 @end

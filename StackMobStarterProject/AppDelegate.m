@@ -56,19 +56,20 @@
     NSManagedObjectContext *localContext = [self _localManagedObjectContext];
     [clip clipValue:localContext clipKey:@"managaedObjectContext"];
     
-    [self syncStackMobData];
+    [self syncStackMobData:nil];
 //    [self saveStackMobData];
 //    [self fetchStackMobData];
 //    [self saveLocalCoreData];
 //    [self fetchLocalCoreData];
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
     return YES;
 }
 
-- (void)syncStackMobData {
+- (void)syncStackMobData:(id)sender {
     // You'll need a block declared core data store instance
     __block SMCoreDataStore *blockCoreDataStore = self.coreDataStore;
+
     [self.client.session.networkMonitor setNetworkStatusChangeBlockWithCachePolicyReturn:^SMCachePolicy(SMNetworkStatus status) {
 
         if (status == SMNetworkStatusReachable) {
@@ -153,9 +154,9 @@
     
     [context executeFetchRequest:fetchRequest onSuccess:^(NSArray *results) {
         NSLog(@"Data %@", results);
-        Dashboard *dash = [results objectAtIndex:0];
-        NSString *asdf = dash.z_sensory_r;
-        int a = 0;
+//        Dashboard *dash = [results objectAtIndex:0];
+//        NSString *asdf = dash.z_sensory_r;
+//        int a = 0;
         
 //        [self saveStackMobDataToLocalCoreData:dash];
         

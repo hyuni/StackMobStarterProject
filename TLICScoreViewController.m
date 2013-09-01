@@ -57,24 +57,27 @@
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 //{
-//#warning Potentially incomplete method implementation.
 //    // Return the number of sections.
-//    return 0;
+//    return 4;
 //}
 //
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //{
-//#warning Incomplete method implementation.
 //    // Return the number of rows in the section.
-//    return 0;
+//    if(section == 0) return 4;
+//    else if(section == 1) return 4;
+//    else if(section == 2) return 3;
+//    else return 1;
 //}
 //
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+////    static NSString *CellIdentifier = @"Cell";
+////    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 //    
 //    // Configure the cell...
+//    NSString *identifier = nil;
+//    if(
 //    
 //    return cell;
 //}
@@ -130,6 +133,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     
+    
     if(indexPath.section >= 0 && indexPath.section <= 2) {
         NSArray *arr_tmpSection = [arr_sections objectAtIndex:indexPath.section];
         
@@ -164,13 +168,14 @@
         if(cell_section_2 != nil) i_total += [cell_section_2.detailTextLabel.text intValue];
         if(cell_section_3 != nil) i_total += [cell_section_3.detailTextLabel.text intValue];
         
+        dashboard.tlic_score_total = [NSString stringWithFormat:@"%d", i_total];
         self.title = [NSString stringWithFormat:@"TLIC Score : [%d]", i_total];
 
     }
     else if(indexPath.section == 3){
         if(indexPath.row == 0) {
             // Confirm
-            if(cell_section_1 != nil && cell_section_2 != nil && cell_section_3) {
+            if(cell_section_1 != nil && cell_section_2 != nil && cell_section_3 != nil) {
                 //--- save data
                 dashboard.fracture_morphology_type = cell_section_1.textLabel.text;
                 dashboard.neurologic_status = cell_section_2.textLabel.text;

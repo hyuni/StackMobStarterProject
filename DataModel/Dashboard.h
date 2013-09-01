@@ -2,7 +2,7 @@
 //  Dashboard.h
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/31/13.
+//  Created by kakadais on 9/1/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @interface Dashboard : NSManagedObject
 
+@property (nonatomic, retain) NSString * admit_to_hospital;
 @property (nonatomic, retain) NSString * admitted;
 @property (nonatomic, retain) NSString * anal_sensation;
 @property (nonatomic, retain) NSString * asia_lighttouch_l;
@@ -31,11 +32,15 @@
 @property (nonatomic, retain) NSString * asia_pinpric_total;
 @property (nonatomic, retain) NSString * asia_score;
 @property (nonatomic, retain) NSString * billingcode;
+@property (nonatomic, retain) NSString * brace_required;
+@property (nonatomic, retain) NSString * complete_or_incomplete;
 @property (nonatomic, retain) NSDate * createddate;
 @property (nonatomic, retain) NSString * dashboard_id;
 @property (nonatomic, retain) NSString * date_of_birth;
+@property (nonatomic, retain) NSString * date_of_surgery;
 @property (nonatomic, retain) NSString * degree_kyphosis;
 @property (nonatomic, retain) NSString * diagnosis_details;
+@property (nonatomic, retain) NSString * follow_up_required;
 @property (nonatomic, retain) NSString * fracture_morphology_type;
 @property (nonatomic, retain) NSString * fracturetype;
 @property (nonatomic, retain) NSString * hangman;
@@ -51,9 +56,13 @@
 @property (nonatomic, retain) NSString * neurologic_status;
 @property (nonatomic, retain) NSString * neurological_level;
 @property (nonatomic, retain) NSString * neurologicallyintact;
+@property (nonatomic, retain) NSString * occur_date;
+@property (nonatomic, retain) NSString * option2;
 @property (nonatomic, retain) NSString * patient_status;
 @property (nonatomic, retain) NSString * plc;
 @property (nonatomic, retain) NSString * status;
+@property (nonatomic, retain) NSString * surgery_required;
+@property (nonatomic, retain) NSString * surgical_billing_code;
 @property (nonatomic, retain) NSString * tlic_score;
 @property (nonatomic, retain) NSString * translation;
 @property (nonatomic, retain) NSString * trauma;
@@ -64,6 +73,6 @@
 @property (nonatomic, retain) NSString * z_sensory_l;
 @property (nonatomic, retain) NSString * z_sensory_r;
 @property (nonatomic, retain) NSString * zone_partial_preservation;
-@property (nonatomic, retain) NSString * complete_or_incomplete;
+@property (nonatomic, retain) NSString * tlic_score_total;
 
 @end

@@ -34,6 +34,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     _tv_info.text = str_tv_info;
+    _iv_img.image = [UIImage imageNamed:str_image_name];
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +123,10 @@
 
 - (void)setInfoText:(NSString *)str_info {
     str_tv_info = str_info;
+}
+
+- (void)setImageName:(NSString *)str_name {
+    str_image_name = str_name;
 }
 
 @end

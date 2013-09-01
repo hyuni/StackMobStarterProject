@@ -49,6 +49,7 @@
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
     //--- initiallize dashboard data---//
+    dashboard.dashboard_id = [dashboard assignObjectId];
     dashboard.injurytype = @"";
     dashboard.injurylevel = @"";
     dashboard.neurologicallyintact = @"NO";
@@ -56,6 +57,7 @@
     dashboard.degree_kyphosis = @"";
     dashboard.height_loss = @"";
     dashboard.tlic_score = @"";
+    dashboard.tlic_score_total = @"";
     dashboard.hangman = @"";
     dashboard.height_loss = @"";
     dashboard.asia_motor_r = @"5555555555";
@@ -86,6 +88,13 @@
     dashboard.z_sensory_r = @"";
     dashboard.z_motor_l = @"";
     dashboard.z_motor_r = @"";
+    dashboard.admit_to_hospital = @"NO";
+    dashboard.follow_up_required = @"NO";
+    dashboard.brace_required = @"NO";
+    dashboard.surgery_required = @"NO";
+    dashboard.date_of_surgery = @"";
+    dashboard.surgical_billing_code = @"";
+    
     
     
     
@@ -217,14 +226,14 @@
 }
 
 #pragma mark - Segue delegate
-//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    NSString *str_cardNumber = _tf_healthCardNumber.text;
-//    if(str_cardNumber.length > 0) return YES;
-//    else return NO;
-//}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *str_cardNumber = _tf_healthCardNumber.text;
+    if(str_cardNumber.length > 0) return YES;
+    else return NO;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     dashboard.healthcard_number = _tf_healthCardNumber.text;
@@ -237,7 +246,7 @@
     
 //	if ([segue.identifier isEqualToString:@"Intake1to2"]) {
 //        IntakeForm2ViewController *nextViewController = segue.destinationViewController;
-//        nextViewController.dashboard = _dashboard;
+//        
 //    }
 }
 
