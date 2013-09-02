@@ -64,8 +64,16 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Dashboard"];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"occur_date" ascending:NO];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, sortDescriptor2, nil];
+    
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createddate" ascending:NO];
+//    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"occur_date" ascending:NO];
+//    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+
     
     if(![status isEqualToString:@"All"]) {
         NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"status == %@", status];
@@ -81,6 +89,8 @@
         NSLog(@"result count : %d", [arr_menu count]);
     } onFailure:^(NSError *error) {
         //        [self.refreshControl endRefreshing];
+        [self dateCalc];
+        [_dashTableView reloadData];
         NSLog(@"An error %@, %@", error, [error userInfo]);
     }];
     
@@ -111,44 +121,75 @@
 #pragma mark - Table view data source
 
 - (void)dateCalc {
-    if([arr_menu count] <= 0)
+    if([arr_menu count] <= 0) {
+        arr_sorted_menu = [[NSMutableArray alloc] init];
         return;
-    
-    Dashboard *board = (Dashboard *)[arr_menu objectAtIndex:0];
-    NSString *str_currentDate = [Utility dateToString:board.createddate];
-    NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
-    
-    arr_sorted_menu = [[NSMutableArray alloc] init];
-    
-    for(int i = 0; i < [arr_menu count]; i++) {
-        NSString *str_tmpDate = [Utility dateToString:((Dashboard *)[arr_menu objectAtIndex:i]).createddate];
-        
-        [arr_tmp addObject:[arr_menu objectAtIndex:i]];
-        if(![str_currentDate isEqualToString:str_tmpDate] || i == ([arr_menu count]-1)) {
-            //different date
-            [arr_sorted_menu addObject:arr_tmp];
-            arr_tmp = [[NSMutableArray alloc] init];
-            str_currentDate = str_tmpDate;
-            
-        }
     }
     
-//    NSArray *arr_0 = [arr_sorted_menu objectAtIndex:0];
-//    NSArray *arr_1 = [arr_sorted_menu objectAtIndex:1];
+    arr_sorted_menu = [[NSMutableArray alloc] init];
+
+    // set first data
+    Dashboard *board = (Dashboard *)[arr_menu objectAtIndex:0];
+    NSString *str_before = board.occur_date;
+    NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+    [arr_tmp addObject:[arr_menu objectAtIndex:0]];
+
+    //calc from second data
+    for(int i = 1; i < [arr_menu count]; i++) {
+        NSString *str_current = ((Dashboard *)[arr_menu objectAtIndex:i]).occur_date;
+        
+        if([str_before isEqualToString:str_current]) {
+            //same
+            [arr_tmp addObject:[arr_menu objectAtIndex:i]]; // add to tmp
+        }
+        else {
+            //different date
+            [arr_sorted_menu addObject:arr_tmp];    // add current tmp to object
+            arr_tmp = [[NSMutableArray alloc] init];    // renew tmp
+            [arr_tmp addObject:[arr_menu objectAtIndex:i]]; // add to tmp
+            str_before = str_current;
+        }
+    }
+    //add last object
+    [arr_sorted_menu addObject:arr_tmp];
+
     
-//    int a = 0;
+//    Dashboard *board = (Dashboard *)[arr_menu objectAtIndex:0];
+//    NSString *str_currentDate = [Utility dateToString:board.createddate];
+//    NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+//    
+//    arr_sorted_menu = [[NSMutableArray alloc] init];
+//    
+//    for(int i = 0; i < [arr_menu count]; i++) {
+//        NSString *str_tmpDate = [Utility dateToString:((Dashboard *)[arr_menu objectAtIndex:i]).createddate];
+//        
+//        [arr_tmp addObject:[arr_menu objectAtIndex:i]];
+//        if(![str_currentDate isEqualToString:str_tmpDate] || i == ([arr_menu count]-1)) {
+//            //different date
+//            [arr_sorted_menu addObject:arr_tmp];
+//            arr_tmp = [[NSMutableArray alloc] init];
+//            str_currentDate = str_tmpDate;
+//            
+//        }
+//    }
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return ((Dashboard *)[(NSArray *)[arr_sorted_menu objectAtIndex:section] objectAtIndex:0]).occur_date;
+//    return [Utility dateToString:((Dashboard *)[(NSArray *)[arr_sorted_menu objectAtIndex:section] objectAtIndex:0]).createddate];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [arr_sorted_menu count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [arr_menu count];
+    return [(NSArray *)[arr_sorted_menu objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,13 +203,14 @@
     UILabel *lb_explain = (UILabel *)[cell viewWithTag:2];
     UIButton *btn_status = (UIButton *)[cell viewWithTag:3];
     
-    lb_healthNumber.text = ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).healthcard_number;
-    lb_explain.text = [NSString stringWithFormat:@"%@", ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).patient_status];
-    NSString *str_tmp = ((Dashboard *)[arr_menu objectAtIndex:indexPath.row]).status;
+    lb_healthNumber.text = ((Dashboard *)[(NSArray *)[arr_sorted_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).healthcard_number;
+    lb_explain.text = [NSString stringWithFormat:@"%@", ((Dashboard *)[(NSArray *)[arr_sorted_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).patient_status];
+    NSString *str_tmp = ((Dashboard *)[(NSArray *)[arr_sorted_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).status;
     [btn_status setTitle:str_tmp forState:UIControlStateNormal];
 
     return cell;
 }
+
 
 /*
  // Override to support conditional editing of the table view.

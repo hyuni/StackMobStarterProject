@@ -38,14 +38,14 @@
     Clipboard *clipboard = [Clipboard sharedClipboard];
     dashboard = [clipboard clipKey:@"create_discharge"];
     
-//    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
-//    self.navigationItem.rightBarButtonItem = confirmButton;
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
     
 }
 
-//- (void)confirm:(id)sender {
-//    
-//}
+- (void)confirm:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];

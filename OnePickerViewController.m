@@ -54,7 +54,10 @@
 #pragma UIPickerView delegate & data source
 // returns the number of 'columns' to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    if([str_mode isEqualToString:@"duplicated"]) {
+    if([str_mode isEqualToString:@"triple"]) {
+        return 3;
+    }
+    else if([str_mode isEqualToString:@"duplicated"]) {
         return 2;
     }
     else {
@@ -64,10 +67,33 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [_arr_component_0 count];
+    if([str_mode isEqualToString:@"triple"]) {
+        if (component == 0) {
+            return [_arr_component_0 count];
+        }
+        else if(component == 1) {
+            return [(NSMutableArray *)id_object1 count];
+        }
+        else if(component == 2) {
+            return [(NSMutableArray *)id_object2 count];
+        }
+    }
+    
+   return [_arr_component_0 count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if([str_mode isEqualToString:@"triple"]) {
+        if (component == 0) {
+            return [_arr_component_0 objectAtIndex:row];
+        }
+        else if(component == 1) {
+            return [(NSMutableArray *)id_object1 objectAtIndex:row];
+        }
+        else if(component == 2) {
+            return [(NSMutableArray *)id_object2 objectAtIndex:row];
+        }
+    }
     return [_arr_component_0 objectAtIndex:row];
 }
 
@@ -84,7 +110,15 @@
 
 - (IBAction)confirm:(id)sender {
     if([self.title isEqualToString:@"Degrees Of Kyphosis"]) {
-        dashboard.degree_kyphosis = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+        NSMutableString *str_tmp = [[NSMutableString alloc] init];
+        [str_tmp appendFormat:@"%@%@%@",[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]], [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:1]], [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:2]], nil];
+        int i_tmp = [str_tmp intValue];
+        str_tmp = [NSString stringWithFormat:@"%d", i_tmp];
+        
+        dashboard.degree_kyphosis = str_tmp;
+    }
+    else if([self.title isEqualToString:@"Visit Type"]) {
+        dashboard.visit_type = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
     }
     else if([self.title isEqualToString:@"Height Loss"]) {
         dashboard.height_loss = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
@@ -110,89 +144,87 @@
         //Adverse event extended visit by
         //create_discharge
         Clipboard *clip = [Clipboard sharedClipboard];
-        Dashboard *dashboard = [clip clipKey:@"create_discharge"];
+        Dashboard *tmpDashboard = [clip clipKey:@"create_discharge"];
 
         NSString *str_tmp = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
         
         switch (selected_indexpath.row) {
             case 0:
-                dashboard.event_0 = str_tmp;
+                tmpDashboard.event_0 = str_tmp;
                 break;
             case 1:
-                dashboard.event_1 = str_tmp;
+                tmpDashboard.event_1 = str_tmp;
                 break;
             case 2:
-                dashboard.event_2 = str_tmp;
+                tmpDashboard.event_2 = str_tmp;
                 break;
             case 3:
-                dashboard.event_3 = str_tmp;
+                tmpDashboard.event_3 = str_tmp;
                 break;
             case 4:
-                dashboard.event_4 = str_tmp;
+                tmpDashboard.event_4 = str_tmp;
                 break;
             case 5:
-                dashboard.event_5 = str_tmp;
+                tmpDashboard.event_5 = str_tmp;
                 break;
             case 6:
-                dashboard.event_6 = str_tmp;
+                tmpDashboard.event_6 = str_tmp;
                 break;
             case 7:
-                dashboard.event_7 = str_tmp;
+                tmpDashboard.event_7 = str_tmp;
                 break;
             case 8:
-                dashboard.event_8 = str_tmp;
+                tmpDashboard.event_8 = str_tmp;
                 break;
             case 9:
-                dashboard.event_9 = str_tmp;
+                tmpDashboard.event_9 = str_tmp;
                 break;
             case 10:
-                dashboard.event_10 = str_tmp;
+                tmpDashboard.event_10 = str_tmp;
                 break;
             case 11:
-                dashboard.event_11 = str_tmp;
+                tmpDashboard.event_11 = str_tmp;
                 break;
             case 12:
-                dashboard.event_12 = str_tmp;
+                tmpDashboard.event_12 = str_tmp;
                 break;
             case 13:
-                dashboard.event_13 = str_tmp;
+                tmpDashboard.event_13 = str_tmp;
                 break;
             case 14:
-                dashboard.event_14 = str_tmp;
+                tmpDashboard.event_14 = str_tmp;
                 break;
             case 15:
-                dashboard.event_15 = str_tmp;
+                tmpDashboard.event_15 = str_tmp;
                 break;
             case 16:
-                dashboard.event_16 = str_tmp;
+                tmpDashboard.event_16 = str_tmp;
                 break;
             case 17:
-                dashboard.event_17 = str_tmp;
+                tmpDashboard.event_17 = str_tmp;
                 break;
             case 18:
-                dashboard.event_18 = str_tmp;
+                tmpDashboard.event_18 = str_tmp;
                 break;
             case 19:
-                dashboard.event_19 = str_tmp;
+                tmpDashboard.event_19 = str_tmp;
                 break;
             case 20:
-                dashboard.event_20 = str_tmp;
+                tmpDashboard.event_20 = str_tmp;
                 break;
             case 21:
-                dashboard.event_21 = str_tmp;
+                tmpDashboard.event_21 = str_tmp;
                 break;
             case 22:
-                dashboard.event_22 = str_tmp;
+                tmpDashboard.event_22 = str_tmp;
                 break;
             case 23:
-                dashboard.event_23 = str_tmp;
+                tmpDashboard.event_23 = str_tmp;
                 break;
                 
             default:
                 break;
         }
-        
-        
     }
     
     //--- duplicated mode == Motor

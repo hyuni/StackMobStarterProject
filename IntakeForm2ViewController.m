@@ -10,6 +10,7 @@
 #import "Utility.h"
 #import "Clipboard.h"   
 #import "StackMob.h"
+#import "OnePickerViewController.h"
 
 
 @interface IntakeForm2ViewController ()
@@ -45,6 +46,7 @@
     //--- date setting ---//
     //--- Date of Birth Setting ---//
     _lb_date.text = [Utility dateToString:[NSDate date]];
+
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];
@@ -54,6 +56,10 @@
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    _lb_visitType.text = dashboard.visit_type;    
 }
 
 - (void)dismissKeyboard {
@@ -142,9 +148,24 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    if(indexPath.section == 0 && indexPath.row == 0) {
-        //--- Date ---//
-//        [datePickerViewController moveUpPickerView];
+    if(indexPath.section == 0) {
+        if(indexPath.row == 0) {
+            //--- Date ---//
+            [datePickerViewController moveUpPickerView];
+        }
+        else if(indexPath.row == 1) {
+            // visit type
+            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            
+            oneController.title = @"Visit Type";
+            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"Phone call", @"Emergency", @"Clinic", nil];
+            
+            oneController.arr_component_0 = arr_tmp;
+            
+            [oneController setMode:@"" object1:nil object2:nil indexpath:indexPath];
+            
+            [self.navigationController pushViewController:oneController animated:YES];
+        }
     }
 }
 
@@ -193,7 +214,7 @@
 
 - (void)saveCurrentScreenData {
     dashboard.occur_date = _lb_date.text;
-    dashboard.visit_type = _tf_visitType.text;
+    dashboard.visit_type = _lb_visitType.text;
     dashboard.billingcode = _tf_billingCode.text;
 }
 - (IBAction)save_local:(id)sender {

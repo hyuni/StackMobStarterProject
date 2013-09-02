@@ -13,6 +13,7 @@
 #import "UserDoctor.h"
 #import "Patient.h"
 #import "Dashboard.h"
+#import "Preference.h"
 
 @interface LoginViewController ()
 
@@ -49,21 +50,25 @@
 
 - (IBAction)action_login:(id)sender {
     
-    [self action_login_success:nil];
-    
-//    [[SMClient defaultClient] loginWithUsername:_tf_username.text password:_tf_password.text onSuccess:^(NSDictionary *result){
-//        // result contains a dictionary representation of the user object
-//        NSLog(@"SUCCESS : %@", result);
-//        [self action_login_success:nil];
-//    } onFailure:^(NSError *error){
-//        // Error
-//        NSLog(@"Error : %@", error);
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Login Failed. Invalid Username or Password."
-//													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인", nil];
-//		
-//		[alert show];
-//    }];
-    
+    if(Version == Version_Test) {
+        [self action_login_success:nil];
+    }
+    else {
+        [[SMClient defaultClient] loginWithUsername:_tf_username.text password:_tf_password.text onSuccess:^(NSDictionary *result){
+            // result contains a dictionary representation of the user object
+            NSLog(@"SUCCESS : %@", result);
+            [self action_login_success:nil];
+        } onFailure:^(NSError *error){
+            // Error
+            NSLog(@"Error : %@", error);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Login Failed. Invalid Username or Password."
+                                                           delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            
+            [alert show];
+        }];        
+    }
+
+
 }
 
 - (IBAction)btn_createAccount:(id)sender {
@@ -75,7 +80,7 @@
     [context saveOnSuccess:^{
         // Saved the user object
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"User Created"
-													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인", nil];
+													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
 		
 		[alert show];
     } onFailure:^(NSError *error){
@@ -96,7 +101,7 @@
     UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"leftSideMenu2ViewController"];
 //    UIViewController *dashboardController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardController"];
     
-    //--- We don't use a right menu view ---//
+    //--- don't use a right menu view ---//
 //    UIViewController *rightSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"rightSideMenuViewController"];
     
     [container setLeftMenuViewController:leftSideMenuViewController];

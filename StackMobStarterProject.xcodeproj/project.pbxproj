@@ -23,6 +23,7 @@
 		800CA9EA17D0B436006EEF07 /* NumberPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9E817D0B435006EEF07 /* NumberPadViewController.xib */; };
 		800CA9EE17D0C343006EEF07 /* OnePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800CA9EC17D0C342006EEF07 /* OnePickerViewController.m */; };
 		800CA9EF17D0C343006EEF07 /* OnePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800CA9ED17D0C342006EEF07 /* OnePickerViewController.xib */; };
+		801D7E9617D4790900F742C5 /* CreateUserViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 801D7E9517D4790900F742C5 /* CreateUserViewViewController.m */; };
 		8025FDAD17CEE147000A0CDB /* IntakeForm1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */; };
 		8025FDB317CEEF42000A0CDB /* IntakeForm2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB217CEEF42000A0CDB /* IntakeForm2ViewController.m */; };
 		8025FDBA17CF281B000A0CDB /* NewDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB817CF281A000A0CDB /* NewDatePickerViewController.m */; };
@@ -288,6 +289,9 @@
 		800CA9EB17D0C341006EEF07 /* OnePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePickerViewController.h; sourceTree = "<group>"; };
 		800CA9EC17D0C342006EEF07 /* OnePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePickerViewController.m; sourceTree = "<group>"; };
 		800CA9ED17D0C342006EEF07 /* OnePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePickerViewController.xib; sourceTree = "<group>"; };
+		801D7E9417D4790900F742C5 /* CreateUserViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserViewViewController.h; sourceTree = "<group>"; };
+		801D7E9517D4790900F742C5 /* CreateUserViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserViewViewController.m; sourceTree = "<group>"; };
+		801D7E9A17D5179000F742C5 /* DEFINE_PREFERENCE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DEFINE_PREFERENCE.h; sourceTree = "<group>"; };
 		8025FDAB17CEE147000A0CDB /* IntakeForm1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm1ViewController.h; sourceTree = "<group>"; };
 		8025FDAC17CEE147000A0CDB /* IntakeForm1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm1ViewController.m; sourceTree = "<group>"; };
 		8025FDB117CEEF42000A0CDB /* IntakeForm2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm2ViewController.h; sourceTree = "<group>"; };
@@ -922,6 +926,7 @@
 				80C6CF8F17C6C62800A0F5A7 /* UIImage+Crop.h */,
 				80C6CF9017C6C62800A0F5A7 /* UIImage+Crop.m */,
 				80C6CF9117C6C62900A0F5A7 /* URL_DEFINE.h */,
+				801D7E9A17D5179000F742C5 /* DEFINE_PREFERENCE.h */,
 				800CA98E17CF3815006EEF07 /* Utility.h */,
 				800CA98F17CF3815006EEF07 /* Utility.m */,
 			);
@@ -988,6 +993,8 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
+				801D7E9417D4790900F742C5 /* CreateUserViewViewController.h */,
+				801D7E9517D4790900F742C5 /* CreateUserViewViewController.m */,
 				803A1DF917D451390038F84C /* Dashboard.h */,
 				803A1DFA17D4513B0038F84C /* Dashboard.m */,
 				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
@@ -1460,6 +1467,7 @@
 				803A1DEF17D420560038F84C /* Discharge2ViewController.m in Sources */,
 				803A1DF517D43A8A0038F84C /* Discharge3ViewController.m in Sources */,
 				803A1DFB17D4513F0038F84C /* Dashboard.m in Sources */,
+				801D7E9617D4790900F742C5 /* CreateUserViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

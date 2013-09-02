@@ -24,56 +24,56 @@
     return nil;
 }
 
-+ (UIButton *)profileImageSetting:(UIButton *)_btn_profile avata_key:(NSString *)_str_avataKey {
-    
-    //--- profile image
-    NSString *str_avataKey = _str_avataKey;
-    if(str_avataKey != nil && [str_avataKey length] > 0) {
-        // 프로파일 이미지 이름이 있으면 이미지가 저장됏는지 확인
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) ;
-        NSString *imagePath = [paths objectAtIndex:0];
-        NSString *filepath = [NSString stringWithFormat:@"%@/%@", imagePath, str_avataKey];
-        
-        NSData *tmpData = [NSData dataWithContentsOfFile:filepath];
-        if(tmpData != nil && [tmpData length] > 0) {
-            // 저장돼 있으면 바로 꺼내서 보여줌
-            [_btn_profile setBackgroundImage:[UIImage imageWithData:tmpData] forState:UIControlStateNormal];
-            //            btn_profile_image.imageView.image = [UIImage imageWithData:tmpData];            
-        }
-        else {
-            // 없으면 다운로드 하고 보여줌
-            NSString *imagePath = [paths objectAtIndex:0];
-            NSString *filepath = [NSString stringWithFormat:@"%@/%@", imagePath, str_avataKey];
-            
-            NSString *urlString = [NSString stringWithFormat:@"%@%@", URL_ProfileImageThumnail, str_avataKey];
-            NSData *imageData = [[NSData alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
-            
-            if(imageData.length > 200) {
-                //200byte 이하는 에러로 본다.
-                BOOL result = [imageData writeToFile:filepath atomically:YES];
-                if(result) {
-                    [_btn_profile setBackgroundImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
-                    //                btn_profile_image.imageView.image = nil;
-                    //                btn_profile_image.imageView.image = [UIImage imageWithData:tmpData]; 
-                }
-                else {
-                    //file 저장 실패. 디폴트 이미지.
-                    [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
-                }
-            }
-            else {
-                //이미지 다운로드 실패. 디폴트 이미지. 
-                [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
-            }
-        }
-    }
-    else {
-        //프로파일 이미지 이름이 없음. 디폴트 이미지.
-        [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
-    }
-    
-    return _btn_profile;
-}
+//+ (UIButton *)profileImageSetting:(UIButton *)_btn_profile avata_key:(NSString *)_str_avataKey {
+//    
+//    //--- profile image
+//    NSString *str_avataKey = _str_avataKey;
+//    if(str_avataKey != nil && [str_avataKey length] > 0) {
+//        // 프로파일 이미지 이름이 있으면 이미지가 저장됏는지 확인
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) ;
+//        NSString *imagePath = [paths objectAtIndex:0];
+//        NSString *filepath = [NSString stringWithFormat:@"%@/%@", imagePath, str_avataKey];
+//        
+//        NSData *tmpData = [NSData dataWithContentsOfFile:filepath];
+//        if(tmpData != nil && [tmpData length] > 0) {
+//            // 저장돼 있으면 바로 꺼내서 보여줌
+//            [_btn_profile setBackgroundImage:[UIImage imageWithData:tmpData] forState:UIControlStateNormal];
+//            //            btn_profile_image.imageView.image = [UIImage imageWithData:tmpData];            
+//        }
+//        else {
+//            // 없으면 다운로드 하고 보여줌
+//            NSString *imagePath = [paths objectAtIndex:0];
+//            NSString *filepath = [NSString stringWithFormat:@"%@/%@", imagePath, str_avataKey];
+//            
+//            NSString *urlString = [NSString stringWithFormat:@"%@%@", URL_ProfileImageThumnail, str_avataKey];
+//            NSData *imageData = [[NSData alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
+//            
+//            if(imageData.length > 200) {
+//                //200byte 이하는 에러로 본다.
+//                BOOL result = [imageData writeToFile:filepath atomically:YES];
+//                if(result) {
+//                    [_btn_profile setBackgroundImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+//                    //                btn_profile_image.imageView.image = nil;
+//                    //                btn_profile_image.imageView.image = [UIImage imageWithData:tmpData]; 
+//                }
+//                else {
+//                    //file 저장 실패. 디폴트 이미지.
+//                    [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
+//                }
+//            }
+//            else {
+//                //이미지 다운로드 실패. 디폴트 이미지. 
+//                [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
+//            }
+//        }
+//    }
+//    else {
+//        //프로파일 이미지 이름이 없음. 디폴트 이미지.
+//        [_btn_profile setBackgroundImage:[UIImage imageNamed:@"i_box.png"] forState:UIControlStateNormal];
+//    }
+//    
+//    return _btn_profile;
+//}
 
 + (NSString *)changeToSpace:(NSString *) _str_input {
     _str_input = [_str_input stringByReplacingOccurrencesOfString:@"[01]" withString:@"__"];

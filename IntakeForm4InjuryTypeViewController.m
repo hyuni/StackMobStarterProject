@@ -32,6 +32,10 @@
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
     
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
+
+    
     [self setPickerViewData];
 }
 

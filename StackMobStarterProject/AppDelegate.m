@@ -22,6 +22,8 @@
 #import "Clipboard.h"
 #import "FileAccess.h"
 #import "Dashboard.h"
+#import <AddressBookUI/AddressBookUI.h>
+
 
 @interface AppDelegate ()
 
@@ -64,6 +66,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
+    
     
     return YES;
 }

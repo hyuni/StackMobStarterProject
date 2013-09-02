@@ -95,7 +95,7 @@
     dashboard.surgery_required = @"NO";
     dashboard.date_of_surgery = @"";
     dashboard.surgical_billing_code = @"";
-    
+    dashboard.visit_type = @"Phone call";   // Phone call / Emergency / Clinic
     
     
     

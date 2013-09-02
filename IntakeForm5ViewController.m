@@ -74,7 +74,7 @@
     else {
         // admit to hospital == YES
         arr_menu = [NSMutableArray arrayWithObjects:@"Admit to Hospital", @"Brace Required", @"Surgery Required", nil];
-        if([dashboard.brace_required isEqualToString:@"YES"] && [dashboard.surgery_required isEqualToString:@"YES"]) {
+        if([dashboard.surgery_required isEqualToString:@"YES"]) {
             [arr_menu addObject:@"Date of surgery (If known)"];
             [arr_menu addObject:@"Surgical billing code(s)"];
         }

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SideMenu2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SideMenu2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    
+}
 
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

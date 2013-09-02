@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *btn_test;
+
 
 -(IBAction)action_login:(id)sender;
 -(IBAction)action_test:(id)sender;
@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_password;
 @property(nonatomic,strong)NSManagedObjectContext* managedObjectContext;
 @property (weak, nonatomic) IBOutlet UITextView *tv_test;
+@property (weak, nonatomic) IBOutlet UIButton *btn_login;
+@property (weak, nonatomic) IBOutlet UIButton *btn_test;
 
 @end

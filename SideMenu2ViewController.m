@@ -7,6 +7,9 @@
 //
 
 #import "SideMenu2ViewController.h"
+#import "IntakeForm1ViewController.h"
+#import "Discharge1ViewController.h"
+#import "MFSideMenu.h"
 
 @interface SideMenu2ViewController ()
 
@@ -137,6 +140,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+
+    if(indexPath.section == 0) {
+        if(indexPath.row == 0) {
+            // intake
+            IntakeForm1ViewController *intake1 = [storyboard instantiateViewControllerWithIdentifier:@"IntakeForm1ViewController"];
+            [self.menuContainerViewController.centerViewController pushViewController:intake1 animated:YES];
+            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+
+        }
+        else if(indexPath.row == 1) {
+            // surgery
+        }
+        else if(indexPath.row == 2) {
+            // discharge
+            Discharge1ViewController *discharge1 = [storyboard instantiateViewControllerWithIdentifier:@"TLICScoreViewController"];
+            [self.menuContainerViewController.centerViewController pushViewController:discharge1 animated:YES];
+            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        }
+        
+    }
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

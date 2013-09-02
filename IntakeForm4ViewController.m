@@ -517,14 +517,11 @@
             
             oneController.title = [arr_menu objectAtIndex:indexPath.row];
             
-            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
-            NSString *str_tmp = nil;
-            for(int i = 0; i < 181; i++) {
-                str_tmp = [NSString stringWithFormat:@"%d", i];
-                [arr_tmp addObject:str_tmp];
-            }
-            
+            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
+            NSMutableArray *arr_tmp1 = [NSMutableArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", nil];
+            NSMutableArray *arr_tmp2 = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
             oneController.arr_component_0 = arr_tmp;
+            [oneController setMode:@"triple" object1:arr_tmp1 object2:arr_tmp2 indexpath:nil];
             [self.navigationController pushViewController:oneController animated:YES];
             
         }
