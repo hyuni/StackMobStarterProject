@@ -46,6 +46,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[DashboardViewController dateCalc]:DashboardViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "arr_sorted_menu">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[LoginViewController action_test:]:LoginViewController.m">
          <PersistentStrings>
             <PersistentString

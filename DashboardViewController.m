@@ -115,28 +115,28 @@
         return;
     
     Dashboard *board = (Dashboard *)[arr_menu objectAtIndex:0];
-    NSString *str_before = [Utility dateToString:board.createddate];
+    NSString *str_currentDate = [Utility dateToString:board.createddate];
     NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
     
     arr_sorted_menu = [[NSMutableArray alloc] init];
     
     for(int i = 0; i < [arr_menu count]; i++) {
-        Dashboard *tmp_board = [arr_menu objectAtIndex:i];
-
-        NSString *str_current = [Utility dateToString:tmp_board.createddate];
+        NSString *str_tmpDate = [Utility dateToString:((Dashboard *)[arr_menu objectAtIndex:i]).createddate];
         
-        if([str_before isEqualToString:str_current]) {
-            [arr_tmp addObject:tmp_board];
-            if([arr_tmp lastObject] == [arr_tmp objectAtIndex:i]) {
-                [arr_sorted_menu addObject:arr_tmp];
-            }
-        }
-        else {
-            str_before = [Utility dateToString:tmp_board.createddate];
+        [arr_tmp addObject:[arr_menu objectAtIndex:i]];
+        if(![str_currentDate isEqualToString:str_tmpDate] || i == ([arr_menu count]-1)) {
+            //different date
             [arr_sorted_menu addObject:arr_tmp];
             arr_tmp = [[NSMutableArray alloc] init];
+            str_currentDate = str_tmpDate;
+            
         }
     }
+    
+//    NSArray *arr_0 = [arr_sorted_menu objectAtIndex:0];
+//    NSArray *arr_1 = [arr_sorted_menu objectAtIndex:1];
+    
+//    int a = 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
