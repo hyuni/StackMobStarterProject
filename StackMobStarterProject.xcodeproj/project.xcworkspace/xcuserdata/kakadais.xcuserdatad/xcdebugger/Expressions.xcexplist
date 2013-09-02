@@ -110,6 +110,40 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[Discharge3ViewController tableView:cellForRowAtIndexPath:]:Discharge3ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dashboard.event_16_2">
+            </PersistentString>
+            <PersistentString
+               value = "sw_1">
+            </PersistentString>
+            <PersistentString
+               value = "dashboard.event_16_1">
+            </PersistentString>
+            <PersistentString
+               value = "sw_2">
+            </PersistentString>
+            <PersistentString
+               value = "dashboard.event_16_0">
+            </PersistentString>
+            <PersistentString
+               value = "dashboard.event_days">
+            </PersistentString>
+            <PersistentString
+               value = "[arr_event objectAtIndex:indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[Discharge3ViewController superficial_wound:]:Discharge3ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dashboard.event_16_0">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[IntakeForm3ViewController tableView:didSelectRowAtIndexPath:]:IntakeForm3ViewController.m">
          <PersistentStrings>
             <PersistentString

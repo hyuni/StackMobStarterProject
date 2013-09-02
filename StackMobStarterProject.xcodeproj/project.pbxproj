@@ -37,7 +37,10 @@
 		803A1DD317D279310038F84C /* SendAsiaScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DD117D279310038F84C /* SendAsiaScoreViewController.m */; };
 		803A1DD417D279310038F84C /* SendAsiaScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DD217D279310038F84C /* SendAsiaScoreViewController.xib */; };
 		803A1DD817D27D960038F84C /* IntakeForm5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DD617D27D960038F84C /* IntakeForm5ViewController.m */; };
-		803A1DE517D329970038F84C /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DE417D329970038F84C /* Dashboard.m */; };
+		803A1DEC17D4202F0038F84C /* Discharge1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DEB17D4202F0038F84C /* Discharge1ViewController.m */; };
+		803A1DEF17D420560038F84C /* Discharge2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DEE17D420560038F84C /* Discharge2ViewController.m */; };
+		803A1DF517D43A8A0038F84C /* Discharge3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DF417D43A8A0038F84C /* Discharge3ViewController.m */; };
+		803A1DFB17D4513F0038F84C /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 803A1DFA17D4513B0038F84C /* Dashboard.m */; };
 		804C5D7C17C32E3900B00065 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE017C32E3800B00065 /* backButton.png */; };
 		804C5D7D17C32E3900B00065 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE117C32E3800B00065 /* backButton@2x.png */; };
 		804C5D7E17C32E3900B00065 /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5CE217C32E3800B00065 /* background-568h@2x.png */; };
@@ -307,8 +310,14 @@
 		803A1DD217D279310038F84C /* SendAsiaScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendAsiaScoreViewController.xib; sourceTree = "<group>"; };
 		803A1DD517D27D960038F84C /* IntakeForm5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeForm5ViewController.h; sourceTree = "<group>"; };
 		803A1DD617D27D960038F84C /* IntakeForm5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntakeForm5ViewController.m; sourceTree = "<group>"; };
-		803A1DE317D329970038F84C /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dashboard.h; path = DataModel/Dashboard.h; sourceTree = "<group>"; };
-		803A1DE417D329970038F84C /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dashboard.m; path = DataModel/Dashboard.m; sourceTree = "<group>"; };
+		803A1DEA17D4202F0038F84C /* Discharge1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discharge1ViewController.h; sourceTree = "<group>"; };
+		803A1DEB17D4202F0038F84C /* Discharge1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discharge1ViewController.m; sourceTree = "<group>"; };
+		803A1DED17D420560038F84C /* Discharge2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discharge2ViewController.h; sourceTree = "<group>"; };
+		803A1DEE17D420560038F84C /* Discharge2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discharge2ViewController.m; sourceTree = "<group>"; };
+		803A1DF317D43A8A0038F84C /* Discharge3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discharge3ViewController.h; sourceTree = "<group>"; };
+		803A1DF417D43A8A0038F84C /* Discharge3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discharge3ViewController.m; sourceTree = "<group>"; };
+		803A1DF917D451390038F84C /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dashboard.h; sourceTree = "<group>"; };
+		803A1DFA17D4513B0038F84C /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dashboard.m; sourceTree = "<group>"; };
 		804C5CE017C32E3800B00065 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		804C5CE117C32E3800B00065 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 		804C5CE217C32E3800B00065 /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
@@ -694,6 +703,19 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
+		803A1DE917D420080038F84C /* Discharge */ = {
+			isa = PBXGroup;
+			children = (
+				803A1DEA17D4202F0038F84C /* Discharge1ViewController.h */,
+				803A1DEB17D4202F0038F84C /* Discharge1ViewController.m */,
+				803A1DED17D420560038F84C /* Discharge2ViewController.h */,
+				803A1DEE17D420560038F84C /* Discharge2ViewController.m */,
+				803A1DF317D43A8A0038F84C /* Discharge3ViewController.h */,
+				803A1DF417D43A8A0038F84C /* Discharge3ViewController.m */,
+			);
+			name = Discharge;
+			sourceTree = "<group>";
+		};
 		804C5CDF17C32E3800B00065 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -938,8 +960,6 @@
 		80C6CFA617C7165E00A0F5A7 /* DataObject */ = {
 			isa = PBXGroup;
 			children = (
-				803A1DE317D329970038F84C /* Dashboard.h */,
-				803A1DE417D329970038F84C /* Dashboard.m */,
 				80C6CF6A17C5C35000A0F5A7 /* User.h */,
 				80C6CF6B17C5C35000A0F5A7 /* User.m */,
 				80C6CFA117C715DD00A0F5A7 /* Patient.h */,
@@ -968,6 +988,8 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
+				803A1DF917D451390038F84C /* Dashboard.h */,
+				803A1DFA17D4513B0038F84C /* Dashboard.m */,
 				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
 				80347D0717CB036E00C2A782 /* PickerDateViewController.m */,
 				800CA9A017CFB714006EEF07 /* PickerViewController.h */,
@@ -979,6 +1001,7 @@
 				80C6CFA617C7165E00A0F5A7 /* DataObject */,
 				809FF15217C2E2130071FC08 /* MFSideMenu */,
 				80C6CF6D17C6C62800A0F5A7 /* Utility */,
+				803A1DE917D420080038F84C /* Discharge */,
 				800CA9AD17D00136006EEF07 /* IntakeForm */,
 				804C5E1E17C341E000B00065 /* DashboardViewController.h */,
 				804C5E1F17C341E000B00065 /* DashboardViewController.m */,
@@ -1433,7 +1456,10 @@
 				80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */,
 				803A1DD317D279310038F84C /* SendAsiaScoreViewController.m in Sources */,
 				803A1DD817D27D960038F84C /* IntakeForm5ViewController.m in Sources */,
-				803A1DE517D329970038F84C /* Dashboard.m in Sources */,
+				803A1DEC17D4202F0038F84C /* Discharge1ViewController.m in Sources */,
+				803A1DEF17D420560038F84C /* Discharge2ViewController.m in Sources */,
+				803A1DF517D43A8A0038F84C /* Discharge3ViewController.m in Sources */,
+				803A1DFB17D4513F0038F84C /* Dashboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

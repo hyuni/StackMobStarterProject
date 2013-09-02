@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Dashboard" representedClassName="Dashboard" syncable="YES">
+        <attribute name="admission_date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="admit_to_hospital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="admitted" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="anal_sensation" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,6 +30,44 @@
         <attribute name="date_of_surgery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="degree_kyphosis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diagnosis_details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="discharge_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_15" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_16" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_16_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_16_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_16_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_16_3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_17" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_18" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_19" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_19_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_19_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_19_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_20" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_21" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_22" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_22_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_22_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_23" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_23_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_23_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_24" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_days" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="follow_up_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,8 +86,13 @@
         <attribute name="neurologicallyintact" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occur_date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="option2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_admitted_to_icu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_discharged_to" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_received_allogenic_blood" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="plc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requires_step_down_bed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="site_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surgery_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surgical_billing_code" optional="YES" attributeType="String" syncable="YES"/>
@@ -150,7 +194,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="975"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="1635"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

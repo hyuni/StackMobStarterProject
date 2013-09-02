@@ -1,20 +1,19 @@
 //
-//  IntakeForm3ViewController.m
+//  Discharge2ViewController.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/29/13.
+//  Created by kakadais on 9/1/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
-#import "IntakeForm3ViewController.h"
-#import "Clipboard.h"
-#import "StackMob.h"
+#import "Discharge2ViewController.h"
+#import "Clipboard.h"   
 
-@interface IntakeForm3ViewController ()
+@interface Discharge2ViewController ()
 
 @end
 
-@implementation IntakeForm3ViewController
+@implementation Discharge2ViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,9 +33,45 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
+    
     Clipboard *clip = [Clipboard sharedClipboard];
-    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
+    dashboard = [clip clipKey:@"create_discharge"];
+    
+    
+    
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    if([dashboard.patient_discharged_to isEqualToString:@"Home, unsupervised"]) {
+        selected_row = 0;
+    }
+    else if([dashboard.patient_discharged_to isEqualToString:@"Home, supervised"]) {
+        selected_row = 1;
+    }
+    else if([dashboard.patient_discharged_to isEqualToString:@"In-patient rehabilitation"]) {
+        selected_row = 2;
+    }
+    else if([dashboard.patient_discharged_to isEqualToString:@"Short-term convalescent care"]) {
+        selected_row = 3;
+    }
+    else if([dashboard.patient_discharged_to isEqualToString:@"Nursing home"]) {
+        selected_row = 4;
+    }
+    else if([dashboard.patient_discharged_to isEqualToString:@"Hospital-hospital transfer"]) {
+        selected_row = 5;
+    }
+    else {
+        // other
+        selected_row = 6;
+    }
+
+    [self.tableView reloadData];
+}
+
+- (void)confirm:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +81,7 @@
 }
 
 #pragma mark - Table view data source
-
+//
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 //{
 //#warning Potentially incomplete method implementation.
@@ -61,15 +96,19 @@
 //    return 0;
 //}
 //
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 //    static NSString *CellIdentifier = @"Cell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
+
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    // Configure the cell...
+    if(indexPath.row == selected_row) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    return cell;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -121,38 +160,40 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-#pragma mark - custom method
-
-- (void)saveCurrentScreenData {
-//    dashboard.occur_date = _lb_date.text;
-//    dashboard.visit_type = _tf_visitType.text;
-//    dashboard.billingcode = _tf_billingCode.text;
-}
-- (IBAction)save_local:(id)sender {
-    [self saveCurrentScreenData];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    dashboard.status = @"Local";
-    //    Clipboard *clip = [Clipboard sharedClipboard];
-    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    for(UITableViewCell *curCell in _cells) {
+        curCell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
-    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
-    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    [context saveOnSuccess:^{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    } onFailure:^(NSError *error) {
-        NSLog(@"Error saving todo: %@", error);
-    }];
-    
-    
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
-
-}
-
-- (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    switch (indexPath.row) {
+        case 0:
+            dashboard.patient_discharged_to = @"Home, unsupervised";
+            break;
+        case 1:
+            dashboard.patient_discharged_to = @"Home, supervised";
+            break;
+        case 2:
+            dashboard.patient_discharged_to = @"In-patient rehabilitation";
+            break;
+        case 3:
+            dashboard.patient_discharged_to = @"Short-term convalescent care";
+            break;
+        case 4:
+            dashboard.patient_discharged_to = @"Nursing home";
+            break;
+        case 5:
+            dashboard.patient_discharged_to = @"Hospital-hospital transfer";
+            break;
+        case 6:
+            dashboard.patient_discharged_to = _tf_other.text;
+            break;
+        default:
+            break;
+    }
 }
 
 

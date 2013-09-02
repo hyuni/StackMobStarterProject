@@ -1,20 +1,20 @@
 //
-//  IntakeForm3ViewController.m
+//  Discharge1ViewController.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 8/29/13.
+//  Created by kakadais on 9/1/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
-#import "IntakeForm3ViewController.h"
-#import "Clipboard.h"
+#import "Discharge1ViewController.h"
 #import "StackMob.h"
+#import "Clipboard.h"
 
-@interface IntakeForm3ViewController ()
+@interface Discharge1ViewController ()
 
 @end
 
-@implementation IntakeForm3ViewController
+@implementation Discharge1ViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,9 +34,84 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
+    
+    //--- Data prepare ---//
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    //--- initiallize dashboard data---//
+    dashboard.dashboard_id = [dashboard assignObjectId];
+    dashboard.patient_status = @"Discharge";
+    dashboard.event_days = @"0 days";
+    dashboard.event_0 = @"";
+    dashboard.event_1 = @"";
+    dashboard.event_2 = @"";
+    dashboard.event_3 = @"";
+    dashboard.event_4 = @"";
+    dashboard.event_5 = @"";
+    dashboard.event_6 = @"";
+    dashboard.event_7 = @"";
+    dashboard.event_8 = @"";
+    dashboard.event_9 = @"";
+    dashboard.event_10 = @"";
+    dashboard.event_11 = @"";
+    dashboard.event_12 = @"";
+    dashboard.event_13 = @"";
+    dashboard.event_14 = @"";
+    dashboard.event_15 = @"";
+    dashboard.event_16 = @"";
+    dashboard.event_17 = @"";
+    dashboard.event_18 = @"";
+    dashboard.event_19 = @"";
+    dashboard.event_20 = @"";
+    dashboard.event_21 = @"";
+    dashboard.event_22 = @"";
+    dashboard.event_23 = @"";
+    
+    
     Clipboard *clip = [Clipboard sharedClipboard];
-    dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
+    [clip clipValue:dashboard clipKey:@"create_discharge"];
 
+    
+
+}
+
+- (void)confirm:(id)sender {
+    if([_tf_siteID.text length] <= 0 || [_tf_healthcardNumber.text length] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
+                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        
+        [alert show];
+        return;
+    }
+    
+    [self saveCurrentScreenData];
+
+    // --- save everything
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    dashboard.status = @"Sent";
+    [context saveOnSuccess:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+        // --- Draft
+    }];
+}
+
+- (void)saveCurrentScreenData {
+    dashboard.site_id = _tf_siteID.text;
+    dashboard.healthcard_number = _tf_healthcardNumber.text;
+    dashboard.admission_date = _lb_admission_date.text;
+    dashboard.discharge_date = _lb_discharge_date.text;
+
+    dashboard.patient_received_allogenic_blood = (_sw_patient_receivedallogenic_blood.isOn) ? @"YES" : @"NO";
+    dashboard.patient_admitted_to_icu = (_sw_patient_admitted_to_icu.isOn) ? @"YES" : @"NO";
+    dashboard.requires_step_down_bed = (_sw_requires_step_down_bed.isOn) ? @"YES" : @"NO";
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +121,7 @@
 }
 
 #pragma mark - Table view data source
-
+//
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 //{
 //#warning Potentially incomplete method implementation.
@@ -123,38 +198,12 @@
      */
 }
 
-#pragma mark - custom method
-
-- (void)saveCurrentScreenData {
-//    dashboard.occur_date = _lb_date.text;
-//    dashboard.visit_type = _tf_visitType.text;
-//    dashboard.billingcode = _tf_billingCode.text;
+#pragma mark - custom moethod
+- (IBAction)action_tf_siteID:(id)sender {
+    [_tf_siteID resignFirstResponder];
 }
-- (IBAction)save_local:(id)sender {
-    [self saveCurrentScreenData];
-    
-    dashboard.status = @"Local";
-    //    Clipboard *clip = [Clipboard sharedClipboard];
-    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
-    
-    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
-    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
-    
-    [context saveOnSuccess:^{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    } onFailure:^(NSError *error) {
-        NSLog(@"Error saving todo: %@", error);
-    }];
-    
-    
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
-
+- (IBAction)action_healthcard:(id)sender {
+    [_tf_healthcardNumber resignFirstResponder];
 }
-
-- (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-
 
 @end

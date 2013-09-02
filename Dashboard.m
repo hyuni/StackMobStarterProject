@@ -2,7 +2,7 @@
 //  Dashboard.m
 //  StackMobStarterProject
 //
-//  Created by kakadais on 9/1/13.
+//  Created by kakadais on 9/2/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @implementation Dashboard
 
+@dynamic admission_date;
 @dynamic admit_to_hospital;
 @dynamic admitted;
 @dynamic anal_sensation;
@@ -39,6 +40,33 @@
 @dynamic date_of_surgery;
 @dynamic degree_kyphosis;
 @dynamic diagnosis_details;
+@dynamic discharge_date;
+@dynamic event_0;
+@dynamic event_1;
+@dynamic event_2;
+@dynamic event_3;
+@dynamic event_4;
+@dynamic event_5;
+@dynamic event_6;
+@dynamic event_7;
+@dynamic event_8;
+@dynamic event_9;
+@dynamic event_10;
+@dynamic event_11;
+@dynamic event_12;
+@dynamic event_13;
+@dynamic event_14;
+@dynamic event_15;
+@dynamic event_16;
+@dynamic event_17;
+@dynamic event_18;
+@dynamic event_19;
+@dynamic event_20;
+@dynamic event_21;
+@dynamic event_22;
+@dynamic event_23;
+@dynamic event_24;
+@dynamic event_days;
 @dynamic follow_up_required;
 @dynamic fracture_morphology_type;
 @dynamic fracturetype;
@@ -57,12 +85,18 @@
 @dynamic neurologicallyintact;
 @dynamic occur_date;
 @dynamic option2;
+@dynamic patient_admitted_to_icu;
+@dynamic patient_discharged_to;
+@dynamic patient_received_allogenic_blood;
 @dynamic patient_status;
 @dynamic plc;
+@dynamic requires_step_down_bed;
+@dynamic site_id;
 @dynamic status;
 @dynamic surgery_required;
 @dynamic surgical_billing_code;
 @dynamic tlic_score;
+@dynamic tlic_score_total;
 @dynamic translation;
 @dynamic trauma;
 @dynamic visit_type;
@@ -72,6 +106,16 @@
 @dynamic z_sensory_l;
 @dynamic z_sensory_r;
 @dynamic zone_partial_preservation;
-@dynamic tlic_score_total;
+@dynamic event_16_0;
+@dynamic event_16_1;
+@dynamic event_16_2;
+@dynamic event_16_3;
+@dynamic event_19_0;
+@dynamic event_19_1;
+@dynamic event_19_2;
+@dynamic event_22_0;
+@dynamic event_22_1;
+@dynamic event_23_0;
+@dynamic event_23_1;
 
 @end

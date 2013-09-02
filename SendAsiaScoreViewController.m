@@ -28,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Send ASIA Report";
+    
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(btn_confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
 }
 
 - (void)didReceiveMemoryWarning

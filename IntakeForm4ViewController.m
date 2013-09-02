@@ -713,14 +713,14 @@
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
     
     [context saveOnSuccess:^{
-        
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } onFailure:^(NSError *error) {
         NSLog(@"Error saving todo: %@", error);
     }];
     
     
     //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 - (IBAction)cancel_local:(id)sender {

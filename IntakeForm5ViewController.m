@@ -297,17 +297,18 @@
         // submit
         [self saveCurrentScreenData];
         // --- save everything
+        dashboard.status = @"Sent";
         NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
         // An asynchronous Core Data save method provided by the StackMob iOS SDK.
 
         [context saveOnSuccess:^{
-            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         } onFailure:^(NSError *error) {
             NSLog(@"Error saving todo: %@", error);
             // --- Draft
         }];        
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        
     }
 }
 
@@ -357,7 +358,7 @@
 
 - (void)saveCurrentScreenData {
     dashboard.date_of_surgery = _lb_dateOfSurgery.text;
-    dashboard.status = @"Sent";
+    
 }
 
 - (IBAction)save_local:(id)sender {
@@ -371,14 +372,14 @@
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
     
     [context saveOnSuccess:^{
-        
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } onFailure:^(NSError *error) {
         NSLog(@"Error saving todo: %@", error);
     }];
     
     
     //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)cancel_local:(id)sender {

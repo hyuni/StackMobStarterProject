@@ -64,6 +64,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
+    
     return YES;
 }
 

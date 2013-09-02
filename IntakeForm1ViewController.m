@@ -238,7 +238,13 @@
     
     NSString *str_cardNumber = _tf_healthCardNumber.text;
     if(str_cardNumber.length > 0) return YES;
-    else return NO;
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
+                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        
+        [alert show];
+        return NO;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -273,14 +279,14 @@
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
     
     [context saveOnSuccess:^{
-        
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } onFailure:^(NSError *error) {
         NSLog(@"Error saving todo: %@", error);
     }];
 
     
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 - (IBAction)cancel_local:(id)sender {

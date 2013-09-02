@@ -47,8 +47,44 @@
 
 #pragma mark - Actions
 
+- (IBAction)action_login:(id)sender {
+    
+    [self action_login_success:nil];
+    
+//    [[SMClient defaultClient] loginWithUsername:_tf_username.text password:_tf_password.text onSuccess:^(NSDictionary *result){
+//        // result contains a dictionary representation of the user object
+//        NSLog(@"SUCCESS : %@", result);
+//        [self action_login_success:nil];
+//    } onFailure:^(NSError *error){
+//        // Error
+//        NSLog(@"Error : %@", error);
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Login Failed. Invalid Username or Password."
+//													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인", nil];
+//		
+//		[alert show];
+//    }];
+    
+}
 
--(IBAction)action_login:(id)sender {
+- (IBAction)btn_createAccount:(id)sender {
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    User *newUser = [[User alloc] initNewUserInContext:context];
+    [newUser setUsername:_tf_username.text];
+    [newUser setPassword:_tf_password.text];
+    
+    [context saveOnSuccess:^{
+        // Saved the user object
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"User Created"
+													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"확인", nil];
+		
+		[alert show];
+    } onFailure:^(NSError *error){
+        // Error
+    }];
+    
+}
+
+-(IBAction)action_login_success:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
 //    [[UIApplication sharedApplication] windows];
     
@@ -72,6 +108,14 @@
     [self presentViewController:container animated:YES completion:nil];
 }
 
+- (IBAction)kayboard_down:(id)sender {
+    [_tf_username resignFirstResponder];
+    [_tf_password resignFirstResponder];
+}
+- (IBAction)password_down:(id)sender {
+    [_tf_username resignFirstResponder];
+    [_tf_password resignFirstResponder];
+}
 
     
 
@@ -150,6 +194,8 @@
         NSLog(@"An error %@, %@", error, [error userInfo]);
     }];
 }
+
+
 
 -(IBAction)action_create:(id)sender {
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
@@ -231,18 +277,7 @@
 
 
 
-- (IBAction)action_testLogin:(id)sender {
-    
-    [[SMClient defaultClient] loginWithUsername:@"kakadais" password:@"nicejin123" onSuccess:^(NSDictionary *result){
-        // result contains a dictionary representation of the user object
-        NSLog(@"SUCCESS : %@", result);
-    } onFailure:^(NSError *error){
-        // Error
-        NSLog(@"Error : %@", error);
-    }];
-    
-}
-    
+
 - (IBAction)action_logoutToStackMob:(id)sender {
     
     [[SMClient defaultClient] logoutOnSuccess:^(NSDictionary *result){

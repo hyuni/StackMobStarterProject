@@ -40,6 +40,8 @@
         [_v_picker selectRow:2 inComponent:0 animated:NO];
     }
 
+    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+    self.navigationItem.rightBarButtonItem = confirmButton;
     
 }
 
@@ -97,6 +99,102 @@
         //--- Only intact == YES
         dashboard.injurytype = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
     }
+    else if([self.title isEqualToString:@"Adverse event extended visit by"]) {
+        //Adverse event extended visit by
+        //create_discharge
+        Clipboard *clip = [Clipboard sharedClipboard];
+        Dashboard *tmpDash = [clip clipKey:@"create_discharge"];
+        tmpDash.event_days = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+    }
+    else if([self.title isEqualToString:@"Peri-operative Adverse Events"]) {
+        //Adverse event extended visit by
+        //create_discharge
+        Clipboard *clip = [Clipboard sharedClipboard];
+        Dashboard *dashboard = [clip clipKey:@"create_discharge"];
+
+        NSString *str_tmp = [_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]];
+        
+        switch (selected_indexpath.row) {
+            case 0:
+                dashboard.event_0 = str_tmp;
+                break;
+            case 1:
+                dashboard.event_1 = str_tmp;
+                break;
+            case 2:
+                dashboard.event_2 = str_tmp;
+                break;
+            case 3:
+                dashboard.event_3 = str_tmp;
+                break;
+            case 4:
+                dashboard.event_4 = str_tmp;
+                break;
+            case 5:
+                dashboard.event_5 = str_tmp;
+                break;
+            case 6:
+                dashboard.event_6 = str_tmp;
+                break;
+            case 7:
+                dashboard.event_7 = str_tmp;
+                break;
+            case 8:
+                dashboard.event_8 = str_tmp;
+                break;
+            case 9:
+                dashboard.event_9 = str_tmp;
+                break;
+            case 10:
+                dashboard.event_10 = str_tmp;
+                break;
+            case 11:
+                dashboard.event_11 = str_tmp;
+                break;
+            case 12:
+                dashboard.event_12 = str_tmp;
+                break;
+            case 13:
+                dashboard.event_13 = str_tmp;
+                break;
+            case 14:
+                dashboard.event_14 = str_tmp;
+                break;
+            case 15:
+                dashboard.event_15 = str_tmp;
+                break;
+            case 16:
+                dashboard.event_16 = str_tmp;
+                break;
+            case 17:
+                dashboard.event_17 = str_tmp;
+                break;
+            case 18:
+                dashboard.event_18 = str_tmp;
+                break;
+            case 19:
+                dashboard.event_19 = str_tmp;
+                break;
+            case 20:
+                dashboard.event_20 = str_tmp;
+                break;
+            case 21:
+                dashboard.event_21 = str_tmp;
+                break;
+            case 22:
+                dashboard.event_22 = str_tmp;
+                break;
+            case 23:
+                dashboard.event_23 = str_tmp;
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+    }
+    
     //--- duplicated mode == Motor
     else if([self.title isEqualToString:@"Motor"]) {
         [(NSMutableArray *)id_object1 replaceObjectAtIndex:selected_indexpath.row withObject:[_arr_component_0 objectAtIndex:[_v_picker selectedRowInComponent:0]]];

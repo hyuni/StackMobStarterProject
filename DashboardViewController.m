@@ -137,8 +137,6 @@
             arr_tmp = [[NSMutableArray alloc] init];
         }
     }
-    
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
