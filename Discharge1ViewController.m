@@ -9,6 +9,7 @@
 #import "Discharge1ViewController.h"
 #import "StackMob.h"
 #import "Clipboard.h"
+#import "Utility.h"
 
 @interface Discharge1ViewController ()
 
@@ -34,7 +35,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //--- down modal setting
+    datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
+    datePickerView = [datePickerViewController getDatePickerView:self];
+    [self.view addSubview:datePickerView];
     
+    _lb_discharge_date.text = [Utility dateToString:[NSDate date]];
+    _lb_admission_date.text = [Utility dateToString:[NSDate date]];
+
     UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
     self.navigationItem.rightBarButtonItem = confirmButton;
     
@@ -136,15 +144,16 @@
 //    return 0;
 //}
 //
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 //    static NSString *CellIdentifier = @"Cell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    // Configure the cell...
+    
+    
+    return cell;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -196,6 +205,40 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if(indexPath.section == 1) {
+        if(indexPath.row == 1 ) {
+            [datePickerViewController moveDownPickerView:self];
+            [datePickerViewController moveUpPickerView];
+            [_tf_siteID resignFirstResponder];
+            [_tf_healthcardNumber resignFirstResponder];
+            
+            i_date_row = 1;
+        }
+        else if(indexPath.row == 2) {
+            [datePickerViewController moveDownPickerView:self];
+            [datePickerViewController moveUpPickerView];
+            [_tf_siteID resignFirstResponder];
+            [_tf_healthcardNumber resignFirstResponder];
+            
+            i_date_row = 2;
+        }
+    }
+}
+
+
+
+#pragma mark - NewDatePickerViewController delegate
+-(void)delegateConfirm:(NSDate *)date_selected {
+    if(i_date_row == 1) {
+        _lb_admission_date.text = [Utility dateToString:date_selected];
+    }
+    else if(i_date_row == 2){
+        _lb_discharge_date.text = [Utility dateToString:date_selected];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [datePickerViewController moveDownPickerView:self];
 }
 
 #pragma mark - custom moethod

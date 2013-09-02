@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
+#import "NewDatePickerViewController.h"
 
-@interface Discharge1ViewController : UITableViewController {
+@interface Discharge1ViewController : UITableViewController<UITextFieldDelegate> {
     Dashboard *dashboard;
+    NewDatePickerViewController *datePickerViewController;
+    UIView *datePickerView;
+    int i_date_row;
 }
+
 @property (weak, nonatomic) IBOutlet UITextField *tf_siteID;
 @property (weak, nonatomic) IBOutlet UITextField *tf_healthcardNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_admission_date;

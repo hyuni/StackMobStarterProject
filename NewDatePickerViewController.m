@@ -43,7 +43,7 @@
     
     CGRect tmpRect = self.view.frame;
     tmpRect.origin.x = 0;
-    tmpRect.origin.y = viewController.view.frame.size.height;
+    tmpRect.origin.y = viewController.view.frame.size.height + 100;
     self.view.frame = tmpRect;
     return self.view;
 }
@@ -55,7 +55,7 @@
     
     CGRect tmpRect = self.view.frame;
     tmpRect.origin.x = 0;
-    tmpRect.origin.y = outerViewController.view.frame.size.height - _view_inner.frame.size.height;
+    tmpRect.origin.y = outerViewController.view.frame.size.height - _view_inner.frame.size.height + 20;
     self.view.frame = tmpRect;
     
     [UIView commitAnimations];
@@ -68,7 +68,7 @@
     
     CGRect tmpRect = self.view.frame;
     tmpRect.origin.x = 0;
-    tmpRect.origin.y = outerViewController.view.frame.size.height;
+    tmpRect.origin.y = outerViewController.view.frame.size.height + 100;
     self.view.frame = tmpRect;
 
     [UIView commitAnimations];

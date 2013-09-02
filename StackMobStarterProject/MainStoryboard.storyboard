@@ -448,6 +448,7 @@
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="action_tf_siteID:" destination="wxW-tz-pW2" eventType="editingDidEndOnExit" id="RkV-JT-i4O"/>
+                                                        <outlet property="delegate" destination="wxW-tz-pW2" id="UOK-SE-LY7"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -484,6 +485,7 @@
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="action_healthcard:" destination="wxW-tz-pW2" eventType="editingDidEnd" id="na7-1u-bFb"/>
+                                                        <outlet property="delegate" destination="wxW-tz-pW2" id="Of8-kF-Frn"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
