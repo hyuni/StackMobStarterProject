@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dashboard.h"
+#import "AsiaSendData.h"
 
 @interface SendAsiaScoreViewController : UIViewController {
+    Dashboard *dashboard;
+    
+    NSMutableArray *arr_asiaSend;
     
     
 }
@@ -18,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_subject;
 @property (weak, nonatomic) IBOutlet UITextView *tv_message;
 @property (weak, nonatomic) IBOutlet UIButton *tv_confirm;
+//@property (strong, nonatomic) NSMutableArray *arr_asiaSend;
+@property (strong, nonatomic) AsiaSendData *asiaSend;
 - (IBAction)btn_confirm:(id)sender;
 
 

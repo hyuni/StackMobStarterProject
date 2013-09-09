@@ -9,6 +9,8 @@
 #import "Discharge3ViewController.h"
 #import "OnePickerViewController.h"
 #import "Clipboard.h"
+#import "DCRoundSwitch.h"
+#import "KKDS_Preference.h"
 
 @interface Discharge3ViewController ()
 
@@ -28,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"Adverse Event";
+    flag_first = YES;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -41,9 +46,60 @@
     UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
     self.navigationItem.rightBarButtonItem = confirmButton;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardDidHideNotification object:nil];
+    
+    _tv_other.text = dashboard.event_23;
+
+}
+
+-(void) keyboardShown:(NSNotification*) notification {
+    _initialTVHeight = self.tableView.frame.size.height;
+    
+    CGRect tmpRect = self.tableView.frame;
+    tmpRect.size.height -= 170;
+    self.tableView.frame = tmpRect;
+    
+//    CGRect initialFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    CGRect convertedFrame = [self.view convertRect:initialFrame fromView:nil];
+//    CGRect tvFrame = self.tableView.frame;
+//    
+//    int a = tvFrame.size.height;
+//    
+//    tvFrame.size.height = convertedFrame.origin.y;
+//    self.tableView.frame = tvFrame;
+}
+
+-(void) keyboardHidden:(NSNotification*) notification {
+    
+    if(flag_first == YES) {
+        flag_first = NO;
+        return;
+    }
+    
+    CGRect tvFrame = self.tableView.frame;
+    tvFrame.size.height = _initialTVHeight;
+    [UIView beginAnimations:@"TableViewDown" context:NULL];
+    [UIView setAnimationDuration:0.5f];
+    self.tableView.frame = tvFrame;
+    [UIView commitAnimations];
+}
+
+-(void) scrollToCell:(NSIndexPath*) path {
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:YES];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    CGRect buttonFrame = [textView convertRect:textView.bounds toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonFrame.origin];
+    
+    [self performSelector:@selector(scrollToCell:) withObject:indexPath afterDelay:0.5f];
+    return YES;
 }
 
 - (void)confirm:(id)sender {
+    dashboard.event_23 = _tv_other.text;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -75,7 +131,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+//    static NSString *CellIdentifier = @"Cell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -96,40 +152,123 @@
         [btn_grade addTarget:self action:@selector(btn_pressed:) forControlEvents:UIControlEventTouchUpInside];
 
         if(indexPath.row == 12) {
-            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
-            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
-            UISwitch *sw_2 = (UISwitch *)[cell viewWithTag:5];
-            UISwitch *sw_3 = (UISwitch *)[cell viewWithTag:6];
-            [sw_0 setOn:([dashboard.event_16_0 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_1 setOn:([dashboard.event_16_1 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_2 setOn:([dashboard.event_16_2 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_3 setOn:([dashboard.event_16_3 isEqualToString:@"YES"]) ? YES : NO];
+            DCRoundSwitch *dcsw_custom0 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y0, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom0 setOffText:@"NO"];
+            [dcsw_custom0 setOnText:@"YES"];
+            [dcsw_custom0 setOn:([dashboard.event_16_0 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom0];
+            [dcsw_custom0 addTarget:self action:@selector(action_sw_infaction0:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom1 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y1, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom1 setOffText:@"NO"];
+            [dcsw_custom1 setOnText:@"YES"];
+            [dcsw_custom1 setOn:([dashboard.event_16_1 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom1];
+            [dcsw_custom1 addTarget:self action:@selector(action_sw_infaction1:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom2 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y2, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom2 setOffText:@"NO"];
+            [dcsw_custom2 setOnText:@"YES"];
+            [dcsw_custom2 setOn:([dashboard.event_16_2 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom2];
+            [dcsw_custom2 addTarget:self action:@selector(action_sw_infaction2:) forControlEvents:UIControlEventValueChanged];
+
+            DCRoundSwitch *dcsw_custom3 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y3, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom3 setOffText:@"NO"];
+            [dcsw_custom3 setOnText:@"YES"];
+            [dcsw_custom3 setOn:([dashboard.event_16_3 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom3];
+            [dcsw_custom3 addTarget:self action:@selector(action_sw_infaction3:) forControlEvents:UIControlEventValueChanged];
+
+
+            
+            
+//            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
+//            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
+//            UISwitch *sw_2 = (UISwitch *)[cell viewWithTag:5];
+//            UISwitch *sw_3 = (UISwitch *)[cell viewWithTag:6];
+//            [sw_0 setOn:([dashboard.event_16_0 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_1 setOn:([dashboard.event_16_1 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_2 setOn:([dashboard.event_16_2 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_3 setOn:([dashboard.event_16_3 isEqualToString:@"YES"]) ? YES : NO];
             
         }
         else if(indexPath.row == 15) {
-            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
-            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
-            UISwitch *sw_2 = (UISwitch *)[cell viewWithTag:5];
-            [sw_0 setOn:([dashboard.event_19_0 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_1 setOn:([dashboard.event_19_1 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_2 setOn:([dashboard.event_19_2 isEqualToString:@"YES"]) ? YES : NO];
+            DCRoundSwitch *dcsw_custom0 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y0, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom0 setOffText:@"NO"];
+            [dcsw_custom0 setOnText:@"YES"];
+            [dcsw_custom0 setOn:([dashboard.event_19_0 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom0];
+            [dcsw_custom0 addTarget:self action:@selector(action_neurol_deterioration0:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom1 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y1, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom1 setOffText:@"NO"];
+            [dcsw_custom1 setOnText:@"YES"];
+            [dcsw_custom1 setOn:([dashboard.event_19_1 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom1];
+            [dcsw_custom1 addTarget:self action:@selector(action_neurol_deterioration1:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom2 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y2, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom2 setOffText:@"NO"];
+            [dcsw_custom2 setOnText:@"YES"];
+            [dcsw_custom2 setOn:([dashboard.event_19_2 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom2];
+            [dcsw_custom2 addTarget:self action:@selector(action_neurol_deterioration2:) forControlEvents:UIControlEventValueChanged];
+
+            
+            
+            
+//            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
+//            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
+//            UISwitch *sw_2 = (UISwitch *)[cell viewWithTag:5];
+//            [sw_0 setOn:([dashboard.event_19_0 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_1 setOn:([dashboard.event_19_1 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_2 setOn:([dashboard.event_19_2 isEqualToString:@"YES"]) ? YES : NO];
 
             
         }
         else if(indexPath.row == 19) {
-            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
-            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
-            [sw_0 setOn:([dashboard.event_22_0 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_1 setOn:([dashboard.event_22_1 isEqualToString:@"YES"]) ? YES : NO];
+            DCRoundSwitch *dcsw_custom0 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y0, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom0 setOffText:@"NO"];
+            [dcsw_custom0 setOnText:@"YES"];
+            [dcsw_custom0 setOn:([dashboard.event_22_0 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom0];
+            [dcsw_custom0 addTarget:self action:@selector(throm_0:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom1 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y1, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom1 setOffText:@"NO"];
+            [dcsw_custom1 setOnText:@"YES"];
+            [dcsw_custom1 setOn:([dashboard.event_22_1 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom1];
+            [dcsw_custom1 addTarget:self action:@selector(throm_1:) forControlEvents:UIControlEventValueChanged];
+            
+//            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
+//            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
+//            [sw_0 setOn:([dashboard.event_22_0 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_1 setOn:([dashboard.event_22_1 isEqualToString:@"YES"]) ? YES : NO];
 
 
             
         }
         else if(indexPath.row == 22) {
-            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
-            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
-            [sw_0 setOn:([dashboard.event_23_0 isEqualToString:@"YES"]) ? YES : NO];
-            [sw_1 setOn:([dashboard.event_23_1 isEqualToString:@"YES"]) ? YES : NO];
+            DCRoundSwitch *dcsw_custom0 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y0, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom0 setOffText:@"NO"];
+            [dcsw_custom0 setOnText:@"YES"];
+            [dcsw_custom0 setOn:([dashboard.event_23_0 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom0];
+            [dcsw_custom0 addTarget:self action:@selector(wound_0:) forControlEvents:UIControlEventValueChanged];
+            
+            DCRoundSwitch *dcsw_custom1 = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Discharge3_Origin_X, DCSwitch_Discharge3_Origin_Y1, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom1 setOffText:@"NO"];
+            [dcsw_custom1 setOnText:@"YES"];
+            [dcsw_custom1 setOn:([dashboard.event_23_1 isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom1];
+            [dcsw_custom1 addTarget:self action:@selector(wound_1:) forControlEvents:UIControlEventValueChanged];
+            
+//            UISwitch *sw_0 = (UISwitch *)[cell viewWithTag:3];
+//            UISwitch *sw_1 = (UISwitch *)[cell viewWithTag:4];
+//            [sw_0 setOn:([dashboard.event_23_0 isEqualToString:@"YES"]) ? YES : NO];
+//            [sw_1 setOn:([dashboard.event_23_1 isEqualToString:@"YES"]) ? YES : NO];
 
             
         }
@@ -232,40 +371,40 @@
 
 
 - (IBAction)action_other_tf:(id)sender {
-    dashboard.event_23 = _tf_other.text;
+    dashboard.event_23 = _tv_other.text;
 }
 
 #pragma mark - switch actions
 //16
 //    dashboard.patient_received_allogenic_blood = (_sw_patient_receivedallogenic_blood.isOn) ? @"YES" : @"NO";
-- (IBAction)superficial_wound:(id)sender {
-    dashboard.event_16_0 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_sw_infaction0:(id)sender {
+    dashboard.event_16_0 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
-- (IBAction)deep_wound:(id)sender {
-    dashboard.event_16_1 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_sw_infaction1:(id)sender {
+    dashboard.event_16_1 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
-- (IBAction)uniary_tract:(id)sender {
-    dashboard.event_16_2 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_sw_infaction2:(id)sender {
+    dashboard.event_16_2 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
-- (IBAction)systemic:(id)sender {
-    dashboard.event_16_3 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_sw_infaction3:(id)sender {
+    dashboard.event_16_3 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 
 //19
-- (IBAction)cord_motor_grade:(id)sender {
-    dashboard.event_19_0 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_neurol_deterioration0:(id)sender {
+    dashboard.event_19_0 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 
-- (IBAction)nerve_root:(id)sender {
-    dashboard.event_19_1 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_neurol_deterioration1:(id)sender {
+    dashboard.event_19_1 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
-- (IBAction)cauda_equina:(id)sender {
-    dashboard.event_19_2 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)action_neurol_deterioration02:(id)sender {
+    dashboard.event_19_2 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 
@@ -275,23 +414,23 @@
 
 
 //22
-- (IBAction)throm_dvt:(id)sender {
-    dashboard.event_22_0 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)throm_0:(id)sender {
+    dashboard.event_22_0 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 
-- (IBAction)throm_pulmonary:(id)sender {
-    dashboard.event_22_1 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)throm_1:(id)sender {
+    dashboard.event_22_1 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 
 //23
-- (IBAction)wound_dvt:(id)sender {
-    dashboard.event_23_0 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)wound_0:(id)sender {
+    dashboard.event_23_0 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
-- (IBAction)wound_pul:(id)sender {
-    dashboard.event_23_1 = (((UISwitch *)sender).isOn) ? @"YES" : @"NO";
+- (IBAction)wound_1:(id)sender {
+    dashboard.event_23_1 = (((DCRoundSwitch *)sender).isOn) ? @"YES" : @"NO";
 }
 
 

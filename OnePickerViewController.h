@@ -17,6 +17,8 @@
     id id_object2;
     NSIndexPath *selected_indexpath;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lb_right;
+@property (weak, nonatomic) IBOutlet UILabel *lb_left;
 
 @property (strong, nonatomic) NSMutableArray *arr_component_0;
 @property (weak, nonatomic) IBOutlet UIPickerView *v_picker;

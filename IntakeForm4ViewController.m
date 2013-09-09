@@ -18,6 +18,8 @@
 #import "LightTouchViewController.h"
 #import "SendAsiaScoreViewController.h"
 #import "StackMob.h"
+#import "DCRoundSwitch.h"
+#import "KKDS_Preference.h"
 
 
 @interface IntakeForm4ViewController ()
@@ -49,6 +51,9 @@
     dashboard = (Dashboard *)[clip clipKey:@"create_intake"];
     
     storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    
+//    arr_asiaSend = [[NSMutableArray alloc] init];
+    asiaSend = [[AsiaSendData alloc] init];
     
 }
 
@@ -194,8 +199,13 @@
         //--- menu ---//
         NSString *str_menuName = [arr_menu objectAtIndex:indexPath.row];
         if ([str_menuName isEqualToString:@"Neurologically Intact"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];            
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];            
         }
+        
+        else if ([str_menuName isEqualToString:@"Degrees Of Kyphosis"] || [str_menuName isEqualToString:@"Height Loss"] || [str_menuName isEqualToString:@"Translation"]) {
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"TextFieldCell" owner:self options:nil];
+        }
+
         //--- If Neurologically intact == YES, then use specific Cell
         else if ([str_menuName isEqualToString:@"ASIA Score"]) {
             topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
@@ -228,8 +238,9 @@
         }
 
         else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"SendAsiaCell" owner:self options:nil];
         }
+
         //--- If Neurologically intact == NO, then use normal MenuCell
         else {
             
@@ -243,12 +254,52 @@
         
         if ([str_menuName isEqualToString:@"Neurologically Intact"]) {
             // intact only
-            UISwitch *sw_intact = (UISwitch *)[cell viewWithTag:2];
+            DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom setOffText:@"NO"];
+            [dcsw_custom setOnText:@"YES"];
             
-            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) [sw_intact setOn:YES];
-            else [sw_intact setOn:NO];
+            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) [dcsw_custom setOn:YES animated:NO ignoreControlEvents:YES];
+            else [dcsw_custom setOn:NO animated:NO ignoreControlEvents:YES];
+
+            [cell addSubview:dcsw_custom];
             
-            [sw_intact addTarget:self action:@selector(action_sw_intact:) forControlEvents:UIControlEventValueChanged];
+            [dcsw_custom addTarget:self action:@selector(action_sw_intact:) forControlEvents:UIControlEventValueChanged];
+
+//            UISwitch *sw_intact = (UISwitch *)[cell viewWithTag:2];
+//            
+//            if([dashboard.neurologicallyintact isEqualToString:@"YES"]) [sw_intact setOn:YES];
+//            else [sw_intact setOn:NO];
+//
+//            [sw_intact addTarget:self action:@selector(action_sw_intact:) forControlEvents:UIControlEventValueChanged];
+        }
+        else if ([str_menuName isEqualToString:@"Degrees Of Kyphosis"]){
+            UITextField *tf_tmp = (UITextField *)[cell viewWithTag:2];
+            tf_tmp.returnKeyType  = UIReturnKeyDone;
+//            tf_tmp.keyboardType = UIKeyboardTypeNumberPad;
+            tf_tmp.text = dashboard.degree_kyphosis;
+            [tf_tmp addTarget:self action:@selector(sel_degree:) forControlEvents:UIControlEventEditingChanged];
+            [tf_tmp addTarget:self action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+//            lb_right.text = dashboard.degree_kyphosis;
+        }
+        else if ([str_menuName isEqualToString:@"Height Loss"]){
+            UITextField *tf_tmp = (UITextField *)[cell viewWithTag:2];
+            tf_tmp.returnKeyType  = UIReturnKeyDone;
+//            tf_tmp.keyboardType = UIKeyboardTypeNumberPad;
+            tf_tmp.text = dashboard.height_loss;
+            [tf_tmp addTarget:self action:@selector(sel_heightLoss:) forControlEvents:
+             UIControlEventEditingChanged];
+            [tf_tmp addTarget:self action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+
+//            lb_right.text = dashboard.height_loss;
+        }
+        else if ([str_menuName isEqualToString:@"Translation"]){
+            UITextField *tf_tmp = (UITextField *)[cell viewWithTag:2];
+            tf_tmp.returnKeyType  = UIReturnKeyDone;
+//            tf_tmp.keyboardType = UIKeyboardTypeNumberPad;
+            tf_tmp.text = dashboard.translation;
+            [tf_tmp addTarget:self action:@selector(sel_translation:) forControlEvents:UIControlEventEditingChanged];
+            [tf_tmp addTarget:self action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+
         }
         else {
             // every not intact
@@ -268,12 +319,6 @@
             else if([str_menuName isEqualToString:@"Select Fracture Type"]){
                 lb_right.text = dashboard.fracturetype;
             }
-            else if ([str_menuName isEqualToString:@"Degrees Of Kyphosis"]){
-                lb_right.text = dashboard.degree_kyphosis;
-            }
-            else if ([str_menuName isEqualToString:@"Height Loss"]){
-                lb_right.text = dashboard.height_loss;
-            }
             else if ([str_menuName isEqualToString:@"TLIC Score"]) {
                 if(dashboard.fracture_morphology_type != nil && dashboard.neurologic_status != nil && dashboard.plc) {
 //                    int i_total = 0;
@@ -285,9 +330,7 @@
                     lb_right.text = dashboard.tlic_score_total;
                 }
             }
-            else if ([str_menuName isEqualToString:@"Translation"]){
-                lb_right.text = dashboard.translation;
-            }
+            
             //--- intact == YES
             if ([str_menuName isEqualToString:@"ASIA Score"]) {
                 lb_right.text = dashboard.asia_score;
@@ -378,6 +421,18 @@
             }
             else if ([str_menuName isEqualToString:@"Send ASIA report"]) {
                 
+                UILabel *lb_detail = (UILabel *)[cell viewWithTag:5];
+                
+                NSMutableString *mStr_recipient = [[NSMutableString alloc] initWithString:@""];
+                
+                for(NSString *str_tmp in asiaSend.arr_toEmail) {
+                    [mStr_recipient appendFormat:@"[%@] ", str_tmp];
+                }
+                for(NSString *str_tmp in asiaSend.arr_ccEmail) {
+                    [mStr_recipient appendFormat:@"[%@] ", str_tmp];
+                }
+                lb_detail.text = mStr_recipient;
+
             }
             else {
                 
@@ -512,69 +567,69 @@
             }
             
         }
-        else if([str_menu isEqualToString:@"Degrees Of Kyphosis"]) {
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
-            
-            oneController.title = [arr_menu objectAtIndex:indexPath.row];
-            
-            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
-            NSMutableArray *arr_tmp1 = [NSMutableArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", nil];
-            NSMutableArray *arr_tmp2 = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
-            oneController.arr_component_0 = arr_tmp;
-            [oneController setMode:@"triple" object1:arr_tmp1 object2:arr_tmp2 indexpath:nil];
-            [self.navigationController pushViewController:oneController animated:YES];
-            
-        }
-        else if([str_menu isEqualToString:@"Height Loss"]) {
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
-            
-            oneController.title = [arr_menu objectAtIndex:indexPath.row];
-            
-            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
-            NSString *str_tmp = nil;
-            for(int i = 0; i < 100; i++) {
-                str_tmp = [NSString stringWithFormat:@"%d", i];
-                [arr_tmp addObject:str_tmp];
-            }
-            
-            oneController.arr_component_0 = arr_tmp;
-            [self.navigationController pushViewController:oneController animated:YES];
-            
-        }
+//        else if([str_menu isEqualToString:@"Degrees Of Kyphosis"]) {
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+//            
+//            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
+//            NSMutableArray *arr_tmp1 = [NSMutableArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", nil];
+//            NSMutableArray *arr_tmp2 = [NSMutableArray arrayWithObjects:@"0", @"1", nil];
+//            oneController.arr_component_0 = arr_tmp;
+//            [oneController setMode:@"triple" object1:arr_tmp1 object2:arr_tmp2 indexpath:nil];
+//            [self.navigationController pushViewController:oneController animated:YES];
+//            
+//        }
+//        else if([str_menu isEqualToString:@"Height Loss"]) {
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+//            
+//            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+//            NSString *str_tmp = nil;
+//            for(int i = 0; i < 100; i++) {
+//                str_tmp = [NSString stringWithFormat:@"%d", i];
+//                [arr_tmp addObject:str_tmp];
+//            }
+//            
+//            oneController.arr_component_0 = arr_tmp;
+//            [self.navigationController pushViewController:oneController animated:YES];
+//            
+//        }
         else if([str_menu isEqualToString:@"TLIC Score"]) {
             TLICScoreViewController *tlicController = [storyboard instantiateViewControllerWithIdentifier:@"TLICScoreViewController"];
             
             [self.navigationController pushViewController:tlicController animated:YES];
         }
         else if([str_menu isEqualToString:@"Degrees Of Kyphosis"]) {
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
-            
-            oneController.title = [arr_menu objectAtIndex:indexPath.row];
-            
-            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
-            NSString *str_tmp = nil;
-            for(int i = 0; i < 156; i++) {
-                str_tmp = [NSString stringWithFormat:@"%d", i];
-                [arr_tmp addObject:str_tmp];
-            }
-            
-            oneController.arr_component_0 = arr_tmp;
-            [self.navigationController pushViewController:oneController animated:YES];
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+//            
+//            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+//            NSString *str_tmp = nil;
+//            for(int i = 0; i < 156; i++) {
+//                str_tmp = [NSString stringWithFormat:@"%d", i];
+//                [arr_tmp addObject:str_tmp];
+//            }
+//            
+//            oneController.arr_component_0 = arr_tmp;
+//            [self.navigationController pushViewController:oneController animated:YES];
         }
         else if([str_menu isEqualToString:@"Translation"]) {
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
-            
-            oneController.title = [arr_menu objectAtIndex:indexPath.row];
-            
-            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
-            NSString *str_tmp = nil;
-            for(int i = 0; i < 358; i++) {
-                str_tmp = [NSString stringWithFormat:@"%d", i];
-                [arr_tmp addObject:str_tmp];
-            }
-            
-            oneController.arr_component_0 = arr_tmp;
-            [self.navigationController pushViewController:oneController animated:YES];
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+//            
+//            NSMutableArray *arr_tmp = [[NSMutableArray alloc] init];
+//            NSString *str_tmp = nil;
+//            for(int i = 0; i < 358; i++) {
+//                str_tmp = [NSString stringWithFormat:@"%d", i];
+//                [arr_tmp addObject:str_tmp];
+//            }
+//            
+//            oneController.arr_component_0 = arr_tmp;
+//            [self.navigationController pushViewController:oneController animated:YES];
         }
         else if([str_menu isEqualToString:@"ASIA Score"]) {
             OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
@@ -613,6 +668,7 @@
         }
         else if([str_menu isEqualToString:@"Send ASIA report"]) {
             SendAsiaScoreViewController *sendController = [[SendAsiaScoreViewController alloc] initWithNibName:@"SendAsiaScoreViewController" bundle:nil];
+            sendController.asiaSend = asiaSend;
             [self.navigationController pushViewController:sendController animated:YES];
         }
 
@@ -642,6 +698,18 @@
 }
 
 #pragma mark - Custom Method
+
+- (void)sel_degree:(id)sender {
+    dashboard.degree_kyphosis = ((UITextField *)sender).text;
+}
+
+- (void)sel_heightLoss:(id)sender {
+    dashboard.height_loss = ((UITextField *)sender).text;
+}
+
+- (void)sel_translation:(id)sender {
+    dashboard.translation = ((UITextField *)sender).text;
+}
 
 - (void)action_sw_Voluntary:(id)sender {
     BOOL b_state = [sender isOn];

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    ModeDate,
+    ModeDateTime
+} ModeType;
+
+
 @protocol NewDatePcikerViewControllerDelegate <NSObject>
 -(void)delegateConfirm:(NSDate *)date_selected;
 @end
@@ -19,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_inner;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, assign) id<NewDatePcikerViewControllerDelegate>delegate;
-
+@property (nonatomic, assign) ModeType mode;
 
 - (UIView *)getDatePickerView:(UIViewController *)viewController;
 - (void)moveUpPickerView;

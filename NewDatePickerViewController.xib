@@ -576,16 +576,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="datePicker">UIDatePicker</string>
-						<string key="tb_toolbar">UIToolbar</string>
+						<string key="view_inner">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="datePicker">
 							<string key="name">datePicker</string>
 							<string key="candidateClassName">UIDatePicker</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="tb_toolbar">
-							<string key="name">tb_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
+						<object class="IBToOneOutletInfo" key="view_inner">
+							<string key="name">view_inner</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

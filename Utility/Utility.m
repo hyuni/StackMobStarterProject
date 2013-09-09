@@ -16,9 +16,18 @@
     
     NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
     [timeFormat setDateFormat:@"HH:mm:ss"];
+
+    NSString *theDate = [dateFormat stringFromDate:date];
+
+    return theDate;
+}
+
++ (NSString *)dateTimeToString:(NSDate *)date {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSString *theDate = [dateFormat stringFromDate:date];
-    //    NSString *theTime = [timeFormat stringFromDate:now];
+    
     return theDate;
 }
 

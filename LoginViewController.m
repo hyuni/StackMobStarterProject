@@ -13,7 +13,10 @@
 #import "UserDoctor.h"
 #import "Patient.h"
 #import "Dashboard.h"
-#import "Preference.h"
+#import "KKDS_Preference.h"
+#import "DCRoundSwitch.h"
+#import "AsiaSendData.h"
+
 
 @interface LoginViewController ()
 
@@ -36,6 +39,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBackground.png"] forBarMetrics:UIBarMetricsDefault];
     
 }
@@ -46,11 +50,65 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)action_test:(id)sender {
+//    NSString *test1 = @"yo";
+//    NSString *test2 = @"yo";
+//    NSString **test1 = &test2;
+    
+    
+    
+//    NSString *__strong *a;
+//    NSString *b = @"b";
+//    NSString *c = @"c";
+//    a = &b;
+//    *a = c;
+//    
+//    NSLog(@"%@",b);//I wanna see "c"
+    
+    
+//    AsiaSendData *send = [[AsiaSendData alloc] init];
+//    NSString *str_tmp = @"Not Changed!";
+//    send.str_test = &str_tmp;
+//    [self test:send.str_test];
+//
+//    NSLog(@"RESULT : %@", *send.str_test);
+    
+    
+    
+    AsiaSendData *send = [[AsiaSendData alloc] init];
+    send.str_subject = @"Not Changed!";
+    [self realTest:send.str_subject];
+    
+    NSLog(@"RESULT : %@", send.str_subject);
+
+}
+
+
+- (void)realTest:(NSString *)in_str {
+    in_str = [in_str stringByReplacingCharactersInRange:NSRangeFromString(@"3") withString:@"333"];
+    NSLog(@"in_str : %@", in_str);
+//    in_str = @"Changed!";
+    
+//    NSString *__strong *tmp = &in_str;
+//    *tmp = @"Changed!";
+//    
+//    
+//    in_str = @"Changed!";
+//    [(NSMutableString *)in_str setString:@"Changed!"];
+}
+
+- (void)test:(NSString *__strong *)in_str {
+    
+    *in_str = @"Changed!";
+    
+}
+
 #pragma mark - Actions
 
 - (IBAction)action_login:(id)sender {
     
-    if(Version == Version_Test) {
+
+    if(EXECUTE_MODE == EXECUTE_MODE_TEST) {
         [self action_login_success:nil];
     }
     else {
@@ -58,6 +116,20 @@
             // result contains a dictionary representation of the user object
             NSLog(@"SUCCESS : %@", result);
             [self action_login_success:nil];
+            
+            /*
+             2013-09-03 20:30:55.238 StackMobStarterProject[36989:11f03] SUCCESS : {
+             createddate = 1377143973932;
+             email = "kakadais@gmail.com";
+             lastmoddate = 1377143973932;
+             "sm_owner" = "user/kakadais";
+             username = kakadais;
+             }
+             */
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:result forKey:@"user_info"];
+            [userDefault synchronize];
+            
         } onFailure:^(NSError *error){
             // Error
             NSLog(@"Error : %@", error);
@@ -164,7 +236,7 @@
     }];
 }
 
--(IBAction)action_test:(id)sender {
+-(IBAction)action_test33:(id)sender {
     /*
      The first thing we do is acquire an initialized managed object context from our SMCoreDataStore instance.
      

@@ -11,6 +11,8 @@
 #import "NewDatePickerViewController.h"
 #import "Utility.h"
 #import "StackMob.h"
+#import "DCRoundSwitch.h"
+#import "KKDS_Preference.h"
 
 @interface IntakeForm5ViewController ()
 
@@ -44,6 +46,7 @@
     datePickerViewController = [[NewDatePickerViewController alloc] initWithNibName:@"NewDatePickerViewController" bundle:nil];
     datePickerView = [datePickerViewController getDatePickerView:self];
     [self.view addSubview:datePickerView];
+    
     
     
 }
@@ -142,13 +145,33 @@
             if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Admit to Hospital"]) {
                 CellIdentifier = @"Normal Switch";
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                UISwitch *sw_menu = (UISwitch *)[cell viewWithTag:2];
+                sw_menu.hidden = YES;
+                
                 UILabel *lb_title = (UILabel *)[cell viewWithTag:1];
                 lb_title.text = [arr_menu objectAtIndex:indexPath.row];
-                UISwitch *sw_menu = (UISwitch *)[cell viewWithTag:2];
-                if([dashboard.admit_to_hospital isEqualToString:@"NO"]) [sw_menu setOn:NO];
-                else [sw_menu setOn:YES];
                 
-                [sw_menu addTarget:self action:@selector(sel_switch:) forControlEvents:UIControlEventValueChanged];
+                DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+                [dcsw_custom setOffText:@"NO"];
+                [dcsw_custom setOnText:@"YES"];
+                
+                if([dashboard.admit_to_hospital isEqualToString:@"YES"]) [dcsw_custom setOn:YES animated:NO ignoreControlEvents:YES];
+                else [dcsw_custom setOn:NO animated:NO ignoreControlEvents:YES];
+                
+                [cell addSubview:dcsw_custom];
+                
+                [dcsw_custom addTarget:self action:@selector(sel_admitToHospital:) forControlEvents:UIControlEventValueChanged];
+
+                
+//                CellIdentifier = @"Normal Switch";
+//                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//                UILabel *lb_title = (UILabel *)[cell viewWithTag:1];
+//                lb_title.text = [arr_menu objectAtIndex:indexPath.row];
+//                UISwitch *sw_menu = (UISwitch *)[cell viewWithTag:2];
+//                if([dashboard.admit_to_hospital isEqualToString:@"NO"]) [sw_menu setOn:NO];
+//                else [sw_menu setOn:YES];
+//                
+//                [sw_menu addTarget:self action:@selector(sel_switch:) forControlEvents:UIControlEventValueChanged];
             }
             else if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Follow-up Required"]) {
                 CellIdentifier = @"Normal Switch";
@@ -207,16 +230,23 @@
     return cell;
 }
 
+- (void)sel_admitToHospital:(id)sender {
+    DCRoundSwitch *dcsw_tmp = (DCRoundSwitch *)sender;
+    if(dcsw_tmp.isOn) dashboard.admit_to_hospital = @"YES";
+    else dashboard.admit_to_hospital = @"NO";
+
+}
+
 - (void)sel_switch:(id)sender {
     UISwitch *button = (UISwitch *)sender;
     CGRect buttonFrame = [button convertRect:button.bounds toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonFrame.origin];
     
-    if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Admit to Hospital"]) {
-        if(button.isOn) dashboard.admit_to_hospital = @"YES";
-        else dashboard.admit_to_hospital = @"NO";
-    }
-    else if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Follow-up Required"]) {
+//    if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Admit to Hospital"]) {
+//        if(button.isOn) dashboard.admit_to_hospital = @"YES";
+//        else dashboard.admit_to_hospital = @"NO";
+//    }
+    if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Follow-up Required"]) {
         if(button.isOn) dashboard.follow_up_required = @"YES";
         else dashboard.follow_up_required= @"NO";
     }

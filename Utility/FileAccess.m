@@ -10,6 +10,41 @@
 
 @implementation FileAccess
 
+/* Sample Code
+ 
+ - (void)saveData {
+ Clipboard *clipboard = [Clipboard sharedClipboard];
+ NSMutableArray *arr_chat = [clipboard clipKey:@"Chat"];
+ NSMutableArray *arr_friend = [clipboard clipKey:@"Friend"];
+ NSMutableArray *arr_friendSendInfo = [clipboard clipKey:@"FriendSendInfo"];
+ NSMutableArray *arr_adBlInfo = [clipboard clipKey:@"AdBlInfo"];
+ NSMutableArray *arr_adBgInfo = [clipboard clipKey:@"AdBgInfo"];
+ 
+ [FileAccess setFile:@"Chat" object:arr_chat];
+ [FileAccess setFile:@"Friend" object:arr_friend];
+ [FileAccess setFile:@"FriendSendInfo" object:arr_friendSendInfo];
+ [FileAccess setFile:@"AdBlInfo" object:arr_adBlInfo];
+ [FileAccess setFile:@"AdBgInfo" object:arr_adBgInfo];
+ 
+ }
+ 
+ - (void)loadData {
+ //--- data load
+ NSMutableArray *arr_chat = [FileAccess getFile:@"Chat"];                //chat info
+ NSMutableArray *arr_friend = [FileAccess getFile:@"Friend"];            //friends info
+ NSMutableArray *arr_friendSendInfo = [FileAccess getFile:@"FriendSendInfo"];    //invite info
+ NSMutableArray *arr_adBlInfo = [FileAccess getFile:@"AdBlInfo"];
+ NSMutableArray *arr_adBgInfo = [FileAccess getFile:@"AdBgInfo"];
+ 
+ Clipboard *clipboard = [Clipboard sharedClipboard];
+ [clipboard clipValue:arr_chat clipKey:@"Chat"];
+ [clipboard clipValue:arr_friend clipKey:@"Friend"];
+ [clipboard clipValue:arr_friendSendInfo clipKey:@"FriendSendInfo"];
+ [clipboard clipValue:arr_adBlInfo clipKey:@"AdBlInfo"];
+ [clipboard clipValue:arr_adBgInfo clipKey:@"AdBgInfo"];
+ }
+ */
+
 - (id)init
 {
     self = [super init];

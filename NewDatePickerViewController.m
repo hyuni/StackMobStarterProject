@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if(self.mode == ModeDateTime) {
+        self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

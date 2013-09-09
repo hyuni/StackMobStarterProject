@@ -11,5 +11,6 @@
 @interface Utility : NSObject
 
 + (NSString *)dateToString:(NSDate *)date;
++ (NSString *)dateTimeToString:(NSDate *)date;
 
 @end

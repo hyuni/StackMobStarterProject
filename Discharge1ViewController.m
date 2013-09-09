@@ -43,8 +43,8 @@
     _lb_discharge_date.text = [Utility dateToString:[NSDate date]];
     _lb_admission_date.text = [Utility dateToString:[NSDate date]];
 
-    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
-    self.navigationItem.rightBarButtonItem = confirmButton;
+//    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
+//    self.navigationItem.rightBarButtonItem = confirmButton;
     
     //--- Data prepare ---//
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
@@ -77,16 +77,18 @@
     dashboard.event_21 = @"";
     dashboard.event_22 = @"";
     dashboard.event_23 = @"";
-    
+    dashboard.occur_date = [Utility dateToString:[NSDate date]];
     
     Clipboard *clip = [Clipboard sharedClipboard];
     [clip clipValue:dashboard clipKey:@"create_discharge"];
 
-    
-
 }
 
-- (void)confirm:(id)sender {
+- (IBAction)action_delete:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)action_send:(id)sender {
     if([_tf_siteID.text length] <= 0 || [_tf_healthcardNumber.text length] <= 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
                                                        delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
@@ -96,7 +98,7 @@
     }
     
     [self saveCurrentScreenData];
-
+    
     // --- save everything
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
@@ -109,6 +111,31 @@
         // --- Draft
     }];
 }
+
+
+//- (void)confirm:(id)sender {
+//    if([_tf_siteID.text length] <= 0 || [_tf_healthcardNumber.text length] <= 0) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
+//                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+//        
+//        [alert show];
+//        return;
+//    }
+//    
+//    [self saveCurrentScreenData];
+//
+//    // --- save everything
+//    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+//    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+//    
+//    dashboard.status = @"Sent";
+//    [context saveOnSuccess:^{
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    } onFailure:^(NSError *error) {
+//        NSLog(@"Error saving todo: %@", error);
+//        // --- Draft
+//    }];
+//}
 
 - (void)saveCurrentScreenData {
     dashboard.site_id = _tf_siteID.text;
@@ -150,7 +177,6 @@
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     // Configure the cell...
-    
     
     return cell;
 }
@@ -205,6 +231,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
     if(indexPath.section == 1) {
         if(indexPath.row == 1 ) {
             [datePickerViewController moveDownPickerView:self];
@@ -244,8 +271,10 @@
 #pragma mark - custom moethod
 - (IBAction)action_tf_siteID:(id)sender {
     [_tf_siteID resignFirstResponder];
+    [_tf_healthcardNumber resignFirstResponder];
 }
 - (IBAction)action_healthcard:(id)sender {
+    [_tf_siteID resignFirstResponder];
     [_tf_healthcardNumber resignFirstResponder];
 }
 

@@ -68,7 +68,32 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
     
     
+    
+    
+//    NSString *a = @"aaa";
+//    NSString *__strong *tmp;
+//    tmp = &a;
+//    
+//    *tmp = @"bbb";
+//    
+//    NSLog(@"a : %@", a);
+//    NSLog(@"tmp : %@", *tmp);
+    
+    NSDate *first = nil;
+    
+    NSLog(@"### result before : %@", first.description);
+    
+    [self test:&first];
+    
+    
+    NSLog(@"### result after : %@", first.description);
+    
+    
     return YES;
+}
+
+- (void)test:(NSDate *__strong *)date_in {
+    *date_in = [NSDate date];
 }
 
 - (void)saveLocalData:(id)sender {
@@ -176,7 +201,7 @@
     // assignObjectId is provided by the StackMob iOS SDK, and generates a random string ID for the object. This needs to be done for every new object before it is saved.
     
     dashboard.dashboard_id = [dashboard assignObjectId];
-    dashboard.healthcard_number = @"";
+    dashboard.healthcard_number = @"bool_test";
     dashboard.status = @"";
     dashboard.visit_type = @"";
     dashboard.admitted = @"";
@@ -216,6 +241,7 @@
     dashboard.z_sensory_l = @"";
     dashboard.z_motor_r = @"";
     dashboard.z_motor_l = @"";
+    
     
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
     [context saveOnSuccess:^{

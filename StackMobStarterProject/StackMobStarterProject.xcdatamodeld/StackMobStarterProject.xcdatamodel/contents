@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Dashboard" representedClassName="Dashboard" syncable="YES">
+        <attribute name="adj_imaging" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_imaging_ct_3d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_imaging_fluroscopy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_imaging_none" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_imaging_x_ray" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_monitoring" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_monitoring_emg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_monitoring_motor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_monitoring_non" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_monitoring_sensory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adj_navigation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="adjunctive_procedures" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="admission_date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="admit_to_hospital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="admitted" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,6 +33,12 @@
         <attribute name="asia_pinpric_r_subtotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_pinpric_total" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="asia_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aso_score" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aug_kyp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aug_kyp_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aug_vert" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aug_vert_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="augmentation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="billingcode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="brace_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="complete_or_incomplete" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,9 +46,20 @@
         <attribute name="dashboard_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date_of_birth" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date_of_surgery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_foraminotomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_foraminotomy_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminectomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminectomy_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminoplasty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminoplasty_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminotomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decom_laminotomy_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decompression" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="degree_kyphosis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diagnosis_details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="discharge_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end_time_date_of_surgery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="estimated_blood_loss" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_0" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_2" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,14 +97,67 @@
         <attribute name="event_23_1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_24" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_days" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_approach" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_discectomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_removal_of_spinal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_tumour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_tumour_int" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_tumour_wide" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exicsion_tumour_mar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_arth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_arth_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_bone_graft" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_bone_graft_bool" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_bone_graft_other" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_cannulated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_cannulated_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_device_used" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_device_used_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_interbody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_interbody_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_interspinous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_interspinous_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_non" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_non_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_other" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_other_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_plate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_plate_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_rod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_rod_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_synthetic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fixation_synthetic_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_fusion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_fusion_detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="follow_up_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hangman" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="healthcard_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height_loss" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="i_and_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="i_and_d_i_and_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="i_and_d_i_and_d_detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="injurylevel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="injurytype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_15" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_operative_adverse_events" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="n_motor_l" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="n_motor_r" optional="YES" attributeType="String" syncable="YES"/>
@@ -86,20 +168,49 @@
         <attribute name="neurologicallyintact" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occur_date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="option2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_corp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_corp_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_ped" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_ped_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_smith" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_smith_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_vcr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ost_vcr_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="osteotomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_drez" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_exploration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_not" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_release" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_repair" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_cord_rhizotomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_drainage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_drainage_lumboperitoneal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_drainage_not" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_drainage_syringoperitoneal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_pumps" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_pumps_not" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_pumps_replacement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="oth_pumps_spinal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="other_surgery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_admitted_to_icu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_discharged_to" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_received_allogenic_blood" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_with_sci" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="plc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="requires_step_down_bed" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="site_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start_time_date_of_surgery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surgery_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surgical_billing_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time_from_spinal_cord_injury" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tlic_score" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tlic_score_total" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trauma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vertebral_surgery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visit_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="voluntary_anal_contraction" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="z_motor_l" optional="YES" attributeType="String" syncable="YES"/>
@@ -194,7 +305,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="1635"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="3300"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
+#import "AsiaSendData.h"
 
 @interface IntakeForm4ViewController : UITableViewController {
     Dashboard *dashboard;
     NSMutableArray *arr_menu;
     UIStoryboard *storyboard;
+    
+//    NSMutableArray *arr_asiaSend;
+    AsiaSendData *asiaSend;
+    
     
 }
 

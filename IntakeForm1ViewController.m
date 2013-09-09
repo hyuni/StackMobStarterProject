@@ -11,6 +11,7 @@
 #import "StackMob.h"
 #import "Utility.h"
 #import "Clipboard.h"
+#import "KKDS_Preference.h"
 
 @interface IntakeForm1ViewController ()
 
@@ -235,6 +236,10 @@
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if(EXECUTE_MODE == EXECUTE_MODE_TEST) {
+        return YES;
+    }
     
     NSString *str_cardNumber = _tf_healthCardNumber.text;
     if(str_cardNumber.length > 0) return YES;

@@ -31,6 +31,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
+    flag_first = YES;
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
@@ -39,8 +41,10 @@
     Clipboard *clip = [Clipboard sharedClipboard];
     dashboard = [clip clipKey:@"create_discharge"];
     
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardDidHideNotification object:nil];
+
+    _tv_other.text = dashboard.patient_discharged_to;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,7 +64,7 @@
         selected_row = 4;
     }
     else if([dashboard.patient_discharged_to isEqualToString:@"Hospital-hospital transfer"]) {
-        selected_row = 5;
+        selected_row = 6;
     }
     else {
         // other
@@ -71,6 +75,7 @@
 }
 
 - (void)confirm:(id)sender {
+    dashboard.patient_discharged_to = _tv_other.text;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -104,7 +109,8 @@
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     // Configure the cell...
     if(indexPath.row == selected_row) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if(selected_row != 6)
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return cell;
@@ -148,6 +154,44 @@
     return YES;
 }
 */
+-(void) keyboardShown:(NSNotification*) notification {
+    _initialTVHeight = self.tableView.frame.size.height;
+    
+    CGRect initialFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect convertedFrame = [self.view convertRect:initialFrame fromView:nil];
+    CGRect tvFrame = self.tableView.frame;
+    tvFrame.size.height = convertedFrame.origin.y;
+    self.tableView.frame = tvFrame;
+}
+
+-(void) keyboardHidden:(NSNotification*) notification {
+    
+    if(flag_first == YES) {
+        flag_first = NO;
+        return;
+    }
+    
+    CGRect tvFrame = self.tableView.frame;
+    tvFrame.size.height = _initialTVHeight;
+    [UIView beginAnimations:@"TableViewDown" context:NULL];
+    [UIView setAnimationDuration:0.5f];
+    self.tableView.frame = tvFrame;
+    [UIView commitAnimations];
+}
+
+-(void) scrollToCell:(NSIndexPath*) path {
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:YES];
+}
+
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    CGRect buttonFrame = [textView convertRect:textView.bounds toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonFrame.origin];
+    
+    [self performSelector:@selector(scrollToCell:) withObject:indexPath afterDelay:0.5f];
+    return YES;
+}
 
 #pragma mark - Table view delegate
 
@@ -189,7 +233,8 @@
             dashboard.patient_discharged_to = @"Hospital-hospital transfer";
             break;
         case 6:
-            dashboard.patient_discharged_to = _tf_other.text;
+            dashboard.patient_discharged_to = _tv_other.text;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         default:
             break;

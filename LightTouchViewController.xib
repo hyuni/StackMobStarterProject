@@ -90,10 +90,7 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">Left</string>
-										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC4wNjY2NjY2NzAxNCAwLjIzNTI5NDEzMzQgMC40NTg4MjM1NjE3AA</bytes>
-										</object>
+										<nil key="IBUITextColor"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
 										<object class="IBUIFontDescription" key="IBUIFontDescription" id="595534631">
@@ -113,7 +110,6 @@
 										<string key="NSFrame">{{127, 41}, {44, 21}}</string>
 										<reference key="NSSuperview" ref="479269162"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -121,10 +117,7 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">Right</string>
-										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC4wNjY2NjY2NzAxNCAwLjIzNTI5NDEzMzQgMC40NTg4MjM1NjE3AA</bytes>
-										</object>
+										<nil key="IBUITextColor"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
 										<reference key="IBUIFontDescription" ref="595534631"/>
@@ -145,10 +138,7 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">Left</string>
-										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC4wNjY2NjY2NzAxNCAwLjIzNTI5NDEzMzQgMC40NTg4MjM1NjE3AA</bytes>
-										</object>
+										<nil key="IBUITextColor"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
 										<reference key="IBUIFontDescription" ref="595534631"/>
@@ -168,10 +158,7 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">Right</string>
-										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC4wNjY2NjY2NzAxNCAwLjIzNTI5NDEzMzQgMC40NTg4MjM1NjE3AA</bytes>
-										</object>
+										<nil key="IBUITextColor"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
 										<reference key="IBUIFontDescription" ref="595534631"/>
@@ -987,6 +974,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">LightTouchViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">action_btn_pressed:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">action_btn_pressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">action_btn_pressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">tableView</string>
 						<string key="NS.object.0">UITableView</string>

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RangeSlider.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController {
+
+}
 
 
 -(IBAction)action_login:(id)sender;

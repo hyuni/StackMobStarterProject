@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 
-@interface Discharge3ViewController : UITableViewController {
+@interface Discharge3ViewController : UITableViewController<UITextViewDelegate> {
     Dashboard *dashboard;
+    BOOL flag_first;
+    
+    int _initialTVHeight;
 
 }
-@property (weak, nonatomic) IBOutlet UITextField *tf_other;
+@property (weak, nonatomic) IBOutlet UITextView *tv_other;
 
 
 @end

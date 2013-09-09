@@ -35,6 +35,10 @@
     if([str_mode isEqualToString:@"duplicated"]) {
         [_v_picker selectRow:5 inComponent:0 animated:NO];
         [_v_picker selectRow:5 inComponent:1 animated:NO];
+        
+        _lb_right.hidden = NO;
+        _lb_left.hidden = NO;
+        
     }
     else if([str_mode isEqualToString:@"Light Touch / Pin Prick"]) {
         [_v_picker selectRow:2 inComponent:0 animated:NO];
@@ -42,7 +46,6 @@
 
     UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
     self.navigationItem.rightBarButtonItem = confirmButton;
-    
 }
 
 - (void)didReceiveMemoryWarning
