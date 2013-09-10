@@ -627,11 +627,20 @@
         if(![dashboard.flxation_device_used isEqualToString:@"YES"]) {
             return;
         }
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        DeviceUsedViewController *devicedController = [storyboard instantiateViewControllerWithIdentifier:@"DeviceUsedViewController"];
+        devicedController.title = [arr_menu objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:devicedController animated:YES];
+
     }
     else if([str_tmpMenuName isEqualToString:@"Bone graft"]) {
         if(![dashboard.flxation_bone_graft isEqualToString:@"YES"]) {
             return;
         }
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        BoneGraftViewController *detailController = [storyboard instantiateViewControllerWithIdentifier:@"BoneGraftViewController"];
+        detailController.title = [arr_menu objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detailController animated:YES];
     }
     else if([str_tmpMenuName isEqualToString:@" I & D "]) {
         if(![dashboard.i_and_d_i_and_d isEqualToString:@"YES"]) {
@@ -733,6 +742,8 @@
         }
     }
 }
+
+
 
 -(void)delegateOk:(NSMutableArray *)arr_result {
     NSString *str_tmpTitle = [arr_result lastObject];

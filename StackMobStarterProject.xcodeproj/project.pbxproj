@@ -199,6 +199,11 @@
 		804C5E2017C341E000B00065 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E1F17C341E000B00065 /* DashboardViewController.m */; };
 		804C5E2717C3476800B00065 /* tv_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 804C5E2617C3476700B00065 /* tv_back.png */; };
 		804C5E2A17C3EA9F00B00065 /* SideMenu2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */; };
+		8062E72C17DF76DB005017C6 /* DeviceUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8062E72B17DF76DB005017C6 /* DeviceUseViewController.m */; };
+		8062E72F17DF817E005017C6 /* DeviceUsedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8062E72E17DF817E005017C6 /* DeviceUsedViewController.m */; };
+		8062E73217DF9290005017C6 /* BoneGraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8062E73117DF9290005017C6 /* BoneGraftViewController.m */; };
+		8062E73517DFA2E6005017C6 /* AdjunctiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8062E73417DFA2E5005017C6 /* AdjunctiveViewController.m */; };
+		8062E73817DFAB56005017C6 /* OtherSurgeryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8062E73717DFAB56005017C6 /* OtherSurgeryViewController.m */; };
 		80670E6F17D19D82000E4B3A /* LightTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E6E17D19D82000E4B3A /* LightTouchViewController.m */; };
 		80670E7117D1A78A000E4B3A /* LightTouchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7017D1A78A000E4B3A /* LightTouchCell.xib */; };
 		80670E7317D1A84F000E4B3A /* LightTouchCellSubtotal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E7217D1A84F000E4B3A /* LightTouchCellSubtotal.xib */; };
@@ -501,6 +506,16 @@
 		804C5E2617C3476700B00065 /* tv_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv_back.png; sourceTree = "<group>"; };
 		804C5E2817C3EA9E00B00065 /* SideMenu2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenu2ViewController.h; sourceTree = "<group>"; };
 		804C5E2917C3EA9E00B00065 /* SideMenu2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenu2ViewController.m; sourceTree = "<group>"; };
+		8062E72A17DF76DB005017C6 /* DeviceUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUseViewController.h; sourceTree = "<group>"; };
+		8062E72B17DF76DB005017C6 /* DeviceUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUseViewController.m; sourceTree = "<group>"; };
+		8062E72D17DF817E005017C6 /* DeviceUsedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUsedViewController.h; sourceTree = "<group>"; };
+		8062E72E17DF817E005017C6 /* DeviceUsedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUsedViewController.m; sourceTree = "<group>"; };
+		8062E73017DF928F005017C6 /* BoneGraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoneGraftViewController.h; sourceTree = "<group>"; };
+		8062E73117DF9290005017C6 /* BoneGraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoneGraftViewController.m; sourceTree = "<group>"; };
+		8062E73317DFA2E5005017C6 /* AdjunctiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjunctiveViewController.h; sourceTree = "<group>"; };
+		8062E73417DFA2E5005017C6 /* AdjunctiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjunctiveViewController.m; sourceTree = "<group>"; };
+		8062E73617DFAB56005017C6 /* OtherSurgeryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherSurgeryViewController.h; sourceTree = "<group>"; };
+		8062E73717DFAB56005017C6 /* OtherSurgeryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherSurgeryViewController.m; sourceTree = "<group>"; };
 		80670E6D17D19D82000E4B3A /* LightTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightTouchViewController.h; sourceTree = "<group>"; };
 		80670E6E17D19D82000E4B3A /* LightTouchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightTouchViewController.m; sourceTree = "<group>"; };
 		80670E7017D1A78A000E4B3A /* LightTouchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchCell.xib; sourceTree = "<group>"; };
@@ -976,6 +991,16 @@
 				80673CFF17DE952600738170 /* VertebralSurgeryViewController.m */,
 				80673D0717DEBC3C00738170 /* DetailViewController.h */,
 				80673D0817DEBC3C00738170 /* DetailViewController.m */,
+				8062E72D17DF817E005017C6 /* DeviceUsedViewController.h */,
+				8062E72E17DF817E005017C6 /* DeviceUsedViewController.m */,
+				8062E72A17DF76DB005017C6 /* DeviceUseViewController.h */,
+				8062E72B17DF76DB005017C6 /* DeviceUseViewController.m */,
+				8062E73017DF928F005017C6 /* BoneGraftViewController.h */,
+				8062E73117DF9290005017C6 /* BoneGraftViewController.m */,
+				8062E73317DFA2E5005017C6 /* AdjunctiveViewController.h */,
+				8062E73417DFA2E5005017C6 /* AdjunctiveViewController.m */,
+				8062E73617DFAB56005017C6 /* OtherSurgeryViewController.h */,
+				8062E73717DFAB56005017C6 /* OtherSurgeryViewController.m */,
 			);
 			name = Surgery;
 			sourceTree = "<group>";
@@ -1598,6 +1623,11 @@
 				80673D0017DE952600738170 /* VertebralSurgeryViewController.m in Sources */,
 				80673D0917DEBC3C00738170 /* DetailViewController.m in Sources */,
 				80673D1217DEF19000738170 /* Dashboard.m in Sources */,
+				8062E72C17DF76DB005017C6 /* DeviceUseViewController.m in Sources */,
+				8062E72F17DF817E005017C6 /* DeviceUsedViewController.m in Sources */,
+				8062E73217DF9290005017C6 /* BoneGraftViewController.m in Sources */,
+				8062E73517DFA2E6005017C6 /* AdjunctiveViewController.m in Sources */,
+				8062E73817DFAB56005017C6 /* OtherSurgeryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

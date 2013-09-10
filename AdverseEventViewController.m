@@ -123,15 +123,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
+//    UITableViewCell *cell = nil;
     if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Other"]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"CellOther"];
+        //        cell = [tableView dequeueReusableCellWithIdentifier:@"CellOther"];
+        return 178;
     }
     else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1Label"];
+        //        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1Label"];
+        return 45;
     }
     
-    return cell.frame.size.height;
+    //    return cell.frame.size.height;
+    //    return 45;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,6 +156,7 @@
      [arr_menu addObject:@"Other"];
      */
 
+    // Configure the cell...
     UITableViewCell *cell = nil;
     
     if([[arr_menu objectAtIndex:indexPath.row] isEqualToString:@"Other"]) {
@@ -182,7 +186,7 @@
     [btn_grade addTarget:self action:@selector(action_btn_grade:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    // Configure the cell...
+
     
     return cell;
 }

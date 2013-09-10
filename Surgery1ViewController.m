@@ -95,6 +95,30 @@
     dashboard.intra_bool_14 = @"NO";
     dashboard.intra_bool_15 = @"NO";
     
+    dashboard.flxation_non = @"0";
+    dashboard.flxation_plate = @"0";
+    dashboard.flxation_rod = @"0";
+    dashboard.flxation_arth = @"0";
+    dashboard.flxation_interspinous = @"0";
+    dashboard.flxation_cannulated = @"0";
+    dashboard.flxation_synthetic = @"0";
+    dashboard.flxation_interbody = @"0";
+    dashboard.flxation_other = @"0";
+    
+    dashboard.flxation_bone_graft_bool = @"000000000000";
+    
+    dashboard.adj_monitoring = @"NO";
+    dashboard.adj_monitoring_non = @"NO";
+    dashboard.adj_monitoring_emg = @"NO";
+    dashboard.adj_monitoring_motor = @"NO";
+    dashboard.adj_monitoring_sensory = @"NO";
+    
+    dashboard.adj_imaging = @"NO";
+    dashboard.adj_imaging_none = @"NO";
+    dashboard.adj_imaging_x_ray = @"NO";
+    dashboard.adj_imaging_fluroscopy = @"NO";
+    dashboard.adj_imaging_ct_3d = @"NO";
+    
     Clipboard *clip = [Clipboard sharedClipboard];
     [clip clipValue:dashboard clipKey:@"create_surgery"];
     
@@ -449,7 +473,11 @@
         }
         else if(indexPath.row == 2) {
             if([dashboard.adjunctive_procedures isEqualToString:@"YES"]) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+                AdjunctiveViewController *adjController = [storyboard instantiateViewControllerWithIdentifier:@"AdjunctiveViewController"];
                 
+                [self.navigationController pushViewController:adjController animated:YES];
+
             }
         }
         else if(indexPath.row == 3) {

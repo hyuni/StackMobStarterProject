@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[BoneGraftViewController action_btn_yes:]:BoneGraftViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "arr_menu_bool">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[Discharge3ViewController superficial_wound:]:Discharge3ViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -206,6 +214,14 @@
          <PersistentStrings>
             <PersistentString
                value = "results">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[BoneGraftViewController tableView:cellForRowAtIndexPath:]:BoneGraftViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "arr_menu_bool">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

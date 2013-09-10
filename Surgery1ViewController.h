@@ -10,6 +10,7 @@
 #import "Dashboard.h"
 #import "PickerViewController.h"
 #import "VertebralSurgeryViewController.h"
+#import "AdjunctiveViewController.h"
 
 @interface Surgery1ViewController : UITableViewController<PickerViewControllerDelegate> {
     NSMutableArray *arr_menu0;

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 #import "DetailViewController.h"
+#import "DeviceUseViewController.h"
+#import "DeviceUsedViewController.h"
+#import "BoneGraftViewController.h"
 
 @interface VertebralSurgeryViewController : UITableViewController<DetailViewControllerDelegate> {
     NSMutableArray *arr_menu;

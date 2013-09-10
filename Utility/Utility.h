@@ -14,4 +14,6 @@
 + (NSString *)dateTimeToStringWithFormatHHmm:(NSDate *)date;
 + (NSString *)dateTimeToStringWithFormatHHmmss:(NSDate *)date;
 + (NSMutableArray *)getArrayDataFromStrong:(NSString *)str_data;
++ (NSMutableArray *)getArrayFixationDataFromStrong:(NSString *)str_data;
++ (NSMutableArray *)getArrayBoneGraftDataFromStrong:(NSString *)str_data;
 @end
