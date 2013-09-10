@@ -79,14 +79,16 @@
 //    NSLog(@"a : %@", a);
 //    NSLog(@"tmp : %@", *tmp);
     
-    NSDate *first = nil;
+//    NSDate *first = nil;
+//    
+//    NSLog(@"### result before : %@", first.description);
+//    
+//    [self test:&first];
+//    
+//    
+//    NSLog(@"### result after : %@", first.description);
     
-    NSLog(@"### result before : %@", first.description);
-    
-    [self test:&first];
-    
-    
-    NSLog(@"### result after : %@", first.description);
+
     
     
     return YES;

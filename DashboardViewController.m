@@ -11,6 +11,7 @@
 #import "Clipboard.h"
 #import "StackMob.h"
 #import "Utility.h"
+#import "Discharge1ViewController.h"
 
 @interface DashboardViewController ()
 
@@ -262,6 +263,11 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+//    Discharge1ViewController *discharge1Controller = [storyboard instantiateViewControllerWithIdentifier:@"Discharge1ViewController"];
+//    
+//    [self.navigationController pushViewController:discharge1Controller animated:YES];
+
 }
 
 #pragma mark - tab bar delegate

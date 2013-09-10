@@ -11,6 +11,7 @@
 @interface Utility : NSObject
 
 + (NSString *)dateToString:(NSDate *)date;
-+ (NSString *)dateTimeToString:(NSDate *)date;
-
++ (NSString *)dateTimeToStringWithFormatHHmm:(NSDate *)date;
++ (NSString *)dateTimeToStringWithFormatHHmmss:(NSDate *)date;
++ (NSMutableArray *)getArrayDataFromStrong:(NSString *)str_data;
 @end

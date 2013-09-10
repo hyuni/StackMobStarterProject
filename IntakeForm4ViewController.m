@@ -458,7 +458,7 @@
                                  @"T4", @"T5", @"T6", @"T7", @"T8",
                                  @"T9", @"T10", @"T11", @"T12", @"L1",
                                  @"L2", @"L3", @"L4", @"L5", @"S1",
-                                 @"S2", @"S3", @"S4-5", nil];
+                                 @"S2", @"S3", @"S45", nil];
     oneController.title = @"Neurological level";
     oneController.arr_component_0 = component;
     
@@ -497,7 +497,7 @@
                                  @"T4", @"T5", @"T6", @"T7", @"T8",
                                  @"T9", @"T10", @"T11", @"T12", @"L1",
                                  @"L2", @"L3", @"L4", @"L5", @"S1",
-                                 @"S2", @"S3", @"S4-5", nil];
+                                 @"S2", @"S3", @"S45", nil];
     oneController.title = @"Neurological level";
     oneController.arr_component_0 = component;
     

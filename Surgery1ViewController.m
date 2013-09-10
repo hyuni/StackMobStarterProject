@@ -9,7 +9,11 @@
 #import "Surgery1ViewController.h"
 #import "StackMob.h"
 #import "Utility.h"
-#import "PushPickerViewController.h"
+#import "DatePickerViewController.h"
+#import "DCRoundSwitch.h"
+#import "KKDS_Preference.h"
+#import "AdverseEventViewController.h"
+#import "Clipboard.h"
 
 @interface Surgery1ViewController ()
 
@@ -46,17 +50,61 @@
 
 - (void)initSurgeryData {
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+//    str_asoScore = @"";
+    
     dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
-    dashboard.patient_with_sci = @"YES";
+    dashboard.patient_with_sci = @"NO";
     dashboard.intra_operative_adverse_events = @"NO";
     dashboard.vertebral_surgery = @"NO";
     dashboard.adjunctive_procedures = @"NO";
-    dashboard.other_surgery = @"YES";
+    dashboard.other_surgery = @"NO";
+    dashboard.aso_score = @"";
+    
+    // intra
+    dashboard.intra_0 = @"";
+    dashboard.intra_1 = @"";
+    dashboard.intra_2 = @"";
+    dashboard.intra_3 = @"";
+    dashboard.intra_4 = @"";
+    dashboard.intra_5 = @"";
+    dashboard.intra_6 = @"";
+    dashboard.intra_7 = @"";
+    dashboard.intra_8 = @"";
+    dashboard.intra_9 = @"";
+    dashboard.intra_10 = @"";
+    dashboard.intra_11 = @"";
+    dashboard.intra_12 = @"";
+    dashboard.intra_13 = @"";
+    dashboard.intra_14 = @"";
+    dashboard.intra_15 = @"";
+    
+    dashboard.intra_bool_0 = @"NO";
+    dashboard.intra_bool_1 = @"NO";
+    dashboard.intra_bool_2 = @"NO";
+    dashboard.intra_bool_3 = @"NO";
+    dashboard.intra_bool_4 = @"NO";
+    dashboard.intra_bool_5 = @"NO";
+    dashboard.intra_bool_6 = @"NO";
+    dashboard.intra_bool_7 = @"NO";
+    dashboard.intra_bool_8 = @"NO";
+    dashboard.intra_bool_9 = @"NO";
+    dashboard.intra_bool_10 = @"NO";
+    dashboard.intra_bool_11 = @"NO";
+    dashboard.intra_bool_12 = @"NO";
+    dashboard.intra_bool_13 = @"NO";
+    dashboard.intra_bool_14 = @"NO";
+    dashboard.intra_bool_15 = @"NO";
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    [clip clipValue:dashboard clipKey:@"create_surgery"];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    NSLog(@"### Date Log : %@", self.dt_start.description);
+//    NSLog(@"### Date Log : %@", self.dt_start.description);
+    
+//    dashboard.aso_score = str_asoScore;
     
     arr_menu0 = [[NSMutableArray alloc] init];
     arr_menu1 = [[NSMutableArray alloc] init];
@@ -143,6 +191,8 @@
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"ASO Score"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1"];
+            UILabel *lb_asoScore = (UILabel *)[cell viewWithTag:3];
+            lb_asoScore.text = dashboard.aso_score;
             
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Healthcard Number"]) {
@@ -154,14 +204,14 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell3"];
             lb_startTime = (UILabel *)[cell viewWithTag:3];
             if(_dt_start != nil) {
-                lb_startTime.text = [Utility dateTimeToString:_dt_start];
+                lb_startTime.text = [Utility dateTimeToStringWithFormatHHmm:_dt_start];
             }
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"End /Time Date of Surgery"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4"];
             lb_endTime = (UILabel *)[cell viewWithTag:3];
             if(_dt_end != nil) {
-                lb_endTime.text = [Utility dateTimeToString:_dt_end];
+                lb_endTime.text = [Utility dateTimeToStringWithFormatHHmm:_dt_end];
             }
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Estimated Blood Loss"]) {
@@ -171,6 +221,13 @@
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Patient with SCI"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell6"];
+            DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+            [dcsw_custom setOffText:@"NO"];
+            [dcsw_custom setOnText:@"YES"];
+            [dcsw_custom setOn:([dashboard.patient_with_sci isEqualToString:@"YES"]) ? YES : NO animated:NO ignoreControlEvents:YES];
+            [cell addSubview:dcsw_custom];
+            [dcsw_custom addTarget:self action:@selector(selPatientWithSci:) forControlEvents:UIControlEventValueChanged];
+            
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Time from spinal cord injury to direct or indirect compression"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell7"];
@@ -246,8 +303,17 @@
     [sender resignFirstResponder];
 }
 
+-(void)delegateConfirm:(NSMutableArray *)arr_selected {
+    dashboard.aso_score = [arr_selected objectAtIndex:0];
+}
 
 #pragma mark - selector method
+
+- (void)selPatientWithSci:(id)sender {
+    dashboard.patient_with_sci = ([sender isOn] ? @"YES" : @"NO");
+    [self viewWillAppear:NO];
+}
+
 - (void)action_btn_0:(id)sender {
     if([dashboard.intra_operative_adverse_events isEqualToString:@"NO"]) {
         dashboard.intra_operative_adverse_events = @"YES";
@@ -325,6 +391,7 @@
 }
 */
 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -338,13 +405,23 @@
      */
         
     if(indexPath.section == 0) {
-        if(indexPath.row == 3) {
-            PushPickerViewController *pPicker = [[PushPickerViewController alloc] initWithNibName:@"PushPickerViewController" bundle:nil];
+        if(indexPath.row == 1) {
+            //ASO Score
+            PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
+            pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
+            pickerController.delegate = self;
+//            pickerController.str_target0 = &str_asoScore;
+            [self.navigationController pushViewController:pickerController animated:YES];
+        }
+        else if(indexPath.row == 3) {
+            // start time
+            DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
             pPicker.dt_target = &_dt_start;
             [self.navigationController pushViewController:pPicker animated:YES];
         }
         else if(indexPath.row == 4) {
-            PushPickerViewController *pPicker = [[PushPickerViewController alloc] initWithNibName:@"PushPickerViewController" bundle:nil];
+            // end time
+            DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
             pPicker.dt_target = &_dt_end;
             [self.navigationController pushViewController:pPicker animated:YES];
         }
@@ -355,12 +432,19 @@
     else if(indexPath.section == 1) {
         if(indexPath.row == 0) {
             if([dashboard.intra_operative_adverse_events isEqualToString:@"YES"]) {
-                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+                AdverseEventViewController *adverseController = [storyboard instantiateViewControllerWithIdentifier:@"AdverseEventViewController"];
+//                adverseController.dashboard = dashboard;
+                [self.navigationController pushViewController:adverseController animated:YES];
             }
         }
         else if(indexPath.row == 1) {
             if([dashboard.vertebral_surgery isEqualToString:@"YES"]) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+                VertebralSurgeryViewController *vertebralController = [storyboard instantiateViewControllerWithIdentifier:@"VertebralSurgeryViewController"];
                 
+                [self.navigationController pushViewController:vertebralController animated:YES];
+
             }
         }
         else if(indexPath.row == 2) {

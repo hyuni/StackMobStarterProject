@@ -98,38 +98,39 @@
         <attribute name="event_24" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_days" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="excision_approach" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision_discectomy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_discectomy_detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision_removal_of_spinal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excision_removal_of_spinal_deta" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision_tumour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision_tumour_int" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excision_tumour_wide" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exicsion_tumour_mar" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_arth" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_arth_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_bone_graft" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_bone_graft_bool" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_bone_graft_other" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_cannulated" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_cannulated_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_device_used" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_device_used_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_interbody" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_interbody_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_interspinous" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_interspinous_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_non" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_non_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_other" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_other_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_plate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_plate_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_rod" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_rod_detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_synthetic" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fixation_synthetic_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_arth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_arth_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_bone_graft" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_bone_graft_bool" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_bone_graft_other" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_cannulated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_cannulated_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_device_used" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_device_used_detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="flxation_fusion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="flxation_fusion_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_interbody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_interbody_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_interspinous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_interspinous_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_non" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_non_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_other" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_other_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_plate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_plate_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_rod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_rod_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_synthetic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flxation_synthetic_detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="follow_up_required" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracture_morphology_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fracturetype" optional="YES" attributeType="String" syncable="YES"/>
@@ -157,6 +158,22 @@
         <attribute name="intra_13" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intra_14" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intra_15" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intra_bool_15" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intra_operative_adverse_events" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastmoddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="n_motor_l" optional="YES" attributeType="String" syncable="YES"/>
@@ -305,7 +322,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="3300"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="3555"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

@@ -1,5 +1,5 @@
 //
-//  PushPickerViewController.h
+//  DatePickerViewController.h
 //  StackMobStarterProject
 //
 //  Created by kakadais on 9/9/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PushPickerViewController : UIViewController {
+@interface DatePickerViewController : UIViewController {
     
 }
 

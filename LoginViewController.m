@@ -16,6 +16,7 @@
 #import "KKDS_Preference.h"
 #import "DCRoundSwitch.h"
 #import "AsiaSendData.h"
+#import "DataObject.h"
 
 
 @interface LoginViewController ()

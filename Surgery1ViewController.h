@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
+#import "PickerViewController.h"
+#import "VertebralSurgeryViewController.h"
 
-@interface Surgery1ViewController : UITableViewController {
+@interface Surgery1ViewController : UITableViewController<PickerViewControllerDelegate> {
     NSMutableArray *arr_menu0;
     NSMutableArray *arr_menu1;
     Dashboard *dashboard;
@@ -27,6 +29,8 @@
     UIButton *btn_section2_2;
     UIButton *btn_section2_3;
     
+    
+    NSString *str_asoScore;
     
 }
 

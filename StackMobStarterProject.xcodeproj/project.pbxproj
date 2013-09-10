@@ -27,8 +27,7 @@
 		8025FDBA17CF281B000A0CDB /* NewDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8025FDB817CF281A000A0CDB /* NewDatePickerViewController.m */; };
 		8025FDBB17CF281B000A0CDB /* NewDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8025FDB917CF281B000A0CDB /* NewDatePickerViewController.xib */; };
 		80347D0817CB036E00C2A782 /* PickerDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80347D0717CB036E00C2A782 /* PickerDateViewController.m */; };
-		8034EB3717DD82DD00E7EA30 /* PushPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8034EB3517DD82DD00E7EA30 /* PushPickerViewController.m */; };
-		8034EB3817DD82DD00E7EA30 /* PushPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8034EB3617DD82DD00E7EA30 /* PushPickerViewController.xib */; };
+		8034EB3717DD82DD00E7EA30 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8034EB3517DD82DD00E7EA30 /* DatePickerViewController.m */; };
 		803696A517D12D4400D002DA /* TLICScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696A417D12D4400D002DA /* TLICScoreViewController.m */; };
 		803696AF17D1620E00D002DA /* IntakeMotorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803696AE17D1620E00D002DA /* IntakeMotorViewController.m */; };
 		803A1DCC17D275F50038F84C /* Light_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 803A1DC817D275F50038F84C /* Light_1.png */; };
@@ -209,17 +208,24 @@
 		80670E8617D1D117000E4B3A /* LightInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80670E8517D1D117000E4B3A /* LightInfoViewController.m */; };
 		80670E8817D1D982000E4B3A /* LightTouchMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */; };
 		80670E8D17D1E5AA000E4B3A /* Neurological_level.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */; };
+		80673CFD17DE787100738170 /* DataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 80673CFC17DE787100738170 /* DataObject.m */; };
+		80673D0017DE952600738170 /* VertebralSurgeryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80673CFF17DE952600738170 /* VertebralSurgeryViewController.m */; };
+		80673D0917DEBC3C00738170 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80673D0817DEBC3C00738170 /* DetailViewController.m */; };
+		80673D1217DEF19000738170 /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80673D1117DEF19000738170 /* Dashboard.m */; };
 		806D426017DBA8AF00F1EFEF /* fillrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 806D425B17DBA8AF00F1EFEF /* fillrange.png */; };
 		806D426117DBA8AF00F1EFEF /* fullrange.png in Resources */ = {isa = PBXBuildFile; fileRef = 806D425C17DBA8AF00F1EFEF /* fullrange.png */; };
 		806D426217DBA8AF00F1EFEF /* RangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 806D425E17DBA8AF00F1EFEF /* RangeSlider.m */; };
 		806D426317DBA8AF00F1EFEF /* rangethumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 806D425F17DBA8AF00F1EFEF /* rangethumb.png */; };
 		806D426617DBA9FD00F1EFEF /* SampleCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 806D426517DBA9FD00F1EFEF /* SampleCode.m */; };
 		806D426D17DBB62E00F1EFEF /* Surgery1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806D426C17DBB62E00F1EFEF /* Surgery1ViewController.m */; };
+		8073438F17DE2848001BA370 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8073438E17DE2848001BA370 /* DatePickerViewController.xib */; };
+		8073439317DE28CA001BA370 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8073439117DE28CA001BA370 /* PickerViewController.m */; };
+		8073439417DE28CA001BA370 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8073439217DE28CA001BA370 /* PickerViewController.xib */; };
+		8073439717DE38F6001BA370 /* AdverseEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8073439617DE38F6001BA370 /* AdverseEventViewController.m */; };
 		809FF15A17C2E2130071FC08 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */; };
 		809FF15B17C2E2130071FC08 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15717C2E2130071FC08 /* MFSideMenuShadow.m */; };
 		809FF15C17C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 809FF15917C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m */; };
 		80BA62A617BC8EEB0030BB52 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BA62A517BC8EEA0030BB52 /* LoginViewController.m */; };
-		80C3702817DD4CA5009F907E /* Dashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C3702717DD4CA5009F907E /* Dashboard.m */; };
 		80C3DA5F17D5C115008EBCE7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C3DA5E17D5C115008EBCE7 /* QuartzCore.framework */; };
 		80C3DA6817D5C166008EBCE7 /* DCRoundSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C3DA6117D5C14A008EBCE7 /* DCRoundSwitch.m */; };
 		80C3DA6917D5C16C008EBCE7 /* DCRoundSwitchKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C3DA6317D5C14A008EBCE7 /* DCRoundSwitchKnobLayer.m */; };
@@ -313,9 +319,8 @@
 		8025FDB917CF281B000A0CDB /* NewDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDatePickerViewController.xib; sourceTree = "<group>"; };
 		80347D0617CB036E00C2A782 /* PickerDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDateViewController.h; sourceTree = "<group>"; };
 		80347D0717CB036E00C2A782 /* PickerDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDateViewController.m; sourceTree = "<group>"; };
-		8034EB3417DD82DD00E7EA30 /* PushPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushPickerViewController.h; sourceTree = "<group>"; };
-		8034EB3517DD82DD00E7EA30 /* PushPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushPickerViewController.m; sourceTree = "<group>"; };
-		8034EB3617DD82DD00E7EA30 /* PushPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushPickerViewController.xib; sourceTree = "<group>"; };
+		8034EB3417DD82DD00E7EA30 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		8034EB3517DD82DD00E7EA30 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		803696A317D12D4400D002DA /* TLICScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLICScoreViewController.h; sourceTree = "<group>"; };
 		803696A417D12D4400D002DA /* TLICScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLICScoreViewController.m; sourceTree = "<group>"; };
 		803696AD17D1620E00D002DA /* IntakeMotorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntakeMotorViewController.h; sourceTree = "<group>"; };
@@ -507,6 +512,14 @@
 		80670E8517D1D117000E4B3A /* LightInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightInfoViewController.m; sourceTree = "<group>"; };
 		80670E8717D1D982000E4B3A /* LightTouchMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightTouchMenuCell.xib; sourceTree = "<group>"; };
 		80670E8C17D1E5AA000E4B3A /* Neurological_level.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Neurological_level.xib; sourceTree = "<group>"; };
+		80673CFB17DE787100738170 /* DataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataObject.h; sourceTree = "<group>"; };
+		80673CFC17DE787100738170 /* DataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataObject.m; sourceTree = "<group>"; };
+		80673CFE17DE952600738170 /* VertebralSurgeryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertebralSurgeryViewController.h; sourceTree = "<group>"; };
+		80673CFF17DE952600738170 /* VertebralSurgeryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertebralSurgeryViewController.m; sourceTree = "<group>"; };
+		80673D0717DEBC3C00738170 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		80673D0817DEBC3C00738170 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		80673D1017DEF19000738170 /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dashboard.h; sourceTree = "<group>"; };
+		80673D1117DEF19000738170 /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dashboard.m; sourceTree = "<group>"; };
 		806D425B17DBA8AF00F1EFEF /* fillrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fillrange.png; sourceTree = "<group>"; };
 		806D425C17DBA8AF00F1EFEF /* fullrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullrange.png; sourceTree = "<group>"; };
 		806D425D17DBA8AF00F1EFEF /* RangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeSlider.h; sourceTree = "<group>"; };
@@ -516,6 +529,12 @@
 		806D426517DBA9FD00F1EFEF /* SampleCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleCode.m; sourceTree = "<group>"; };
 		806D426B17DBB62E00F1EFEF /* Surgery1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surgery1ViewController.h; sourceTree = "<group>"; };
 		806D426C17DBB62E00F1EFEF /* Surgery1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Surgery1ViewController.m; sourceTree = "<group>"; };
+		8073438E17DE2848001BA370 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		8073439017DE28CA001BA370 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		8073439117DE28CA001BA370 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+		8073439217DE28CA001BA370 /* PickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+		8073439517DE38F6001BA370 /* AdverseEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdverseEventViewController.h; sourceTree = "<group>"; };
+		8073439617DE38F6001BA370 /* AdverseEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdverseEventViewController.m; sourceTree = "<group>"; };
 		809FF15317C2E2130071FC08 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		809FF15417C2E2130071FC08 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		809FF15517C2E2130071FC08 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -525,8 +544,6 @@
 		809FF15917C2E2130071FC08 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
 		80BA62A417BC8EEA0030BB52 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		80BA62A517BC8EEA0030BB52 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		80C3702617DD4CA5009F907E /* Dashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dashboard.h; sourceTree = "<group>"; };
-		80C3702717DD4CA5009F907E /* Dashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dashboard.m; sourceTree = "<group>"; };
 		80C3DA5E17D5C115008EBCE7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		80C3DA6017D5C14A008EBCE7 /* DCRoundSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitch.h; sourceTree = "<group>"; };
 		80C3DA6117D5C14A008EBCE7 /* DCRoundSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitch.m; sourceTree = "<group>"; };
@@ -953,6 +970,12 @@
 			children = (
 				806D426B17DBB62E00F1EFEF /* Surgery1ViewController.h */,
 				806D426C17DBB62E00F1EFEF /* Surgery1ViewController.m */,
+				8073439517DE38F6001BA370 /* AdverseEventViewController.h */,
+				8073439617DE38F6001BA370 /* AdverseEventViewController.m */,
+				80673CFE17DE952600738170 /* VertebralSurgeryViewController.h */,
+				80673CFF17DE952600738170 /* VertebralSurgeryViewController.m */,
+				80673D0717DEBC3C00738170 /* DetailViewController.h */,
+				80673D0817DEBC3C00738170 /* DetailViewController.m */,
 			);
 			name = Surgery;
 			sourceTree = "<group>";
@@ -1072,11 +1095,15 @@
 		DE01BB4E17712C7200D80549 = {
 			isa = PBXGroup;
 			children = (
-				8034EB3417DD82DD00E7EA30 /* PushPickerViewController.h */,
-				8034EB3517DD82DD00E7EA30 /* PushPickerViewController.m */,
-				8034EB3617DD82DD00E7EA30 /* PushPickerViewController.xib */,
+				80673CFB17DE787100738170 /* DataObject.h */,
+				80673CFC17DE787100738170 /* DataObject.m */,
+				8073439017DE28CA001BA370 /* PickerViewController.h */,
+				8073439117DE28CA001BA370 /* PickerViewController.m */,
+				8073439217DE28CA001BA370 /* PickerViewController.xib */,
+				8034EB3417DD82DD00E7EA30 /* DatePickerViewController.h */,
+				8034EB3517DD82DD00E7EA30 /* DatePickerViewController.m */,
+				8073438E17DE2848001BA370 /* DatePickerViewController.xib */,
 				806D426717DBB5D800F1EFEF /* Surgery */,
-				80C3DA5E17D5C115008EBCE7 /* QuartzCore.framework */,
 				801D7E9417D4790900F742C5 /* CreateUserViewViewController.h */,
 				801D7E9517D4790900F742C5 /* CreateUserViewViewController.m */,
 				80347D0617CB036E00C2A782 /* PickerDateViewController.h */,
@@ -1113,6 +1140,7 @@
 		DE01BB5917712C7200D80549 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80C3DA5E17D5C115008EBCE7 /* QuartzCore.framework */,
 				DE01BBBF1771314100D80549 /* MobileCoreServices.framework */,
 				DE01BBBD1771313C00D80549 /* Security.framework */,
 				DE01BBBB1771313800D80549 /* CoreLocation.framework */,
@@ -1136,8 +1164,8 @@
 				DE01BBFE17722DA000D80549 /* TodoDetailViewController.m */,
 				DE01BBC11771318500D80549 /* MainStoryboard.storyboard */,
 				DE01BB7417712C7200D80549 /* StackMobStarterProject.xcdatamodeld */,
-				80C3702617DD4CA5009F907E /* Dashboard.h */,
-				80C3702717DD4CA5009F907E /* Dashboard.m */,
+				80673D1017DEF19000738170 /* Dashboard.h */,
+				80673D1117DEF19000738170 /* Dashboard.m */,
 				DE01BB6317712C7200D80549 /* Supporting Files */,
 			);
 			path = StackMobStarterProject;
@@ -1492,7 +1520,8 @@
 				806D426017DBA8AF00F1EFEF /* fillrange.png in Resources */,
 				806D426117DBA8AF00F1EFEF /* fullrange.png in Resources */,
 				806D426317DBA8AF00F1EFEF /* rangethumb.png in Resources */,
-				8034EB3817DD82DD00E7EA30 /* PushPickerViewController.xib in Resources */,
+				8073438F17DE2848001BA370 /* DatePickerViewController.xib in Resources */,
+				8073439417DE28CA001BA370 /* PickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,8 +1591,13 @@
 				806D426217DBA8AF00F1EFEF /* RangeSlider.m in Sources */,
 				806D426617DBA9FD00F1EFEF /* SampleCode.m in Sources */,
 				806D426D17DBB62E00F1EFEF /* Surgery1ViewController.m in Sources */,
-				80C3702817DD4CA5009F907E /* Dashboard.m in Sources */,
-				8034EB3717DD82DD00E7EA30 /* PushPickerViewController.m in Sources */,
+				8034EB3717DD82DD00E7EA30 /* DatePickerViewController.m in Sources */,
+				8073439317DE28CA001BA370 /* PickerViewController.m in Sources */,
+				8073439717DE38F6001BA370 /* AdverseEventViewController.m in Sources */,
+				80673CFD17DE787100738170 /* DataObject.m in Sources */,
+				80673D0017DE952600738170 /* VertebralSurgeryViewController.m in Sources */,
+				80673D0917DEBC3C00738170 /* DetailViewController.m in Sources */,
+				80673D1217DEF19000738170 /* Dashboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

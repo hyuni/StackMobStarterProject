@@ -1,19 +1,19 @@
 //
-//  PushPickerViewController.m
+//  DatePickerViewController.m
 //  StackMobStarterProject
 //
 //  Created by kakadais on 9/9/13.
 //  Copyright (c) 2013 StackMob. All rights reserved.
 //
 
-#import "PushPickerViewController.h"
+#import "DatePickerViewController.h"
 
 
-@interface PushPickerViewController ()
+@interface DatePickerViewController ()
 
 @end
 
-@implementation PushPickerViewController
+@implementation DatePickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
     self.navigationItem.rightBarButtonItem = confirmButton;
-
+    
 }
 
 - (void)didReceiveMemoryWarning
