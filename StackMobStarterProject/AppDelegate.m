@@ -58,7 +58,7 @@
     NSManagedObjectContext *localContext = [self _localManagedObjectContext];
     [clip clipValue:localContext clipKey:@"managaedObjectContext"];
     
-//    [self syncStackMobData:nil];
+    [self syncStackMobData:nil];
 //    [self saveStackMobData];
 //    [self fetchStackMobData];
 //    [self saveLocalCoreData];

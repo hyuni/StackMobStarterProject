@@ -268,7 +268,9 @@
     PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
     pickerController.delegate = self;
     pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", nil];
-    
+//    pickerController.lb_title.text = @"asdf";
+//    pickerController.str_title = [arr_menu objectAtIndex:indexPath.row];
+    pickerController.title = [arr_menu objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:pickerController animated:YES];
 
 }

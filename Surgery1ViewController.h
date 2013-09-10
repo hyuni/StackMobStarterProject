@@ -11,6 +11,7 @@
 #import "PickerViewController.h"
 #import "VertebralSurgeryViewController.h"
 #import "AdjunctiveViewController.h"
+#import "OtherSurgeryViewController.h"
 
 @interface Surgery1ViewController : UITableViewController<PickerViewControllerDelegate> {
     NSMutableArray *arr_menu0;

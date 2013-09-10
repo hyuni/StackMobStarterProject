@@ -44,22 +44,29 @@
     [super viewWillAppear:animated];
     
     arr_menu = [[NSMutableArray alloc] init];
-    [arr_menu addObject:@"Intraoperative monitoring"];
-    if([dashboard.adj_monitoring isEqualToString:@"YES"]) {
-        [arr_menu addObject:@"None"];
-        [arr_menu addObject:@"EMG"];
-        [arr_menu addObject:@"Motor"];
-        [arr_menu addObject:@"Sensory"];
+    [arr_menu addObject:@"Cord or Nerve"];
+    if([dashboard.oth_cord isEqualToString:@"YES"]) {
+        [arr_menu addObject:@"Exploration & Restoration of Subarachnoid Space"];
+        [arr_menu addObject:@"Repair Meningocele"];
+        [arr_menu addObject:@"Release Tethered Cord"];
+        [arr_menu addObject:@"Rhizotomy"];
+        [arr_menu addObject:@"Drez Lesion"];
+        [arr_menu addObject:@"Not applicable"];
     }
     
-    [arr_menu addObject:@"Intraoperative imaging"];
-    if([dashboard.adj_imaging isEqualToString:@"YES"]) {
-        [arr_menu addObject:@"None "];
-        [arr_menu addObject:@"X-Ray "];
-        [arr_menu addObject:@"Fluroscopy "];
-        [arr_menu addObject:@"CT / 3D "];
+    [arr_menu addObject:@"Pumps"];
+    if([dashboard.oth_pumps isEqualToString:@"YES"]) {
+        [arr_menu addObject:@"Replacement / Removal / Implant infusion pump"];
+        [arr_menu addObject:@"Spinal simulator to include generator / receiver"];
+        [arr_menu addObject:@"Not applicable "];
     }
-    [arr_menu addObject:@"Navigation"];
+    
+    [arr_menu addObject:@"Drainage"];
+    if([dashboard.oth_drainage isEqualToString:@"YES"]) {
+        [arr_menu addObject:@"Lumboperitoneal shunt"];
+        [arr_menu addObject:@"Syringoperitoneal shunt"];
+        [arr_menu addObject:@"Not applicable  "];
+    }
     
     [self.tableView reloadData];
     
@@ -96,91 +103,113 @@
     NSString *str_tmpMenuName = [arr_menu objectAtIndex:indexPath.row];
     if(indexPath.section == 0) {
         //Main Menu
-        if([str_tmpMenuName isEqualToString:@"Intraoperative monitoring"]) {
+        if([str_tmpMenuName isEqualToString:@"Cord or Nerve"]) {
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"Intraoperative imaging"]) {
+        else if([str_tmpMenuName isEqualToString:@"Pumps"]) {
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_pumps isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"Navigation"]) {
-            CellIdentifier = @"CellBasic";
+        else if([str_tmpMenuName isEqualToString:@"Drainage"]) {
+            CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            sw_navigation = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
-            [sw_navigation setOffText:@"NO"];
-            [sw_navigation setOnText:@"YES"];
-            if([dashboard.adj_navigation isEqualToString:@"YES"]) [sw_navigation setOn:YES animated:NO ignoreControlEvents:YES];
-            else [sw_navigation setOn:NO animated:NO ignoreControlEvents:YES];
-            [cell addSubview:sw_navigation];
-            [sw_navigation addTarget:self action:@selector(action_sw_navigation:) forControlEvents:UIControlEventValueChanged];
+            UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
+            [btn_x setTitle:([dashboard.oth_drainage isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
             
         }
         //Sub Menu
-        else if([str_tmpMenuName isEqualToString:@"None"]) {
+        else if([str_tmpMenuName isEqualToString:@"Exploration & Restoration of Subarachnoid Space"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_non isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_exploration isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"EMG"]) {
+        else if([str_tmpMenuName isEqualToString:@"Repair Meningocele"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_emg isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_repair isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"Motor"]) {
+        else if([str_tmpMenuName isEqualToString:@"Release Tethered Cord"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_motor isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_release isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"Sensory"]) {
+        else if([str_tmpMenuName isEqualToString:@"Rhizotomy"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_sensory isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_rhizotomy isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"None "]) {
+        else if([str_tmpMenuName isEqualToString:@"Drez Lesion"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_none isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_drez isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"X-Ray "]) {
+        else if([str_tmpMenuName isEqualToString:@"Not applicable"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_x_ray isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_cord_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"Fluroscopy "]) {
+        else if([str_tmpMenuName isEqualToString:@"Replacement / Removal / Implant infusion pump"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_fluroscopy isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_pumps_replacement isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if([str_tmpMenuName isEqualToString:@"CT / 3D "]) {
+        else if([str_tmpMenuName isEqualToString:@"Spinal simulator to include generator / receiver"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_ct_3d isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setTitle:([dashboard.oth_pumps_spinal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
-        
-        
+        else if([str_tmpMenuName isEqualToString:@"Not applicable "]) {
+            CellIdentifier = @"CellSub";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
+            [btn_x setTitle:([dashboard.oth_pumps_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if([str_tmpMenuName isEqualToString:@"Lumboperitoneal shunt"]) {
+            CellIdentifier = @"CellSub";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
+            [btn_x setTitle:([dashboard.oth_drainage_lumboperitoneal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if([str_tmpMenuName isEqualToString:@"Syringoperitoneal shunt"]) {
+            CellIdentifier = @"CellSub";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
+            [btn_x setTitle:([dashboard.oth_drainage_syringoperitoneal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if([str_tmpMenuName isEqualToString:@"Not applicable  "]) {
+            CellIdentifier = @"CellSub";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
+            [btn_x setTitle:([dashboard.oth_drainage_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     else if(indexPath.section == 1) {
         //return
@@ -199,44 +228,55 @@
     return cell;
 }
 
-- (void)action_sw_navigation:(id)sender {
-    dashboard.adj_navigation = ([dashboard.adj_navigation isEqualToString:@"YES"] ? @"NO" : @"YES");
-}
-
 - (void)action_btn_x:(id)sender {
     CGPoint buttonOriginInTableView = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonOriginInTableView];
     
     NSString *str_tmpMenuName = [arr_menu objectAtIndex:indexPath.row];
-    if([str_tmpMenuName isEqualToString:@"Intraoperative monitoring"]) {
-        dashboard.adj_monitoring = ([dashboard.adj_monitoring isEqualToString:@"YES"] ? @"NO" : @"YES");
+    if([str_tmpMenuName isEqualToString:@"Cord or Nerve"]) {
+        dashboard.oth_cord = ([dashboard.oth_cord isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"None"]) {
-        dashboard.adj_monitoring_non = ([dashboard.adj_monitoring_non isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Exploration & Restoration of Subarachnoid Space"]) {
+        dashboard.oth_cord_exploration = ([dashboard.oth_cord_exploration isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"EMG"]) {
-        dashboard.adj_monitoring_emg = ([dashboard.adj_monitoring_emg isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Repair Meningocele"]) {
+        dashboard.oth_cord_repair = ([dashboard.oth_cord_repair isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"Motor"]) {
-        dashboard.adj_monitoring_motor = ([dashboard.adj_monitoring_motor isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Release Tethered Cord"]) {
+        dashboard.oth_cord_release = ([dashboard.oth_cord_release isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"Sensory"]) {
-        dashboard.adj_monitoring_sensory = ([dashboard.adj_monitoring_sensory isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Rhizotomy"]) {
+        dashboard.oth_cord_rhizotomy = ([dashboard.oth_cord_rhizotomy isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"Intraoperative imaging"]) {
-        dashboard.adj_imaging = ([dashboard.adj_imaging isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Drez Lesion"]) {
+        dashboard.oth_cord_drez = ([dashboard.oth_cord_drez isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"None "]) {
-        dashboard.adj_imaging_none = ([dashboard.adj_imaging_none isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Not applicable"]) {
+        dashboard.oth_cord_not = ([dashboard.oth_cord_not isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"X-Ray "]) {
-        dashboard.adj_imaging_x_ray = ([dashboard.adj_imaging_x_ray isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Pumps"]) {
+        dashboard.oth_pumps = ([dashboard.oth_pumps isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"Fluroscopy "]) {
-        dashboard.adj_imaging_fluroscopy = ([dashboard.adj_imaging_fluroscopy isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Replacement / Removal / Implant infusion pump"]) {
+        dashboard.oth_pumps_replacement = ([dashboard.oth_pumps_replacement isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
-    else if([str_tmpMenuName isEqualToString:@"CT / 3D "]) {
-        dashboard.adj_imaging_ct_3d = ([dashboard.adj_imaging_ct_3d isEqualToString:@"YES"] ? @"NO" : @"YES");
+    else if([str_tmpMenuName isEqualToString:@"Spinal simulator to include generator / receiver"]) {
+        dashboard.oth_pumps_spinal = ([dashboard.oth_pumps_spinal isEqualToString:@"YES"] ? @"NO" : @"YES");
+    }
+    else if([str_tmpMenuName isEqualToString:@"Not applicable "]) {
+        dashboard.oth_pumps_not = ([dashboard.oth_pumps_not isEqualToString:@"YES"] ? @"NO" : @"YES");
+    }
+    else if([str_tmpMenuName isEqualToString:@"Drainage"]) {
+        dashboard.oth_drainage = ([dashboard.oth_drainage isEqualToString:@"YES"] ? @"NO" : @"YES");
+    }
+    else if([str_tmpMenuName isEqualToString:@"Lumboperitoneal shunt"]) {
+        dashboard.oth_drainage_lumboperitoneal = ([dashboard.oth_drainage_lumboperitoneal isEqualToString:@"YES"] ? @"NO" : @"YES");
+    }
+    else if([str_tmpMenuName isEqualToString:@"Syringoperitoneal shunt"]) {
+        dashboard.oth_drainage_syringoperitoneal = ([dashboard.oth_drainage_syringoperitoneal isEqualToString:@"YES"] ? @"NO" : @"YES");
+    }
+    else if([str_tmpMenuName isEqualToString:@"Not applicable  "]) {
+        dashboard.oth_drainage_not = ([dashboard.oth_drainage_not isEqualToString:@"YES"] ? @"NO" : @"YES");
     }
     
     [self viewWillAppear:NO];
@@ -292,6 +332,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    if(indexPath.section == 1 && indexPath.row == 0) {
+        //return
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

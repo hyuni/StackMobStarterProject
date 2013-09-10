@@ -176,6 +176,7 @@
 //    pickerController.lb_two_right.text = @"Right";
     pickerController.lb_two_left.hidden = NO;
     pickerController.lb_two_right.hidden = NO;
+    pickerController.title = @"Location";
     [self.navigationController pushViewController:pickerController animated:YES];
 
 }

@@ -53,6 +53,9 @@
 //    str_asoScore = @"";
     
     dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
+    dashboard.occur_date = [Utility dateToString:[NSDate date]];
+    dashboard.dashboard_id = [dashboard assignObjectId];
+    dashboard.patient_status = @"Surgery";
     dashboard.patient_with_sci = @"NO";
     dashboard.intra_operative_adverse_events = @"NO";
     dashboard.vertebral_surgery = @"NO";
@@ -162,7 +165,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -173,6 +176,9 @@
     }
     else if(section == 1) {
         return [arr_menu1 count];
+    }
+    else if(section == 2) {
+        return 1;
     }
     else {
         // error
@@ -316,6 +322,10 @@
         // set label
         [(UILabel *)[cell viewWithTag:1] setText:[arr_menu1 objectAtIndex:i_curRow]];
     }
+    else if(indexPath.section == 2) {
+        // submit
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Submit"];
+    }
     else {
         // error
     }
@@ -434,12 +444,15 @@
             PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
             pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
             pickerController.delegate = self;
+            pickerController.title = [arr_menu0 objectAtIndex:indexPath.row];
+//            pickerController.str_title = [arr_menu0 objectAtIndex:indexPath.row];
 //            pickerController.str_target0 = &str_asoScore;
             [self.navigationController pushViewController:pickerController animated:YES];
         }
         else if(indexPath.row == 3) {
             // start time
             DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
+            pPicker.title = [arr_menu0 objectAtIndex:indexPath.row];
             pPicker.dt_target = &_dt_start;
             [self.navigationController pushViewController:pPicker animated:YES];
         }
@@ -447,6 +460,7 @@
             // end time
             DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
             pPicker.dt_target = &_dt_end;
+            pPicker.title = [arr_menu0 objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:pPicker animated:YES];
         }
         else {
@@ -458,6 +472,7 @@
             if([dashboard.intra_operative_adverse_events isEqualToString:@"YES"]) {
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
                 AdverseEventViewController *adverseController = [storyboard instantiateViewControllerWithIdentifier:@"AdverseEventViewController"];
+                adverseController.title = [arr_menu1 objectAtIndex:indexPath.row];
 //                adverseController.dashboard = dashboard;
                 [self.navigationController pushViewController:adverseController animated:YES];
             }
@@ -466,7 +481,7 @@
             if([dashboard.vertebral_surgery isEqualToString:@"YES"]) {
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
                 VertebralSurgeryViewController *vertebralController = [storyboard instantiateViewControllerWithIdentifier:@"VertebralSurgeryViewController"];
-                
+                vertebralController.title  = [arr_menu1 objectAtIndex:indexPath.row];
                 [self.navigationController pushViewController:vertebralController animated:YES];
 
             }
@@ -475,7 +490,7 @@
             if([dashboard.adjunctive_procedures isEqualToString:@"YES"]) {
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
                 AdjunctiveViewController *adjController = [storyboard instantiateViewControllerWithIdentifier:@"AdjunctiveViewController"];
-                
+                adjController.title = [arr_menu1 objectAtIndex:indexPath.row];
                 [self.navigationController pushViewController:adjController animated:YES];
 
             }
@@ -483,9 +498,29 @@
         else if(indexPath.row == 3) {
             if([dashboard.other_surgery isEqualToString:@"YES"]) {
                 
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+                OtherSurgeryViewController *otherController = [storyboard instantiateViewControllerWithIdentifier:@"OtherSurgeryViewController"];
+                otherController.title = [arr_menu1 objectAtIndex:indexPath.row];
+                [self.navigationController pushViewController:otherController animated:YES];
             }
         }
         
+    }
+    else if(indexPath.section == 2) {
+        // submit
+        // --- save everything
+        [self saveCurScreenData];
+        dashboard.status = @"Sent";
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+            // --- Draft
+        }];
+
     }
     else {
         // error
@@ -494,6 +529,19 @@
     
 }
 
+- (void)saveCurScreenData {
+    dashboard.start_time_date_of_surgery = lb_startTime.text;
+    dashboard.end_time_date_of_surgery = lb_endTime.text;
+    dashboard.site_id = tf_siteId.text;
+    dashboard.healthcard_number = tf_healthcard.text;
+    dashboard.estimated_blood_loss = tf_estimatedBloodLoss.text;
+    dashboard.time_from_spinal_cord_injury = tf_timeCompression.text;
+    
+    dashboard.intra_operative_adverse_events = btn_section2_0.titleLabel.text;
+    dashboard.vertebral_surgery = btn_section2_1.titleLabel.text;
+    dashboard.adjunctive_procedures = btn_section2_2.titleLabel.text;
+    dashboard.other_surgery = btn_section2_3.titleLabel.text;
+}
 
 
 @end

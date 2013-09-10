@@ -21,6 +21,8 @@
 @property NSArray *arr_source0;
 @property NSArray *arr_source1;
 @property NSArray *arr_source2;
+@property (weak, nonatomic) IBOutlet UILabel *lb_title;
+@property NSString *str_title;
 
 //@property NSString *__strong *str_target0;
 //@property NSString *__strong *str_target1;

@@ -45,6 +45,8 @@
         _lb_two_right.hidden = NO;
     }
     
+    _lb_title.text = _str_title;
+
 }
 
 - (void)didReceiveMemoryWarning
