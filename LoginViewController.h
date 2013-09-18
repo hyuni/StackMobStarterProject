@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "RangeSlider.h"
+#import "ModalPickerViewController.h"
+#import "AppDelegate.h"
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewController<ModalPickerViewDelegate> {
 
 }
 
 -(IBAction)action_login:(id)sender;
--(IBAction)action_test:(id)sender;
 - (IBAction)btn_createAccount:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *tf_username;

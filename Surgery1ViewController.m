@@ -7,19 +7,14 @@
 //
 
 #import "Surgery1ViewController.h"
-#import "StackMob.h"
-#import "Utility.h"
-#import "DatePickerViewController.h"
-#import "DCRoundSwitch.h"
-#import "KKDS_Preference.h"
-#import "AdverseEventViewController.h"
-#import "Clipboard.h"
+
 
 @interface Surgery1ViewController ()
 
 @end
 
 @implementation Surgery1ViewController
+@synthesize dashboard;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 
@@ -43,9 +38,23 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [self initSurgeryData];
+    if(self.dashboard == nil) {
+        [self initSurgeryData];
+    }
     
+    Clipboard *clip = [Clipboard sharedClipboard];
+    [clip clipValue:dashboard clipKey:@"create_surgery"];
+}
+
+-(void)cancelNumberPad:(id)sender{
+    [tf_estimatedBloodLoss resignFirstResponder];
+    [tf_timeCompression resignFirstResponder];
+}
+
+-(void)doneWithNumberPad:(id)sender{
     
+    [tf_estimatedBloodLoss resignFirstResponder];
+    [tf_timeCompression resignFirstResponder];
 }
 
 - (void)initSurgeryData {
@@ -122,8 +131,7 @@
     dashboard.adj_imaging_fluroscopy = @"NO";
     dashboard.adj_imaging_ct_3d = @"NO";
     
-    Clipboard *clip = [Clipboard sharedClipboard];
-    [clip clipValue:dashboard clipKey:@"create_surgery"];
+    
     
 }
 
@@ -159,6 +167,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - ModalPickerViewController
+-(void)didFinishedModalPickerConfirmed:(NSMutableArray *)arr_selectedItems tag:(id)tag {
+    //            [arr_menu0 addObject:@"Start/Time Date of Surgery"];
+    //            [arr_menu0 addObject:@"End /Time Date of Surgery"];
+
+    if([tag isEqualToString:@"ASO Score"]) {
+        dashboard.aso_score = [arr_selectedItems objectAtIndex:0];
+    }
+    else if([tag isEqualToString:@"Start/Time Date of Surgery"]) {
+        dashboard.start_time_date_of_surgery = [Utility dateTimeToStringWithFormatHHmm:[arr_selectedItems objectAtIndex:0]];
+
+    }
+    else if([tag isEqualToString:@"End /Time Date of Surgery"]) {
+        dashboard.end_time_date_of_surgery = [Utility dateTimeToStringWithFormatHHmm:[arr_selectedItems objectAtIndex:0]];
+    }
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Table view data source
 
@@ -217,6 +244,8 @@
         if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Site ID"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell0"];
             tf_siteId = (UITextField *)[cell viewWithTag:3];
+            tf_siteId.text = dashboard.site_id;
+            tf_siteId.delegate = self;
             [tf_siteId addTarget:self action:@selector(didFinishTextEdit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"ASO Score"]) {
@@ -228,26 +257,34 @@
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Healthcard Number"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2"];
             tf_healthcard = (UITextField *)[cell viewWithTag:3];
+            tf_healthcard.text = dashboard.healthcard_number;
+            tf_healthcard.delegate = self;
             [tf_healthcard addTarget:self action:@selector(didFinishTextEdit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Start/Time Date of Surgery"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell3"];
             lb_startTime = (UILabel *)[cell viewWithTag:3];
-            if(_dt_start != nil) {
-                lb_startTime.text = [Utility dateTimeToStringWithFormatHHmm:_dt_start];
-            }
+            lb_startTime.text = dashboard.start_time_date_of_surgery;
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"End /Time Date of Surgery"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4"];
             lb_endTime = (UILabel *)[cell viewWithTag:3];
-            if(_dt_end != nil) {
-                lb_endTime.text = [Utility dateTimeToStringWithFormatHHmm:_dt_end];
-            }
+            lb_endTime.text = dashboard.end_time_date_of_surgery;
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Estimated Blood Loss"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell5"];
             tf_estimatedBloodLoss = (UITextField *)[cell viewWithTag:3];
-            [tf_estimatedBloodLoss addTarget:self action:@selector(didFinishTextEdit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+            tf_estimatedBloodLoss.delegate = self;
+            tf_estimatedBloodLoss.text = dashboard.estimated_blood_loss;
+
+            UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+            numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+            numberToolbar.items = [NSArray arrayWithObjects:
+                                   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                   [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(didFinishTextEdit:)],
+                                   nil];
+            [numberToolbar sizeToFit];
+            tf_estimatedBloodLoss.inputAccessoryView = numberToolbar;
         }
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Patient with SCI"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell6"];
@@ -262,7 +299,17 @@
         else if([[arr_menu0 objectAtIndex:i_curRow] isEqualToString:@"Time from spinal cord injury to direct or indirect compression"]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell7"];
             tf_timeCompression = (UITextField *)[cell viewWithTag:3];
-            [tf_timeCompression addTarget:self action:@selector(didFinishTextEdit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+            tf_timeCompression.delegate = self;
+            tf_timeCompression.text = dashboard.time_from_spinal_cord_injury;
+
+            UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+            numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+            numberToolbar.items = [NSArray arrayWithObjects:
+                                   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                   [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(didFinishTextEdit:)],
+                                   nil];
+            [numberToolbar sizeToFit];
+            tf_timeCompression.inputAccessoryView = numberToolbar;
         }
 
     }
@@ -271,10 +318,13 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"CellSection2"];
             btn_section2_0 = (UIButton *)[cell viewWithTag:2];
             if ([dashboard.intra_operative_adverse_events isEqualToString:@"NO"]) {
-                [btn_section2_0 setTitle:@"  " forState:UIControlStateNormal];
+//                [btn_section2_0 setTitle:@"  " forState:UIControlStateNormal];
+                [btn_section2_0 setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
             }
             else {
-                [btn_section2_0 setTitle:@"X" forState:UIControlStateNormal];
+//                [btn_section2_0 setTitle:@"X" forState:UIControlStateNormal];
+                [btn_section2_0 setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
+
             }
             
             [btn_section2_0 addTarget:self action:@selector(action_btn_0:) forControlEvents:UIControlEventTouchUpInside];
@@ -283,10 +333,10 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"CellSection2"];
             btn_section2_1 = (UIButton *)[cell viewWithTag:2];
             if ([dashboard.vertebral_surgery isEqualToString:@"NO"]) {
-                [btn_section2_1 setTitle:@"  " forState:UIControlStateNormal];
+                [btn_section2_1 setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
             }
             else {
-                [btn_section2_1 setTitle:@"X" forState:UIControlStateNormal];
+                [btn_section2_1 setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
             }
             
             [btn_section2_1 addTarget:self action:@selector(action_btn_1:) forControlEvents:UIControlEventTouchUpInside];
@@ -297,10 +347,10 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"CellSection2"];
             btn_section2_2 = (UIButton *)[cell viewWithTag:2];
             if ([dashboard.adjunctive_procedures isEqualToString:@"NO"]) {
-                [btn_section2_2 setTitle:@"  " forState:UIControlStateNormal];
+                [btn_section2_2 setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
             }
             else {
-                [btn_section2_2 setTitle:@"X" forState:UIControlStateNormal];
+                [btn_section2_2 setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
             }
             
             [btn_section2_2 addTarget:self action:@selector(action_btn_2:) forControlEvents:UIControlEventTouchUpInside];
@@ -310,10 +360,10 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"CellSection2"];
             btn_section2_3 = (UIButton *)[cell viewWithTag:2];
             if ([dashboard.other_surgery isEqualToString:@"NO"]) {
-                [btn_section2_3 setTitle:@"  " forState:UIControlStateNormal];
+                [btn_section2_3 setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
             }
             else {
-                [btn_section2_3 setTitle:@"X" forState:UIControlStateNormal];
+                [btn_section2_3 setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
             }
             
             [btn_section2_3 addTarget:self action:@selector(action_btn_3:) forControlEvents:UIControlEventTouchUpInside];
@@ -332,13 +382,21 @@
     
     return cell;
 }
-
-- (void)didFinishTextEdit:(id)sender {
-    [sender resignFirstResponder];
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+//    self.tableView.userInteractionEnabled = NO;
 }
 
--(void)delegateConfirm:(NSMutableArray *)arr_selected {
-    dashboard.aso_score = [arr_selected objectAtIndex:0];
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self saveCurScreenData];
+}
+
+
+- (void)didFinishTextEdit:(id)sender {
+//    self.view.userInteractionEnabled = YES;
+    [tf_estimatedBloodLoss resignFirstResponder];
+    [tf_timeCompression resignFirstResponder];
+    [tf_healthcard resignFirstResponder];
+    [tf_siteId resignFirstResponder];
 }
 
 #pragma mark - selector method
@@ -437,31 +495,41 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     if(indexPath.section == 0) {
         if(indexPath.row == 1) {
             //ASO Score
-            PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
-            pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
-            pickerController.delegate = self;
-            pickerController.title = [arr_menu0 objectAtIndex:indexPath.row];
-//            pickerController.str_title = [arr_menu0 objectAtIndex:indexPath.row];
-//            pickerController.str_target0 = &str_asoScore;
-            [self.navigationController pushViewController:pickerController animated:YES];
+            self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+            
+            ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+            modalController.delegate = self;
+            NSMutableArray *arr_sources = [[NSMutableArray alloc] init];
+            [arr_sources addObject:[NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil]];
+            modalController.arr_sources = arr_sources;
+            modalController.tag = @"ASO Score";
+            [modalController setToolbarTitle:@"ASO Score"];
+            [self presentViewController:modalController animated:YES completion:nil];
+
         }
         else if(indexPath.row == 3) {
             // start time
-            DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
-            pPicker.title = [arr_menu0 objectAtIndex:indexPath.row];
-            pPicker.dt_target = &_dt_start;
-            [self.navigationController pushViewController:pPicker animated:YES];
+            ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+            modalController.delegate = self;
+            modalController.modalMode = ModalPickerViewModeDatePicker;
+            [modalController setToolbarTitle:@"Start/Time Date of Surgery"];
+            modalController.tag = @"Start/Time Date of Surgery";
+            [self presentViewController:modalController animated:YES completion:nil];
         }
         else if(indexPath.row == 4) {
             // end time
-            DatePickerViewController *pPicker = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
-            pPicker.dt_target = &_dt_end;
-            pPicker.title = [arr_menu0 objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:pPicker animated:YES];
+            ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+            modalController.delegate = self;
+            modalController.modalMode = ModalPickerViewModeDatePicker;
+            [modalController setToolbarTitle:@"End /Time Date of Surgery"];
+            modalController.tag = @"End /Time Date of Surgery";
+            [self presentViewController:modalController animated:YES completion:nil];
         }
         else {
 
@@ -473,7 +541,7 @@
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
                 AdverseEventViewController *adverseController = [storyboard instantiateViewControllerWithIdentifier:@"AdverseEventViewController"];
                 adverseController.title = [arr_menu1 objectAtIndex:indexPath.row];
-//                adverseController.dashboard = dashboard;
+                adverseController.dashboard = dashboard;
                 [self.navigationController pushViewController:adverseController animated:YES];
             }
         }
@@ -504,10 +572,17 @@
                 [self.navigationController pushViewController:otherController animated:YES];
             }
         }
-        
     }
     else if(indexPath.section == 2) {
         // submit
+        if([tf_siteId.text length] <= 0 || [tf_healthcard.text length] <= 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
+                                                           delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            
+            [alert show];
+            return;
+        }
+            
         // --- save everything
         [self saveCurScreenData];
         dashboard.status = @"Sent";
@@ -520,13 +595,10 @@
             NSLog(@"Error saving todo: %@", error);
             // --- Draft
         }];
-
     }
     else {
         // error
     }
-    
-    
 }
 
 - (void)saveCurScreenData {
@@ -537,10 +609,64 @@
     dashboard.estimated_blood_loss = tf_estimatedBloodLoss.text;
     dashboard.time_from_spinal_cord_injury = tf_timeCompression.text;
     
-    dashboard.intra_operative_adverse_events = btn_section2_0.titleLabel.text;
-    dashboard.vertebral_surgery = btn_section2_1.titleLabel.text;
-    dashboard.adjunctive_procedures = btn_section2_2.titleLabel.text;
-    dashboard.other_surgery = btn_section2_3.titleLabel.text;
+//    dashboard.intra_operative_adverse_events = btn_section2_0.titleLabel.text;
+//    dashboard.vertebral_surgery = btn_section2_1.titleLabel.text;
+//    dashboard.adjunctive_procedures = btn_section2_2.titleLabel.text;
+//    dashboard.other_surgery = btn_section2_3.titleLabel.text;
+}
+
+- (IBAction)save_local:(id)sender {
+    if([tf_siteId.text length] <= 0 || [tf_healthcard.text length] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Fill out required field"
+                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        
+        [alert show];
+        return;
+    }
+    
+    [self saveCurScreenData];
+    
+    dashboard.status = @"Local";
+    //    Clipboard *clip = [Clipboard sharedClipboard];
+    //    [clip clipValue:dashboard clipKey:@"local_dashboard"];
+    
+    NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+    // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+    
+    [context saveOnSuccess:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error saving todo: %@", error);
+    }];
+    
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveLocalData" object:dashboard];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
+}
+
+- (IBAction)cancel_local:(id)sender {
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
 }
 
 

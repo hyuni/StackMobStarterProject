@@ -545,7 +545,7 @@
                 OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
                 
                 oneController.title = [arr_menu objectAtIndex:indexPath.row];
-                
+                        
                 NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"Spinal cord", @"Conus/Cauda equina (TBD)", @"Radiculopathy (TBD)", @"Brain (TBD)", nil];
                 
                 oneController.arr_component_0 = arr_tmp;
@@ -632,14 +632,24 @@
 //            [self.navigationController pushViewController:oneController animated:YES];
         }
         else if([str_menu isEqualToString:@"ASIA Score"]) {
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
-            
-            oneController.title = [arr_menu objectAtIndex:indexPath.row];
-            
-            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", nil];
-            
-            oneController.arr_component_0 = arr_tmp;
-            [self.navigationController pushViewController:oneController animated:YES];
+            ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+            modalController.delegate = self;
+            NSMutableArray *arr_sources = [[NSMutableArray alloc] init];
+            [arr_sources addObject:[NSMutableArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", nil]];
+            modalController.arr_sources = arr_sources;
+            NSString *str_title = @"ASIA Score";
+            modalController.tag = str_title;
+            [modalController setToolbarTitle:str_title];
+            [self presentViewController:modalController animated:YES completion:nil];
+
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = [arr_menu objectAtIndex:indexPath.row];
+//            
+//            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", nil];
+//            
+//            oneController.arr_component_0 = arr_tmp;
+//            [self.navigationController pushViewController:oneController animated:YES];
         }
         else if([str_menu isEqualToString:@"Motor"]) {
             IntakeMotorViewController *motorController = [storyboard instantiateViewControllerWithIdentifier:@"IntakeMotorViewController"];
@@ -689,6 +699,16 @@
     //        IntakeForm4InjuryTypeViewController *injuryController = [[IntakeForm4InjuryTypeViewController alloc] initWithNibName:@"IntakeForm4InjuryTypeViewController" bundle:nil];
     //        [self.navigationController pushViewController:injuryController animated:YES];
     //    }
+}
+
+-(void)didFinishedModalPickerConfirmed:(NSMutableArray *)arr_selectedItems tag:(id)tag {
+    //            [arr_menu0 addObject:@"Start/Time Date of Surgery"];
+    //            [arr_menu0 addObject:@"End /Time Date of Surgery"];
+    
+    if([tag isEqualToString:@"ASIA Score"]) {
+        dashboard.asia_score = [arr_selectedItems objectAtIndex:0];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -788,8 +808,30 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
+}
+
 - (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
 }
 
 

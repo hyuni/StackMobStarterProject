@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 #import "PickerViewController.h"
+#import "ModalPickerViewController.h"
 
-@interface AdverseEventViewController : UITableViewController<UITextViewDelegate, PickerViewControllerDelegate> {
+@interface AdverseEventViewController : UITableViewController<UITextViewDelegate, PickerViewControllerDelegate, ModalPickerViewDelegate> {
     NSMutableArray *arr_intra_bool;
     NSMutableArray *arr_menu;
     NSMutableArray *arr_intra;

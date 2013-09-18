@@ -151,8 +151,30 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
+}
+
 - (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
 }
 
 

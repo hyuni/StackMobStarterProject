@@ -134,6 +134,18 @@
 }
 
 #pragma mark - custom method
+- (IBAction)action_info:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    LightInfoViewController *info = [storyboard instantiateViewControllerWithIdentifier:@"LightInfoViewController"];
+    
+    info.title = @"Info";
+    
+    [info setInfoText:@"Anterior \n1 - Transoral \n2 - Subaxial cervical spine \n3- Sternal split \n4 - Thoracotomy \n5 - Thoracoabdominal \n6 - Transperitoneal \n7 - Retroperitoneal \n\nPosterior \n8 - Midline \n9 - Paraspinal \n10 - Lateral"];
+    
+    [self.navigationController pushViewController:info animated:YES];
+
+}
+
 - (IBAction)action_ok:(id)sender {
     //make return string data
     NSMutableString *str_return = [[NSMutableString alloc] init];

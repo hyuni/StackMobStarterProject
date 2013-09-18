@@ -13,13 +13,14 @@
 @interface IntakeForm1ViewController : UITableViewController<UITextFieldDelegate, NewDatePcikerViewControllerDelegate> {
         NewDatePickerViewController *datePickerViewController;
         UIView *datePickerView;
-    Dashboard *dashboard;
+    
 }
 
 @property (strong, nonatomic) IBOutlet UIView *modalView;
 @property (weak, nonatomic) IBOutlet UITextField *tf_healthCardNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_dataOfBirth;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dp_dateOfBirth;
+@property Dashboard *dashboard;
 
 
 - (IBAction)save_local:(id)sender;

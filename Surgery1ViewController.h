@@ -12,11 +12,20 @@
 #import "VertebralSurgeryViewController.h"
 #import "AdjunctiveViewController.h"
 #import "OtherSurgeryViewController.h"
+#import "ModalPickerViewController.h"
+#import "StackMob.h"
+#import "Utility.h"
+#import "DatePickerViewController.h"
+#import "DCRoundSwitch.h"
+#import "KKDS_Preference.h"
+#import "AdverseEventViewController.h"
+#import "Clipboard.h"
 
-@interface Surgery1ViewController : UITableViewController<PickerViewControllerDelegate> {
+
+@interface Surgery1ViewController : UITableViewController<ModalPickerViewDelegate, UITextFieldDelegate> {
     NSMutableArray *arr_menu0;
     NSMutableArray *arr_menu1;
-    Dashboard *dashboard;
+    
     
     UILabel *lb_startTime;
     UILabel *lb_endTime;
@@ -39,6 +48,10 @@
 @property NSDate *dt_start;
 @property NSDate *dt_end;
 
+@property Dashboard *dashboard;
+
+- (IBAction)cancel_local:(id)sender;
+- (IBAction)save_local:(id)sender;
 
 
 @end

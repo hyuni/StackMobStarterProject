@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 #import "NewDatePickerViewController.h"
+#import "ModalPickerViewController.h"
 
-@interface IntakeForm2ViewController : UITableViewController<NewDatePcikerViewControllerDelegate> {
+@interface IntakeForm2ViewController : UITableViewController<NewDatePcikerViewControllerDelegate, ModalPickerViewDelegate> {
     UIView *datePickerView;
     NewDatePickerViewController *datePickerViewController;
 

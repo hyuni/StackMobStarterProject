@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
+#import "ModalPickerViewController.h"
 
-@interface Discharge3ViewController : UITableViewController<UITextViewDelegate> {
+@interface Discharge3ViewController : UITableViewController<UITextViewDelegate, ModalPickerViewDelegate> {
     Dashboard *dashboard;
     BOOL flag_first;
     
     int _initialTVHeight;
+    
+    int i_periIndex;
 
 }
 @property (weak, nonatomic) IBOutlet UITextView *tv_other;

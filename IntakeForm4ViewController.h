@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 #import "AsiaSendData.h"
+#import "ModalPickerViewController.h"
 
-@interface IntakeForm4ViewController : UITableViewController {
+@interface IntakeForm4ViewController : UITableViewController<ModalPickerViewDelegate> {
     Dashboard *dashboard;
     NSMutableArray *arr_menu;
     UIStoryboard *storyboard;

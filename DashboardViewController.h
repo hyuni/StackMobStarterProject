@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Dashboard.h"
 #import "StackMob.h"
+#import "Surgery1ViewController.h"
+#import "IntakeForm1ViewController.h"
+#import "Discharge1ViewController.h"
 
 @interface DashboardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, UITabBarDelegate> {
     NSArray *arr_menu;
@@ -26,6 +29,6 @@
 @property (strong, nonatomic) SMClient *client;
 @property (weak, nonatomic) IBOutlet UITableView *dashTableView;
 
-
+- (IBAction)bbtn_edit:(id)sender;
 
 @end

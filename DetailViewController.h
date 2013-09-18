@@ -11,6 +11,7 @@
 #import "DCRoundSwitch.h"
 #import "RangeSlider.h"
 #import "PickerViewController.h"
+#import "LightInfoViewController.h"
 
 
 @protocol DetailViewControllerDelegate <NSObject>
@@ -58,5 +59,7 @@
 - (IBAction)action_cancel:(id)sender;
 - (IBAction)action_btn_location:(id)sender;
 - (void)setLabelTitle:(NSString *)title subTitle:(NSString *)subTitle;
+
+- (IBAction)action_info:(id)sender;
 
 @end

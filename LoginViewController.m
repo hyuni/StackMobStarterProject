@@ -19,12 +19,31 @@
 #import "DataObject.h"
 
 
+
+
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
 
+-(void)didFinishedModalPickerConfirmed:(NSMutableArray *)arr_selectedItems tag:(id)tag {
+
+    
+}
+
+- (IBAction)test_button:(id)sender {
+    
+    ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+    modalController.delegate = self;
+    NSMutableArray *arr_sources = [[NSMutableArray alloc] init];
+    [arr_sources addObject:[NSMutableArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", nil]];
+    [arr_sources addObject:[NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil]];
+    modalController.arr_sources = arr_sources;
+    modalController.tag = @"TAG";
+    [self presentViewController:modalController animated:YES completion:nil];
+
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -183,7 +202,10 @@
     
     [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBackground.png"] forBarMetrics:UIBarMetricsDefault];
     
-    [self presentViewController:container animated:YES completion:nil];
+    AppDelegate* myDelegate = (((AppDelegate*) [UIApplication sharedApplication].delegate));
+    myDelegate.window.rootViewController = container;
+    myDelegate.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    [self presentViewController:container animated:YES completion:nil];
 }
 
 - (IBAction)kayboard_down:(id)sender {

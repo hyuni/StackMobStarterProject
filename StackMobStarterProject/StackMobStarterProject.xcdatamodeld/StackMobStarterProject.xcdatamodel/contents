@@ -212,6 +212,7 @@
         <attribute name="other_surgery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_admitted_to_icu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_discharged_to" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patient_discharged_to_other" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_received_allogenic_blood" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patient_with_sci" optional="YES" attributeType="String" syncable="YES"/>
@@ -322,7 +323,7 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dashboard" positionX="160" positionY="192" width="128" height="3555"/>
+        <element name="Dashboard" positionX="160" positionY="192" width="128" height="3570"/>
         <element name="Patient" positionX="160" positionY="192" width="128" height="150"/>
         <element name="TestObject" positionX="160" positionY="192" width="128" height="105"/>
         <element name="TmpDashboard" positionX="160" positionY="192" width="128" height="675"/>

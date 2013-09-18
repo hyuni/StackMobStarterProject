@@ -122,9 +122,11 @@
             UIButton *btn_yes = (UIButton *)[cell viewWithTag:2];
             if([[arr_menu_bool objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
                 //NO
-                [btn_yes setTitle:@"  " forState:UIControlStateNormal];
+                [btn_yes setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
+//                [btn_yes setTitle:@"  " forState:UIControlStateNormal];
             }
             else {
+                [btn_yes setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
                 [btn_yes setTitle:@"X" forState:UIControlStateNormal];
             }
             [btn_yes addTarget:self action:@selector(action_btn_yes:) forControlEvents:UIControlEventTouchUpInside];
@@ -145,10 +147,12 @@
             UIButton *btn_yes = (UIButton *)[cell viewWithTag:2];
             if([[arr_menu_bool objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
                 //NO
-                [btn_yes setTitle:@"  " forState:UIControlStateNormal];
+                [btn_yes setBackgroundImage:[UIImage imageNamed:@"checkbox_off"] forState:UIControlStateNormal];
+//                [btn_yes setTitle:@"  " forState:UIControlStateNormal];
             }
             else {
-                [btn_yes setTitle:@"X" forState:UIControlStateNormal];
+                [btn_yes setBackgroundImage:[UIImage imageNamed:@"checkbox_on"] forState:UIControlStateNormal];
+//                [btn_yes setTitle:@"X" forState:UIControlStateNormal];
             }
             [btn_yes addTarget:self action:@selector(action_btn_yes:) forControlEvents:UIControlEventTouchUpInside];
             

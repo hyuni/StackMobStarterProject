@@ -18,6 +18,7 @@
 @end
 
 @implementation IntakeForm1ViewController
+@synthesize dashboard;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,6 +44,23 @@
     datePickerView = [datePickerViewController getDatePickerView:self];
     [self.view addSubview:datePickerView];
     
+    if(dashboard == nil)
+        [self initIntakeData];
+    else {
+        _tf_healthCardNumber.text = dashboard.healthcard_number;
+        _lb_dataOfBirth.text = dashboard.date_of_birth;
+    }
+    
+    
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                          action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
+
+}
+
+- (void)initIntakeData {
     //--- Date of Birth Setting ---//
     _lb_dataOfBirth.text = [Utility dateToString:[NSDate date]];
     
@@ -97,16 +115,11 @@
     dashboard.date_of_surgery = @"";
     dashboard.surgical_billing_code = @"";
     dashboard.visit_type = @"Phone call";   // Phone call / Emergency / Clinic
+    dashboard.occur_date = [Utility dateToString:[NSDate date]];
+    dashboard.patient_discharged_to_other = @"";
+    dashboard.patient_discharged_to = @"";
     
     
-    
-    
-    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                                          action:@selector(dismissKeyboard)];
-//    
-//    [self.view addGestureRecognizer:tap];
-
 }
 
 //- (void)dismissKeyboard {
@@ -282,7 +295,7 @@
     
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     // An asynchronous Core Data save method provided by the StackMob iOS SDK.
-    
+
     [context saveOnSuccess:^{
         [self.navigationController popToRootViewControllerAnimated:YES];
     } onFailure:^(NSError *error) {
@@ -294,8 +307,30 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
+    }
+}
+
 - (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
 }
 
 @end

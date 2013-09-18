@@ -16,6 +16,7 @@
 @end
 
 @implementation Discharge1ViewController
+@synthesize dashboard;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,17 +41,28 @@
     datePickerView = [datePickerViewController getDatePickerView:self];
     [self.view addSubview:datePickerView];
     
-    _lb_discharge_date.text = [Utility dateToString:[NSDate date]];
-    _lb_admission_date.text = [Utility dateToString:[NSDate date]];
 
 //    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithTitle:@"Confirm" style:UIBarButtonItemStylePlain target:self action:@selector(confirm:)];
 //    self.navigationItem.rightBarButtonItem = confirmButton;
     
+    if(self.dashboard == nil)
+        [self initDischargeData];
+    
+    Clipboard *clip = [Clipboard sharedClipboard];
+    [clip clipValue:dashboard clipKey:@"create_discharge"];
+
+    [_tf_siteID addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventValueChanged];
+    [_tf_healthcardNumber addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)initDischargeData {
     //--- Data prepare ---//
     NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
     dashboard = [NSEntityDescription insertNewObjectForEntityForName:@"Dashboard" inManagedObjectContext:context];
     //--- initiallize dashboard data---//
     dashboard.dashboard_id = [dashboard assignObjectId];
+    dashboard.healthcard_number = @"";
+    dashboard.site_id = @"";
     dashboard.patient_status = @"Discharge";
     dashboard.event_days = @"0 days";
     dashboard.event_0 = @"";
@@ -78,14 +90,47 @@
     dashboard.event_22 = @"";
     dashboard.event_23 = @"";
     dashboard.occur_date = [Utility dateToString:[NSDate date]];
-    
-    Clipboard *clip = [Clipboard sharedClipboard];
-    [clip clipValue:dashboard clipKey:@"create_discharge"];
+    dashboard.discharge_date = [Utility dateToString:[NSDate date]];
+    dashboard.admission_date = [Utility dateToString:[NSDate date]];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _tf_healthcardNumber.text = dashboard.healthcard_number;
+    _tf_siteID.text = dashboard.site_id;
+    _lb_admission_date.text = dashboard.admission_date;
+    _lb_discharge_date.text = dashboard.discharge_date;
+    [_sw_patient_admitted_to_icu setOn:([dashboard.patient_admitted_to_icu isEqualToString:@"YES"] ? YES : NO)];
+    [_sw_patient_receivedallogenic_blood setOn:([dashboard.patient_received_allogenic_blood isEqualToString:@"YES"] ? YES : NO)];
+    [_sw_requires_step_down_bed setOn:([dashboard.requires_step_down_bed isEqualToString:@"YES"] ? YES : NO)];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
 }
 
 - (IBAction)action_delete:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
 }
 
 - (IBAction)action_send:(id)sender {
@@ -232,18 +277,24 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if(indexPath.section == 1) {
         if(indexPath.row == 1 ) {
+            [self textFieldChanged:nil];
             [datePickerViewController moveDownPickerView:self];
             [datePickerViewController moveUpPickerView];
+
             [_tf_siteID resignFirstResponder];
             [_tf_healthcardNumber resignFirstResponder];
             
             i_date_row = 1;
         }
         else if(indexPath.row == 2) {
+            [self textFieldChanged:nil];
             [datePickerViewController moveDownPickerView:self];
             [datePickerViewController moveUpPickerView];
+            
             [_tf_siteID resignFirstResponder];
             [_tf_healthcardNumber resignFirstResponder];
             
@@ -257,16 +308,39 @@
 #pragma mark - NewDatePickerViewController delegate
 -(void)delegateConfirm:(NSDate *)date_selected {
     if(i_date_row == 1) {
-        _lb_admission_date.text = [Utility dateToString:date_selected];
+        dashboard.admission_date = [Utility dateToString:date_selected];
     }
     else if(i_date_row == 2){
-        _lb_discharge_date.text = [Utility dateToString:date_selected];
+        dashboard.discharge_date = [Utility dateToString:date_selected];
     }
+    [self viewWillAppear:NO];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [datePickerViewController moveDownPickerView:self];
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    dashboard.site_id = _tf_siteID.text;
+    dashboard.healthcard_number = _tf_healthcardNumber.text;
+}
+
+- (void)textFieldChanged:(id)sender {
+    dashboard.site_id = _tf_siteID.text;
+    dashboard.healthcard_number = _tf_healthcardNumber.text;
+}
+
+- (IBAction)action_sw_1:(id)sender {
+    [self saveCurrentScreenData];
+}
+- (IBAction)action_sw_2:(id)sender {
+    [self saveCurrentScreenData];
+}
+
+- (IBAction)action_sw_3:(id)sender {
+    [self saveCurrentScreenData];
+}
+
 
 #pragma mark - custom moethod
 - (IBAction)action_tf_siteID:(id)sender {

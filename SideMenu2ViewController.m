@@ -10,6 +10,7 @@
 #import "IntakeForm1ViewController.h"
 #import "Discharge1ViewController.h"
 #import "MFSideMenu.h"
+#import "Surgery1ViewController.h"
 
 @interface SideMenu2ViewController ()
 
@@ -152,17 +153,56 @@
         }
         else if(indexPath.row == 1) {
             // surgery
+            Surgery1ViewController *surgery1 = [storyboard instantiateViewControllerWithIdentifier:@"Surgery1ViewController"];
+            [self.menuContainerViewController.centerViewController pushViewController:surgery1 animated:YES];
+            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
         }
         else if(indexPath.row == 2) {
             // discharge
-            Discharge1ViewController *discharge1 = [storyboard instantiateViewControllerWithIdentifier:@"TLICScoreViewController"];
+            Discharge1ViewController *discharge1 = [storyboard instantiateViewControllerWithIdentifier:@"Discharge1ViewController"];
             [self.menuContainerViewController.centerViewController pushViewController:discharge1 animated:YES];
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
         }
         
     }
+    else if(indexPath.section == 1) {
+        if(indexPath.row == 1) {
+            // report email
+            if ([MFMailComposeViewController canSendMail]) {
+                // Show the composer
+                MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+                controller.mailComposeDelegate = self;
+                [controller setToRecipients:[NSArray arrayWithObjects:@"followup@gmail.com", nil]];
+                [controller setSubject:@"[FU Report]"];
+                [controller setMessageBody:@"" isHTML:NO];
+                if (controller) {
+                    [self presentViewController:controller animated:YES completion:nil];
+                    //                [self.menuContainerViewController.centerViewController pushViewController:controller animated:YES];
+                    [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+                }
+
+            } else {
+                // Handle the error
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The device setting doesn't allow sending e-mail. Please check device preference."
+                                                               delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+                
+                [alert show];
+            }
+        }
+    }
     
     
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"It's away!");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

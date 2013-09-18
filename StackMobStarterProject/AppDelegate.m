@@ -58,14 +58,16 @@
     NSManagedObjectContext *localContext = [self _localManagedObjectContext];
     [clip clipValue:localContext clipKey:@"managaedObjectContext"];
     
-    [self syncStackMobData:nil];
+//    self.window.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+//    [self syncStackMobData:nil];
 //    [self saveStackMobData];
 //    [self fetchStackMobData];
 //    [self saveLocalCoreData];
 //    [self fetchLocalCoreData];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncStackMobData:) name:@"syncStackMobData" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveLocalData:) name:@"saveLocalData" object:nil];
     
     
     
@@ -181,19 +183,54 @@
 }
 
 - (void)syncStackMobData:(id)sender {
-    // You'll need a block declared core data store instance
+    
+    [self.coreDataStore setCachePolicy:SMCachePolicyTryCacheOnly];
+    
     __block SMCoreDataStore *blockCoreDataStore = self.coreDataStore;
 
-    [self.client.session.networkMonitor setNetworkStatusChangeBlockWithCachePolicyReturn:^SMCachePolicy(SMNetworkStatus status) {
-
+    [self.client.networkMonitor setNetworkStatusChangeBlock:^(SMNetworkStatus status) {
+        
         if (status == SMNetworkStatusReachable) {
+            
             // Initiate sync
+            
             [blockCoreDataStore syncWithServer];
-            return SMCachePolicyTryNetworkElseCache;
-        } else {
-            return SMCachePolicyTryCacheOnly;
+            
         }
+        
+        else {
+            
+            // Handle offline mode
+            
+            [blockCoreDataStore setCachePolicy:SMCachePolicyTryCacheOnly];
+            
+        }
+        
     }];
+    
+    [self.coreDataStore setSyncCompletionCallback:^(NSArray *objects) {
+        
+        NSLog(@"Sync complete.");
+        
+        // Our syncing is complete, so change the policy to fetch from the network
+        
+        [blockCoreDataStore setCachePolicy:SMCachePolicyTryNetworkElseCache];
+        
+        
+        
+        // Notify other views that they should reload their data from the network
+        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"FinishedSync" object:nil];
+        
+    }];
+    
+    [self.coreDataStore setSyncCallbackForFailedUpdates:^(NSArray *objects) {
+        
+        NSLog(@"Sync Failure on Updates");
+        
+    }];
+    
+
 }
 
 - (void)saveStackMobData {

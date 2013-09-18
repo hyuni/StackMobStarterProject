@@ -12,6 +12,8 @@
 #import "StackMob.h"
 #import "Utility.h"
 #import "Discharge1ViewController.h"
+#import "ModalPickerViewController.h"
+
 
 @interface DashboardViewController ()
 
@@ -37,24 +39,53 @@
 
     arr_menu = [[NSArray alloc] init];
     arr_sorted_menu = [[NSMutableArray alloc] init];
+    
+    
+//    self.dashTableView.del
+
 
 }
 
+- (IBAction)bbtn_edit:(id)sender {
+    if(self.dashTableView.editing == YES)
+        self.dashTableView.editing = NO;
+    else
+        self.dashTableView.editing = YES;
+}
+
+
+//- (void)syncStackMobData:(id)sender {
+//    __block SMCoreDataStore *blockCoreDataStore = self.coreDataStore;
+//    
+//    [self.client.session.networkMonitor setNetworkStatusChangeBlockWithCachePolicyReturn:^SMCachePolicy(SMNetworkStatus status) {
+//        
+//        if (status == SMNetworkStatusReachable) {
+//            // Initiate sync
+//            [blockCoreDataStore syncWithServer];
+//            return SMCachePolicyTryNetworkElseCache;
+//        } else {
+//            return SMCachePolicyTryCacheOnly;
+//        }
+//    }];
+//}
+
+
 - (void)viewWillAppear:(BOOL)animated {
 
+    
     
     //--- make data model ---//
     if([_tab_bar selectedItem] == _tab_all) {
         [self fetchData:@"All" ];
     }
     else if([_tab_bar selectedItem] == _tab_draft) {
-        [self fetchData:@"Draft" ];
+        [self fetchData:@"Intake" ];
     }
     else if([_tab_bar selectedItem] == _tab_sent) {
-        [self fetchData:@"Sent" ];
+        [self fetchData:@"Surgery" ];
     }
     else if([_tab_bar selectedItem] == _tab_local) {
-        [self fetchData:@"Local" ];
+        [self fetchData:@"Discharge" ];
     }
 
 //    [_dashTableView reloadData];
@@ -77,8 +108,8 @@
 
     
     if(![status isEqualToString:@"All"]) {
-        NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"status == %@", status];
-        [fetchRequest setPredicate:equalPredicate];        
+        NSPredicate *equalPredicate = [NSPredicate predicateWithFormat:@"patient_status == %@", status];
+        [fetchRequest setPredicate:equalPredicate];
     }
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -253,6 +284,25 @@
  */
 
 #pragma mark - Table view delegate
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // Return YES if you want the specified item to be editable.
+//    return YES;
+//}
+//
+//// Override to support editing the table view.
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        //add code here for when you hit delete
+//    }
+//}
+//
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return UITableViewCellEditingStyleDelete;
+//}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -265,9 +315,40 @@
      */
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
 //    Discharge1ViewController *discharge1Controller = [storyboard instantiateViewControllerWithIdentifier:@"Discharge1ViewController"];
-//    
+//
 //    [self.navigationController pushViewController:discharge1Controller animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    Dashboard *tmpDash = [[arr_sorted_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
+    if([tmpDash.patient_status isEqualToString:@"Intake"]) {
+        // Intake
+        IntakeForm1ViewController *intakeController = [storyboard instantiateViewControllerWithIdentifier:@"IntakeForm1ViewController"];
+        intakeController.dashboard = tmpDash;
+        [self.navigationController pushViewController:intakeController animated:YES];
+    }
+    else if([tmpDash.patient_status isEqualToString:@"Surgery"]) {
+        // Surgery
+        Surgery1ViewController *surgeryController = [storyboard instantiateViewControllerWithIdentifier:@"Surgery1ViewController"];
+        surgeryController.dashboard = tmpDash;
+        [self.navigationController pushViewController:surgeryController animated:YES];
+    }
+    else if([tmpDash.patient_status isEqualToString:@"Discharge"]) {
+        // Discharge
+        Discharge1ViewController *dischargeController = [storyboard instantiateViewControllerWithIdentifier:@"Discharge1ViewController"];
+        dischargeController.dashboard = tmpDash;
+        [self.navigationController pushViewController:dischargeController animated:YES];
+    }
+
+    
+//    if([tmpDash.status isEqualToString:@"Sent"]) {
+//        // read only mode
+//    }
+//    else if([tmpDash.status isEqualToString:@"Local"]) {
+//        // edit mode
+//    }
+//    else if([tmpDash.status isEqualToString:@"Draft"]) {
+//        
+//    }
 }
 
 #pragma mark - tab bar delegate
@@ -276,7 +357,7 @@
     
     NSLog(@"Tab bar : %d", item.tag);
     
-    [self viewWillAppear:nil];
+    [self viewWillAppear:NO];
 
 }
 @end

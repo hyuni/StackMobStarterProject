@@ -64,18 +64,18 @@
         selected_row = 4;
     }
     else if([dashboard.patient_discharged_to isEqualToString:@"Hospital-hospital transfer"]) {
-        selected_row = 6;
+        selected_row = 5;
     }
     else {
         // other
         selected_row = 6;
     }
-
+    _tv_other.text = dashboard.patient_discharged_to_other;
     [self.tableView reloadData];
 }
 
 - (void)confirm:(id)sender {
-    dashboard.patient_discharged_to = _tv_other.text;
+    dashboard.patient_discharged_to_other = _tv_other.text;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -38,8 +38,8 @@
 //    self.view.frame = CGRectMake(0, 0, 100, 100);
 //    [self.tableView sizeToFit];
     
-    Clipboard *clip = [Clipboard sharedClipboard];
-    _dashboard = [clip clipKey:@"create_surgery"];
+//    Clipboard *clip = [Clipboard sharedClipboard];
+//    _dashboard = [clip clipKey:@"create_surgery"];
     
 //    str_intra_0 = @"";
 //    str_intra_1 = @"";
@@ -177,9 +177,9 @@
         
     }
     
-    UIButton *btn_yes = (UIButton *)[cell viewWithTag:2];
-    [btn_yes setTitle:[arr_intra_bool objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    [btn_yes addTarget:self action:@selector(action_btn_yes:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *btn_yes = (UIButton *)[cell viewWithTag:2];
+//    [btn_yes setTitle:[arr_intra_bool objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+//    [btn_yes addTarget:self action:@selector(action_btn_yes:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btn_grade = (UIButton *)[cell viewWithTag:3];
     [btn_grade setTitle:[arr_intra objectAtIndex:indexPath.row] forState:UIControlStateNormal];
@@ -259,20 +259,94 @@
     CGPoint buttonOriginInTableView = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonOriginInTableView];
     
-    if(![[arr_intra_bool objectAtIndex:indexPath.row] isEqualToString:@"YES"]) {
-        return;
-    }
+//    if(![[arr_intra_bool objectAtIndex:indexPath.row] isEqualToString:@"YES"]) {
+//        return;
+//    }
     
     i_curIndex = indexPath.row;
+    
+    ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+    modalController.delegate = self;
+    NSMutableArray *arr_sources = [[NSMutableArray alloc] init];
+    [arr_sources addObject:[NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", nil]];
+    modalController.arr_sources = arr_sources;
+//    NSString *str_title = @"Visit Type";
+//    modalController.tag = @"Visit Type";
+//    [modalController setToolbarTitle:str_title];
+    [self presentViewController:modalController animated:YES completion:nil];
 
-    PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
-    pickerController.delegate = self;
-    pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", nil];
-//    pickerController.lb_title.text = @"asdf";
-//    pickerController.str_title = [arr_menu objectAtIndex:indexPath.row];
-    pickerController.title = [arr_menu objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:pickerController animated:YES];
+//    PickerViewController *pickerController = [[PickerViewController alloc] initWithNibName:@"PickerViewController" bundle:nil];
+//    pickerController.delegate = self;
+//    pickerController.arr_source0 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", nil];
+////    pickerController.lb_title.text = @"asdf";
+////    pickerController.str_title = [arr_menu objectAtIndex:indexPath.row];
+//    pickerController.title = [arr_menu objectAtIndex:indexPath.row];
+//    [self.navigationController pushViewController:pickerController animated:YES];
 
+}
+
+-(void)didFinishedModalPickerConfirmed:(NSMutableArray *)arr_selectedItems tag:(id)tag {
+    //            [arr_menu0 addObject:@"Start/Time Date of Surgery"];
+    //            [arr_menu0 addObject:@"End /Time Date of Surgery"];
+    switch (i_curIndex) {
+        case 0:
+            _dashboard.intra_0 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 1:
+            _dashboard.intra_1 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 2:
+            _dashboard.intra_2 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 3:
+            _dashboard.intra_3 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 4:
+            _dashboard.intra_4 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 5:
+            _dashboard.intra_5 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 6:
+            _dashboard.intra_6 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 7:
+            _dashboard.intra_7 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 8:
+            _dashboard.intra_8 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 9:
+            _dashboard.intra_9 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 10:
+            _dashboard.intra_10 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 11:
+            _dashboard.intra_11 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 12:
+            _dashboard.intra_12 = [arr_selectedItems objectAtIndex:0];
+            break;
+        case 13:
+            _dashboard.intra_13 = [arr_selectedItems objectAtIndex:0];
+            break;
+            
+        default:
+            break;
+    }
+
+//    if([tag isEqualToString:@"ASO Score"]) {
+//        dashboard.aso_score = [arr_selectedItems objectAtIndex:0];
+//    }
+//    else if([tag isEqualToString:@"Start/Time Date of Surgery"]) {
+//        dashboard.start_time_date_of_surgery = [Utility dateTimeToStringWithFormatHHmm:[arr_selectedItems objectAtIndex:0]];
+//        
+//    }
+//    else if([tag isEqualToString:@"End /Time Date of Surgery"]) {
+//        dashboard.end_time_date_of_surgery = [Utility dateTimeToStringWithFormatHHmm:[arr_selectedItems objectAtIndex:0]];
+//    }
+    [self.tableView reloadData];
 }
 
 /*

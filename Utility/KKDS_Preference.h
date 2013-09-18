@@ -12,7 +12,7 @@
 #define EXECUTE_MODE_TEST 0
 #define EXECUTE_MODE_ACTIVE 1
 
-#define EXECUTE_MODE EXECUTE_MODE_TEST
+#define EXECUTE_MODE EXECUTE_MODE_ACTIVE
 
 //--- DCSwitch Size
 #define DCSwitch_Origin_X 223

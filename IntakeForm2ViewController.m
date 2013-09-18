@@ -43,10 +43,6 @@
     datePickerView = [datePickerViewController getDatePickerView:self];
     [self.view addSubview:datePickerView];
     
-    //--- date setting ---//
-    //--- Date of Birth Setting ---//
-    _lb_date.text = [Utility dateToString:[NSDate date]];
-
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];
@@ -58,8 +54,21 @@
 
 }
 
+- (void)initScreenData {
+    //--- date setting ---//
+    //--- Date of Birth Setting ---//
+    _lb_date.text = dashboard.occur_date;
+    _lb_visitType.text = dashboard.visit_type;
+    _tf_billingCode.text = dashboard.billingcode;
+
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated {
-    _lb_visitType.text = dashboard.visit_type;    
+    [self initScreenData];
 }
 
 - (void)dismissKeyboard {
@@ -155,18 +164,40 @@
         }
         else if(indexPath.row == 1) {
             // visit type
-            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+            ModalPickerViewController *modalController = [[ModalPickerViewController alloc] initWithNibName:@"ModalPickerViewController" bundle:nil];
+            modalController.delegate = self;
+            NSMutableArray *arr_sources = [[NSMutableArray alloc] init];
+            [arr_sources addObject:[NSMutableArray arrayWithObjects:@"Phone call", @"Emergency", @"Clinic", nil]];
+            modalController.arr_sources = arr_sources;
+//            NSString *str_title = @"Visit Type";
+            modalController.tag = @"Visit Type";
+//            [modalController setToolbarTitle:str_title];
+            [self presentViewController:modalController animated:YES completion:nil];
             
-            oneController.title = @"Visit Type";
-            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"Phone call", @"Emergency", @"Clinic", nil];
             
-            oneController.arr_component_0 = arr_tmp;
-            
-            [oneController setMode:@"" object1:nil object2:nil indexpath:indexPath];
-            
-            [self.navigationController pushViewController:oneController animated:YES];
+//            OnePickerViewController *oneController = [[OnePickerViewController alloc] initWithNibName:@"OnePickerViewController" bundle:nil];
+//            
+//            oneController.title = @"Visit Type";
+//            NSMutableArray *arr_tmp = [NSMutableArray arrayWithObjects:@"Phone call", @"Emergency", @"Clinic", nil];
+//            
+//            oneController.arr_component_0 = arr_tmp;
+//            
+//            [oneController setMode:@"" object1:nil object2:nil indexpath:indexPath];
+//            
+//            [self.navigationController pushViewController:oneController animated:YES];
         }
     }
+}
+
+#pragma mark - ModalPickerViewController
+-(void)didFinishedModalPickerConfirmed:(NSMutableArray *)arr_selectedItems tag:(id)tag {
+    //            [arr_menu0 addObject:@"Start/Time Date of Surgery"];
+    //            [arr_menu0 addObject:@"End /Time Date of Surgery"];
+    
+    if([tag isEqualToString:@"Visit Type"]) {
+        dashboard.visit_type = [arr_selectedItems objectAtIndex:0];
+    }
+    [self.tableView reloadData];
 }
 
 //- (IBAction)modalUp:(id)sender {
@@ -187,7 +218,9 @@
 
 #pragma mark - NewDatePickerViewController delegate
 -(void)delegateConfirm:(NSDate *)date_selected {
-    _lb_date.text = [Utility dateToString:date_selected];
+//    _lb_date.text = [Utility dateToString:date_selected];
+    dashboard.occur_date = [Utility dateToString:date_selected];
+    [self viewWillAppear:NO];
 }
 
 #pragma mark - Segue delegate
@@ -238,8 +271,34 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1) {
+        // OK
+        NSManagedObjectContext *context = [[[SMClient defaultClient] coreDataStore] contextForCurrentThread];
+        // An asynchronous Core Data save method provided by the StackMob iOS SDK.
+        [context deleteObject:dashboard];
+        [context saveOnSuccess:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } onFailure:^(NSError *error) {
+            NSLog(@"Error saving todo: %@", error);
+        }];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
+}
+
 - (IBAction)cancel_local:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // delete
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.delegate = self;
+    [alert show];
+    
+}
+
+- (IBAction)tf_billingCodeDone:(id)sender {
+    [_tf_billingCode resignFirstResponder];
 }
 
 @end

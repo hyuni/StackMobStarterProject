@@ -107,21 +107,21 @@
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Pumps"]) {
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_pumps isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_pumps isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Drainage"]) {
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_drainage isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_drainage isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
             
         }
@@ -130,84 +130,84 @@
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_exploration isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_exploration isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Repair Meningocele"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_repair isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_repair isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Release Tethered Cord"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_release isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_release isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Rhizotomy"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_rhizotomy isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_rhizotomy isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Drez Lesion"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_drez isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_drez isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Not applicable"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_cord_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_cord_not isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Replacement / Removal / Implant infusion pump"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_pumps_replacement isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_pumps_replacement isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Spinal simulator to include generator / receiver"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_pumps_spinal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_pumps_spinal isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Not applicable "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_pumps_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_pumps_not isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Lumboperitoneal shunt"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_drainage_lumboperitoneal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_drainage_lumboperitoneal isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Syringoperitoneal shunt"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_drainage_syringoperitoneal isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_drainage_syringoperitoneal isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Not applicable  "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.oth_drainage_not isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.oth_drainage_not isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
     }

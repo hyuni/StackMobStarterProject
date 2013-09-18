@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface SideMenu2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface SideMenu2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate> {
     
 }
 

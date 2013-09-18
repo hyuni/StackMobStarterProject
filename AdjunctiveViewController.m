@@ -100,14 +100,16 @@
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_monitoring isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_monitoring isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Intraoperative imaging"]) {
             CellIdentifier = @"CellDefault";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_imaging isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_imaging isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Navigation"]) {
@@ -127,56 +129,64 @@
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_non isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_monitoring_non isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_monitoring_non isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"EMG"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_emg isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_monitoring_emg isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_monitoring_emg isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Motor"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_motor isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_monitoring_motor isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_monitoring_motor isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Sensory"]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_monitoring_sensory isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_monitoring_sensory isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_monitoring_sensory isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"None "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_none isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_imaging_none isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_imaging_none isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"X-Ray "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_x_ray isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_imaging_x_ray isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_imaging_x_ray isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"Fluroscopy "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_fluroscopy isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_imaging_fluroscopy isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_imaging_fluroscopy isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if([str_tmpMenuName isEqualToString:@"CT / 3D "]) {
             CellIdentifier = @"CellSub";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             UIButton *btn_x = (UIButton *)[cell viewWithTag:2];
-            [btn_x setTitle:([dashboard.adj_imaging_ct_3d isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
+            [btn_x setBackgroundImage:[UIImage imageNamed:([dashboard.adj_imaging_ct_3d isEqualToString:@"YES"] ? @"checkbox_on" : @"checkbox_off")] forState:UIControlStateNormal];
+//            [btn_x setTitle:([dashboard.adj_imaging_ct_3d isEqualToString:@"YES"] ? @"YES" : @"NO") forState:UIControlStateNormal];
             [btn_x addTarget:self action:@selector(action_btn_x:) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -292,6 +302,10 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if(indexPath.section == 1 && indexPath.row == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
 
 @end
