@@ -662,7 +662,7 @@
 
 - (IBAction)cancel_local:(id)sender {
     // delete
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Are you sure you want to delete the selected item?"
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     alert.delegate = self;
     [alert show];

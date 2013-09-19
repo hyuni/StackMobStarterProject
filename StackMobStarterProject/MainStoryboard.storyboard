@@ -270,11 +270,6 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Twr-hK-OD8"/>
-                        <barButtonItem title="Item" id="uhs-F6-Jdp">
-                            <connections>
-                                <action selector="bbtn_edit:" destination="akY-qA-Pph" id="9pT-yY-Yy3"/>
-                            </connections>
-                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="DashBoard" id="EbH-Gx-NOy">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="fQH-5O-Akn">

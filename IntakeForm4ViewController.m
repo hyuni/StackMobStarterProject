@@ -218,14 +218,14 @@
         }
 
         else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
         }
 
         else if ([str_menuName isEqualToString:@"Anal sensation"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
         }
         else if ([str_menuName isEqualToString:@"Complete or Incomplete"]) {
-            topObject = [[NSBundle mainBundle] loadNibNamed:@"Neurologically_Intact" owner:self options:nil];
+            topObject = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
         }
         
         else if ([str_menuName isEqualToString:@"Neurological level"]) {
@@ -356,28 +356,59 @@
                 
             }
             else if ([str_menuName isEqualToString:@"Voluntary anal contraction"]) {
-                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+                DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+                [dcsw_custom setOffText:@"NO"];
+                [dcsw_custom setOnText:@"YES"];
                 
-                if([dashboard.voluntary_anal_contraction isEqualToString:@"YES"]) [sw_tmp setOn:YES];
-                else [sw_tmp setOn:NO];
+                if([dashboard.voluntary_anal_contraction isEqualToString:@"YES"]) [dcsw_custom setOn:YES animated:NO ignoreControlEvents:YES];
+                else [dcsw_custom setOn:NO animated:NO ignoreControlEvents:YES];
                 
-                [sw_tmp addTarget:self action:@selector(action_sw_Voluntary:) forControlEvents:UIControlEventValueChanged];
+                [cell addSubview:dcsw_custom];
+                
+                [dcsw_custom addTarget:self action:@selector(action_sw_Voluntary:) forControlEvents:UIControlEventValueChanged];
+                
+//                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+//                
+//                if([dashboard.voluntary_anal_contraction isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+//                else [sw_tmp setOn:NO];
+//                
+//                [sw_tmp addTarget:self action:@selector(action_sw_Voluntary:) forControlEvents:UIControlEventValueChanged];
             }
             else if ([str_menuName isEqualToString:@"Anal sensation"]) {
-                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+                DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+                [dcsw_custom setOffText:@"NO"];
+                [dcsw_custom setOnText:@"YES"];
                 
-                if([dashboard.anal_sensation isEqualToString:@"YES"]) [sw_tmp setOn:YES];
-                else [sw_tmp setOn:NO];
+                if([dashboard.anal_sensation isEqualToString:@"YES"]) [dcsw_custom setOn:YES animated:NO ignoreControlEvents:YES];
+                else [dcsw_custom setOn:NO animated:NO ignoreControlEvents:YES];
                 
-                [sw_tmp addTarget:self action:@selector(action_sw_Anal:) forControlEvents:UIControlEventValueChanged];
+                [cell addSubview:dcsw_custom];
+                
+                [dcsw_custom addTarget:self action:@selector(action_sw_Anal:) forControlEvents:UIControlEventValueChanged];
+//                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+//                
+//                if([dashboard.anal_sensation isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+//                else [sw_tmp setOn:NO];
+//                
+//                [sw_tmp addTarget:self action:@selector(action_sw_Anal:) forControlEvents:UIControlEventValueChanged];
             }
             else if ([str_menuName isEqualToString:@"Complete or Incomplete"]) {
-                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+                DCRoundSwitch *dcsw_custom = [[DCRoundSwitch alloc] initWithFrame:CGRectMake(DCSwitch_Origin_X, DCSwitch_Origin_Y, DCSwitch_SIZE_WIDTH, DCSwitch_SIZE_HEIGHT)];
+                [dcsw_custom setOffText:@"NO"];
+                [dcsw_custom setOnText:@"YES"];
                 
-                if([dashboard.complete_or_incomplete isEqualToString:@"YES"]) [sw_tmp setOn:YES];
-                else [sw_tmp setOn:NO];
+                if([dashboard.complete_or_incomplete isEqualToString:@"YES"]) [dcsw_custom setOn:YES animated:NO ignoreControlEvents:YES];
+                else [dcsw_custom setOn:NO animated:NO ignoreControlEvents:YES];
                 
-                [sw_tmp addTarget:self action:@selector(action_sw_Complete:) forControlEvents:UIControlEventValueChanged];
+                [cell addSubview:dcsw_custom];
+                
+                [dcsw_custom addTarget:self action:@selector(action_sw_Complete:) forControlEvents:UIControlEventValueChanged];
+//                UISwitch *sw_tmp = (UISwitch *)[cell viewWithTag:2];
+//                
+//                if([dashboard.complete_or_incomplete isEqualToString:@"YES"]) [sw_tmp setOn:YES];
+//                else [sw_tmp setOn:NO];
+//                
+//                [sw_tmp addTarget:self action:@selector(action_sw_Complete:) forControlEvents:UIControlEventValueChanged];
             }
             else if ([str_menuName isEqualToString:@"Neurological level"]) {
                 UIButton *btn_s_r = (UIButton *)[cell viewWithTag:2];
@@ -827,7 +858,7 @@
 
 - (IBAction)cancel_local:(id)sender {
     // delete
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The data will be removed \nfrom the database."
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Are you sure you want to delete the selected item?"
                                                    delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     alert.delegate = self;
     [alert show];
